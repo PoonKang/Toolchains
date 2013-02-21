@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "4.8.0 20130214 (experimental)")
+(!version  "4.8.0 20130218 (experimental)")
 
 (!srcdir  "/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc")
 
@@ -17838,7 +17838,7 @@ nil 0 nil )
 (!type already_seen 706)
 )
  gc_pointed_to "constexpr_call"
-(!srcfileloc  "cp/semantics.c" 6325)
+(!srcfileloc  "cp/semantics.c" 6411)
 
 (!fields 4 
 (!pair  "fundef"
@@ -17846,38 +17846,38 @@ nil 0 nil )
 (!type struct 709 
 (!type already_seen 708)
  gc_pointed_to "constexpr_fundef"
-(!srcfileloc  "cp/semantics.c" 5720)
+(!srcfileloc  "cp/semantics.c" 5744)
 
 (!fields 2 
 (!pair  "decl"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/semantics.c" 5718)
+(!srcfileloc  "cp/semantics.c" 5742)
 nil )
 (!pair  "body"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/semantics.c" 5719)
+(!srcfileloc  "cp/semantics.c" 5743)
 nil ))
 nil 260 nil )
 )
 
-(!srcfileloc  "cp/semantics.c" 6309)
+(!srcfileloc  "cp/semantics.c" 6395)
 nil )
 (!pair  "bindings"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/semantics.c" 6316)
+(!srcfileloc  "cp/semantics.c" 6402)
 nil )
 (!pair  "result"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/semantics.c" 6321)
+(!srcfileloc  "cp/semantics.c" 6407)
 nil )
 (!pair  "hash"
 (!type already_seen 9)
 
-(!srcfileloc  "cp/semantics.c" 6324)
+(!srcfileloc  "cp/semantics.c" 6410)
 nil ))
 nil 260 nil )
 
@@ -25448,7 +25448,7 @@ nil )
 (!pair  "secondary_vptr_vtt_init_data"
 (!type already_seen 675)
 
-(!srcfileloc  "cp/class.c" 8174)
+(!srcfileloc  "cp/class.c" 8175)
 nil )
 (!pair  "find_final_overrider_data"
 (!type already_seen 676)
@@ -25610,12 +25610,12 @@ nil )
 (!pair  "constexpr_call"
 (!type already_seen 706)
 
-(!srcfileloc  "cp/semantics.c" 6325)
+(!srcfileloc  "cp/semantics.c" 6411)
 nil )
 (!pair  "constexpr_fundef"
 (!type already_seen 709)
 
-(!srcfileloc  "cp/semantics.c" 5720)
+(!srcfileloc  "cp/semantics.c" 5744)
 nil )
 (!pair  "vec<deferred_access,va_gc>"
 (!type already_seen 710)
@@ -29470,7 +29470,7 @@ nil )
 (!pair  "abort_fndecl_addr"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/class.c" 8554)
+(!srcfileloc  "cp/class.c" 8555)
 nil )
 (!pair  "sizeof_biggest_empty_class"
 (!type already_seen 5)
@@ -29547,7 +29547,7 @@ nil )
 (!pair  "constexpr_call_table"
 (!type already_seen 1359)
 
-(!srcfileloc  "cp/semantics.c" 6330)
+(!srcfileloc  "cp/semantics.c" 6416)
 
 (!options 
 (!option param_is type 
@@ -29558,7 +29558,7 @@ nil )
 (!pair  "constexpr_fundef_table"
 (!type already_seen 1361)
 
-(!srcfileloc  "cp/semantics.c" 5725)
+(!srcfileloc  "cp/semantics.c" 5749)
 
 (!options 
 (!option param_is type 
@@ -29676,7 +29676,7 @@ nil )
 (!pair  "start_cleanup_cnt"
 (!type already_seen 9)
 
-(!srcfileloc  "cp/decl.c" 6668)
+(!srcfileloc  "cp/decl.c" 6677)
 nil )
 (!pair  "typename_htab"
 (!type already_seen 53)
@@ -29820,12 +29820,12 @@ nil )
 (!pair  "temp_count"
 (!type already_seen 9)
 
-(!srcfileloc  "cp/mangle.c" 3806)
+(!srcfileloc  "cp/mangle.c" 3809)
 nil )
 (!pair  "conv_type_names"
 (!type already_seen 53)
 
-(!srcfileloc  "cp/mangle.c" 3679)
+(!srcfileloc  "cp/mangle.c" 3682)
 
 (!options 
 (!option param_is type 
@@ -30238,7 +30238,7 @@ nil )
 (!pair  "asan_ctor_statements"
 (!type already_seen 5)
 
-(!srcfileloc  "asan.c" 2178)
+(!srcfileloc  "asan.c" 2187)
 nil )
 (!pair  "shadow_ptr_types"
 (!type array 1458 nil  gc_used "2" 
