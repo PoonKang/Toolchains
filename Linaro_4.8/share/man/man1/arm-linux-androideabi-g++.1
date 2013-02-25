@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-02-21" "gcc-4.8.0" "GNU"
+.TH GCC 1 "2013-02-24" "gcc-4.8.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -15534,10 +15534,12 @@ Enable (disable) use of the floating-point multiply-accumulate
 instructions, when they are available.  The default is
 \&\fB\-mfused\-madd\fR.
 .Sp
-When multiply-accumulate instructions are used, the intermediate
-product is calculated to infinite precision and is not subject to
-the \s-1FCSR\s0 Flush to Zero bit.  This may be undesirable in some
-circumstances.
+On the R8000 \s-1CPU\s0 when multiply-accumulate instructions are used,
+the intermediate product is calculated to infinite precision
+and is not subject to the \s-1FCSR\s0 Flush to Zero bit.  This may be
+undesirable in some circumstances.  On other processors the result
+is numerically identical to the equivalent computation using
+separate multiply, add, subtract and negate instructions.
 .IP "\fB\-nocpp\fR" 4
 .IX Item "-nocpp"
 Tell the \s-1MIPS\s0 assembler to not run its preprocessor over user
