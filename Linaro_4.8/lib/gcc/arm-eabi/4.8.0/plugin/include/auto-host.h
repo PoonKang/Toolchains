@@ -1035,6 +1035,12 @@
 #endif
 
 
+/* Define if your assembler supports the .set micromips directive */
+#ifndef USED_FOR_TARGET
+/* #undef HAVE_GAS_MICROMIPS */
+#endif
+
+
 /* Define if your assembler supports .nsubspa comdat option. */
 #ifndef USED_FOR_TARGET
 /* #undef HAVE_GAS_NSUBSPA_COMDAT */
