@@ -69,8 +69,8 @@ documented in a separate manual.  *Note Introduction: (gccint)Top.
 * Standards::       Language standards supported by GCC.
 * Invoking GCC::    Command options supported by `gcc'.
 * C Implementation:: How GCC implements the ISO C specification.
-* C Extensions::    GNU extensions to the C language family.
 * C++ Implementation:: How GCC implements the ISO C++ specification.
+* C Extensions::    GNU extensions to the C language family.
 * C++ Extensions::  GNU extensions to the C++ language.
 * Objective-C::     GNU Objective-C runtime features.
 * Compatibility::   Binary Compatibility
@@ -2595,7 +2595,9 @@ have meanings only for C++ programs:
 `-Wctor-dtor-privacy (C++ and Objective-C++ only)'
      Warn when a class seems unusable because all the constructors or
      destructors in that class are private, and it has neither friends
-     nor public static member functions.
+     nor public static member functions.  Also warn if there are no
+     non-private methods, and there's at least one private member
+     function that isn't a constructor or destructor.
 
 `-Wdelete-non-virtual-dtor (C++ and Objective-C++ only)'
      Warn when `delete' is used to destroy an instance of a class that
@@ -10774,9 +10776,115 @@ platform.
 * zSeries Options::
 
 
+File: gcc.info,  Node: AArch64 Options,  Next: Adapteva Epiphany Options,  Up: Submodel Options
+
+3.17.1 AArch64 Options
+----------------------
+
+These options are defined for AArch64 implementations:
+
+`-mbig-endian'
+     Generate big-endian code.  This is the default when GCC is
+     configured for an `aarch64_be-*-*' target.
+
+`-mgeneral-regs-only'
+     Generate code which uses only the general registers.
+
+`-mlittle-endian'
+     Generate little-endian code.  This is the default when GCC is
+     configured for an `aarch64-*-*' but not an `aarch64_be-*-*' target.
+
+`-mcmodel=tiny'
+     Generate code for the tiny code model.  The program and its
+     statically defined symbols must be within 1GB of each other.
+     Pointers are 64 bits.  Programs can be statically or dynamically
+     linked.  This model is not fully implemented and mostly treated as
+     `small'.
+
+`-mcmodel=small'
+     Generate code for the small code model.  The program and its
+     statically defined symbols must be within 4GB of each other.
+     Pointers are 64 bits.  Programs can be statically or dynamically
+     linked.  This is the default code model.
+
+`-mcmodel=large'
+     Generate code for the large code model.  This makes no assumptions
+     about addresses and sizes of sections.  Pointers are 64 bits.
+     Programs can be statically linked only.
+
+`-mstrict-align'
+     Do not assume that unaligned memory references will be handled by
+     the system.
+
+`-momit-leaf-frame-pointer'
+`-mno-omit-leaf-frame-pointer'
+     Omit or keep the frame pointer in leaf functions.  The former
+     behaviour is the default.
+
+`-mtls-dialect=desc'
+     Use TLS descriptors as the thread-local storage mechanism for
+     dynamic accesses of TLS variables.  This is the default.
+
+`-mtls-dialect=traditional'
+     Use traditional TLS as the thread-local storage mechanism for
+     dynamic accesses of TLS variables.
+
+`-march=NAME'
+     Specify the name of the target architecture, optionally suffixed
+     by one or more feature modifiers.  This option has the form
+     `-march=ARCH{+[no]FEATURE}*', where the only value for ARCH is
+     `armv8-a'.  The possible values for FEATURE are documented in the
+     sub-section below.
+
+     Where conflicting feature modifiers are specified, the right-most
+     feature is used.
+
+     GCC uses this name to determine what kind of instructions it can
+     emit when generating assembly code.  This option can be used in
+     conjunction with or instead of the `-mcpu=' option.
+
+`-mcpu=NAME'
+     Specify the name of the target processor, optionally suffixed by
+     one or more feature modifiers.  This option has the form
+     `-mcpu=CPU{+[no]FEATURE}*', where the possible values for CPU are
+     `generic', `large'.  The possible values for FEATURE are
+     documented in the sub-section below.
+
+     Where conflicting feature modifiers are specified, the right-most
+     feature is used.
+
+     GCC uses this name to determine what kind of instructions it can
+     emit when generating assembly code.
+
+`-mtune=NAME'
+     Specify the name of the processor to tune the performance for.
+     The code will be tuned as if the target processor were of the type
+     specified in this option, but still using instructions compatible
+     with the target processor specified by a `-mcpu=' option.  This
+     option cannot be suffixed by feature modifiers.
+
+
+3.17.1.1 `-march' and `-mcpu' feature modifiers
+...............................................
+
+Feature modifiers used with `-march' and `-mcpu' can be one the
+following:
+
+`crypto'
+     Enable Crypto extension.  This implies Advanced SIMD is enabled.
+
+`fp'
+     Enable floating-point instructions.
+
+`simd'
+     Enable Advanced SIMD instructions.  This implies floating-point
+     instructions are enabled.  This is the default for all current
+     possible values for options `-march' and `-mcpu='.
+
+
 File: gcc.info,  Node: Adapteva Epiphany Options,  Next: ARM Options,  Prev: AArch64 Options,  Up: Submodel Options
 
-3.17.1 Adapteva Epiphany Options
+3.17.2 Adapteva Epiphany Options
 --------------------------------
 
 These `-m' options are defined for Adapteva Epiphany:
@@ -10911,112 +11019,6 @@ These `-m' options are defined for Adapteva Epiphany:
      register as a fixed register, and `none', which means that no
      register is used for this purpose.  The default is `-m1reg-none'.
 
-
-
-File: gcc.info,  Node: AArch64 Options,  Next: Adapteva Epiphany Options,  Up: Submodel Options
-
-3.17.2 AArch64 Options
-----------------------
-
-These options are defined for AArch64 implementations:
-
-`-mbig-endian'
-     Generate big-endian code.  This is the default when GCC is
-     configured for an `aarch64_be-*-*' target.
-
-`-mgeneral-regs-only'
-     Generate code which uses only the general registers.
-
-`-mlittle-endian'
-     Generate little-endian code.  This is the default when GCC is
-     configured for an `aarch64-*-*' but not an `aarch64_be-*-*' target.
-
-`-mcmodel=tiny'
-     Generate code for the tiny code model.  The program and its
-     statically defined symbols must be within 1GB of each other.
-     Pointers are 64 bits.  Programs can be statically or dynamically
-     linked.  This model is not fully implemented and mostly treated as
-     `small'.
-
-`-mcmodel=small'
-     Generate code for the small code model.  The program and its
-     statically defined symbols must be within 4GB of each other.
-     Pointers are 64 bits.  Programs can be statically or dynamically
-     linked.  This is the default code model.
-
-`-mcmodel=large'
-     Generate code for the large code model.  This makes no assumptions
-     about addresses and sizes of sections.  Pointers are 64 bits.
-     Programs can be statically linked only.
-
-`-mstrict-align'
-     Do not assume that unaligned memory references will be handled by
-     the system.
-
-`-momit-leaf-frame-pointer'
-`-mno-omit-leaf-frame-pointer'
-     Omit or keep the frame pointer in leaf functions.  The former
-     behaviour is the default.
-
-`-mtls-dialect=desc'
-     Use TLS descriptors as the thread-local storage mechanism for
-     dynamic accesses of TLS variables.  This is the default.
-
-`-mtls-dialect=traditional'
-     Use traditional TLS as the thread-local storage mechanism for
-     dynamic accesses of TLS variables.
-
-`-march=NAME'
-     Specify the name of the target architecture, optionally suffixed
-     by one or more feature modifiers.  This option has the form
-     `-march=ARCH{+[no]FEATURE}*', where the only value for ARCH is
-     `armv8-a'.  The possible values for FEATURE are documented in the
-     sub-section below.
-
-     Where conflicting feature modifiers are specified, the right-most
-     feature is used.
-
-     GCC uses this name to determine what kind of instructions it can
-     emit when generating assembly code.  This option can be used in
-     conjunction with or instead of the `-mcpu=' option.
-
-`-mcpu=NAME'
-     Specify the name of the target processor, optionally suffixed by
-     one or more feature modifiers.  This option has the form
-     `-mcpu=CPU{+[no]FEATURE}*', where the possible values for CPU are
-     `generic', `large'.  The possible values for FEATURE are
-     documented in the sub-section below.
-
-     Where conflicting feature modifiers are specified, the right-most
-     feature is used.
-
-     GCC uses this name to determine what kind of instructions it can
-     emit when generating assembly code.
-
-`-mtune=NAME'
-     Specify the name of the processor to tune the performance for.
-     The code will be tuned as if the target processor were of the type
-     specified in this option, but still using instructions compatible
-     with the target processor specified by a `-mcpu=' option.  This
-     option cannot be suffixed by feature modifiers.
-
-
-3.17.2.1 `-march' and `-mcpu' feature modifiers
-...............................................
-
-Feature modifiers used with `-march' and `-mcpu' can be one the
-following:
-
-`crypto'
-     Enable Crypto extension.  This implies Advanced SIMD is enabled.
-
-`fp'
-     Enable floating-point instructions.
-
-`simd'
-     Enable Advanced SIMD instructions.  This implies floating-point
-     instructions are enabled.  This is the default for all current
-     possible values for options `-march' and `-mcpu='.
 
 
 File: gcc.info,  Node: ARM Options,  Next: AVR Options,  Prev: Adapteva Epiphany Options,  Up: Submodel Options
@@ -11364,13 +11366,13 @@ These options are defined for AVR implementations:
     `avr25'
           "Classic" devices with up to 8 KiB of program memory and with
           the `MOVW' instruction.
-          MCU = `ata6289', `attiny13', `attiny13a', `attiny2313',
-          `attiny2313a', `attiny24', `attiny24a', `attiny25',
-          `attiny261', `attiny261a', `attiny43u', `attiny4313',
-          `attiny44', `attiny44a', `attiny45', `attiny461',
-          `attiny461a', `attiny48', `attiny84', `attiny84a',
-          `attiny85', `attiny861', `attiny861a', `attiny87',
-          `attiny88', `at86rf401'.
+          MCU = `ata5272', `ata6289', `attiny13', `attiny13a',
+          `attiny2313', `attiny2313a', `attiny24', `attiny24a',
+          `attiny25', `attiny261', `attiny261a', `attiny43u',
+          `attiny4313', `attiny44', `attiny44a', `attiny45',
+          `attiny461', `attiny461a', `attiny48', `attiny84',
+          `attiny84a', `attiny85', `attiny861', `attiny861a',
+          `attiny87', `attiny88', `at86rf401'.
 
     `avr3'
           "Classic" devices with 16 KiB up to 64 KiB of  program memory.
@@ -11383,43 +11385,53 @@ These options are defined for AVR implementations:
     `avr35'
           "Classic" devices with 16 KiB up to 64 KiB of program memory
           and with the `MOVW' instruction.
-          MCU = `atmega16u2', `atmega32u2', `atmega8u2', `attiny167',
-          `at90usb162', `at90usb82'.
+          MCU = `ata5505', `atmega16u2', `atmega32u2', `atmega8u2',
+          `attiny1634', `attiny167', `at90usb162', `at90usb82'.
 
     `avr4'
           "Enhanced" devices with up to 8 KiB of program memory.
-          MCU = `atmega48', `atmega48a', `atmega48p', `atmega8',
+          MCU = `ata6285', `ata6286', `atmega48', `atmega48a',
+          `atmega48p', `atmega48pa', `atmega8', `atmega8a',
           `atmega8hva', `atmega8515', `atmega8535', `atmega88',
           `atmega88a', `atmega88p', `atmega88pa', `at90pwm1',
           `at90pwm2', `at90pwm2b', `at90pwm3', `at90pwm3b', `at90pwm81'.
 
     `avr5'
           "Enhanced" devices with 16 KiB up to 64 KiB of program memory.
-          MCU = `atmega16', `atmega16a', `atmega16hva', `atmega16hva2',
-          `atmega16hvb', `atmega16m1', `atmega16u4', `atmega161',
-          `atmega162', `atmega163', `atmega164a', `atmega164p',
-          `atmega165', `atmega165a', `atmega165p', `atmega168',
-          `atmega168a', `atmega168p', `atmega169', `atmega169a',
-          `atmega169p', `atmega169pa', `atmega32', `atmega32c1',
-          `atmega32hvb', `atmega32m1', `atmega32u4', `atmega32u6',
-          `atmega323', `atmega324a', `atmega324p', `atmega324pa',
-          `atmega325', `atmega325a', `atmega325p', `atmega3250',
-          `atmega3250a', `atmega3250p', `atmega328', `atmega328p',
+          MCU = `ata5790', `ata5790n', `ata5795', `atmega16',
+          `atmega16a', `atmega16hva', `atmega16hva', `atmega16hva2',
+          `atmega16hva2', `atmega16hvb', `atmega16hvb',
+          `atmega16hvbrevb', `atmega16m1', `atmega16m1', `atmega16u4',
+          `atmega16u4', `atmega161', `atmega162', `atmega163',
+          `atmega164a', `atmega164p', `atmega164pa', `atmega165',
+          `atmega165a', `atmega165p', `atmega165pa', `atmega168',
+          `atmega168a', `atmega168p', `atmega168pa', `atmega169',
+          `atmega169a', `atmega169p', `atmega169pa', `atmega26hvg',
+          `atmega32', `atmega32a', `atmega32a', `atmega32c1',
+          `atmega32c1', `atmega32hvb', `atmega32hvb',
+          `atmega32hvbrevb', `atmega32m1', `atmega32m1', `atmega32u4',
+          `atmega32u4', `atmega32u6', `atmega32u6', `atmega323',
+          `atmega324a', `atmega324p', `atmega324pa', `atmega325',
+          `atmega325a', `atmega325p', `atmega3250', `atmega3250a',
+          `atmega3250p', `atmega3250pa', `atmega328', `atmega328p',
           `atmega329', `atmega329a', `atmega329p', `atmega329pa',
-          `atmega3290', `atmega3290a', `atmega3290p', `atmega406',
-          `atmega64', `atmega64c1', `atmega64hve', `atmega64m1',
-          `atmega640', `atmega644', `atmega644a', `atmega644p',
-          `atmega644pa', `atmega645', `atmega645a', `atmega645p',
-          `atmega6450', `atmega6450a', `atmega6450p', `atmega649',
-          `atmega649a', `atmega649p', `atmega6490', `at90can32',
-          `at90can64', `at90pwm216', `at90pwm316', `at90scr100',
-          `at90usb646', `at90usb647', `at94k', `m3000'.
+          `atmega3290', `atmega3290a', `atmega3290p', `atmega3290pa',
+          `atmega406', `atmega48hvf', `atmega64', `atmega64a',
+          `atmega64c1', `atmega64c1', `atmega64hve', `atmega64m1',
+          `atmega64m1', `atmega64rfa2', `atmega64rfr2', `atmega640',
+          `atmega644', `atmega644a', `atmega644p', `atmega644pa',
+          `atmega645', `atmega645a', `atmega645p', `atmega6450',
+          `atmega6450a', `atmega6450p', `atmega649', `atmega649a',
+          `atmega649p', `atmega6490', `atmega6490a', `atmega6490p',
+          `at90can32', `at90can64', `at90pwm161', `at90pwm216',
+          `at90pwm316', `at90scr100', `at90usb646', `at90usb647',
+          `at94k', `m3000'.
 
     `avr51'
           "Enhanced" devices with 128 KiB of program memory.
-          MCU = `atmega128', `atmega128rfa1', `atmega1280',
-          `atmega1281', `atmega1284p', `at90can128', `at90usb1286',
-          `at90usb1287'.
+          MCU = `atmega128', `atmega128a', `atmega128rfa1',
+          `atmega1280', `atmega1281', `atmega1284', `atmega1284p',
+          `at90can128', `at90usb1286', `at90usb1287'.
 
     `avr6'
           "Enhanced" devices with 3-byte PC, i.e. with more than
@@ -11429,13 +11441,17 @@ These options are defined for AVR implementations:
     `avrxmega2'
           "XMEGA" devices with more than 8 KiB and up to 64 KiB of
           program memory.
-          MCU = `atxmega16a4', `atxmega16d4', `atxmega16x1',
-          `atxmega32a4', `atxmega32d4', `atxmega32x1'.
+          MCU = `atmxt112sl', `atmxt224', `atmxt224e', `atmxt336s',
+          `atxmega16a4', `atxmega16a4u', `atxmega16c4', `atxmega16d4',
+          `atxmega16x1', `atxmega32a4', `atxmega32a4u', `atxmega32c4',
+          `atxmega32d4', `atxmega32e5', `atxmega32x1'.
 
     `avrxmega4'
           "XMEGA" devices with more than 64 KiB and up to 128 KiB of
           program memory.
-          MCU = `atxmega64a3', `atxmega64d3'.
+          MCU = `atxmega64a3', `atxmega64a3u', `atxmega64a4u',
+          `atxmega64b1', `atxmega64b3', `atxmega64c3', `atxmega64d3',
+          `atxmega64d4'.
 
     `avrxmega5'
           "XMEGA" devices with more than 64 KiB and up to 128 KiB of
@@ -11444,14 +11460,18 @@ These options are defined for AVR implementations:
 
     `avrxmega6'
           "XMEGA" devices with more than 128 KiB of program memory.
-          MCU = `atxmega128a3', `atxmega128d3', `atxmega192a3',
+          MCU = `atmxt540s', `atmxt540sreva', `atxmega128a3',
+          `atxmega128a3u', `atxmega128b1', `atxmega128b3',
+          `atxmega128c3', `atxmega128d3', `atxmega128d4',
+          `atxmega192a3', `atxmega192a3u', `atxmega192c3',
           `atxmega192d3', `atxmega256a3', `atxmega256a3b',
-          `atxmega256a3bu', `atxmega256d3'.
+          `atxmega256a3bu', `atxmega256a3u', `atxmega256c3',
+          `atxmega256d3', `atxmega384c3', `atxmega384d3'.
 
     `avrxmega7'
           "XMEGA" devices with more than 128 KiB of program memory and
           more than 64 KiB of RAM.
-          MCU = `atxmega128a1', `atxmega128a1u'.
+          MCU = `atxmega128a1', `atxmega128a1u', `atxmega128a4u'.
 
     `avr1'
           This ISA is implemented by the minimal AVR core and supported
@@ -19605,7 +19625,7 @@ precompiled header but not when using it, you may or may not get
 debugging information for routines in the precompiled header.
 
 
-File: gcc.info,  Node: C Implementation,  Next: C Extensions,  Prev: Invoking GCC,  Up: Top
+File: gcc.info,  Node: C Implementation,  Next: C++ Implementation,  Prev: Invoking GCC,  Up: Top
 
 4 C Implementation-defined behavior
 ***********************************
@@ -20212,7 +20232,7 @@ The behavior of these points are dependent on the implementation of the
 C library, and are not defined by GCC itself.
 
 
-File: gcc.info,  Node: C++ Implementation,  Next: C++ Extensions,  Prev: C Extensions,  Up: Top
+File: gcc.info,  Node: C++ Implementation,  Next: C Extensions,  Prev: C Implementation,  Up: Top
 
 5 C++ Implementation-defined behavior
 *************************************
@@ -20270,7 +20290,7 @@ File: gcc.info,  Node: Exception handling,  Prev: Conditionally-supported behavi
 
 
 
-File: gcc.info,  Node: C Extensions,  Next: C++ Implementation,  Prev: C Implementation,  Up: Top
+File: gcc.info,  Node: C Extensions,  Next: C++ Extensions,  Prev: C++ Implementation,  Up: Top
 
 6 Extensions to the C Language Family
 *************************************
@@ -20297,8 +20317,8 @@ extensions, accepted by GCC in C90 mode and in C++.
 * Constructing Calls::  Dispatching a call to another function.
 * Typeof::              `typeof': referring to the type of an expression.
 * Conditionals::        Omitting the middle operand of a `?:' expression.
-* Long Long::           Double-word integers---`long long int'.
 * __int128::			128-bit integers---`__int128'.
+* Long Long::           Double-word integers---`long long int'.
 * Complex::             Data types for complex numbers.
 * Floating Types::      Additional Floating Types.
 * Half-Precision::      Half-Precision Floating Point.
@@ -20307,8 +20327,8 @@ extensions, accepted by GCC in C90 mode and in C++.
 * Fixed-Point::         Fixed-Point Types.
 * Named Address Spaces::Named address spaces.
 * Zero Length::         Zero-length arrays.
-* Variable Length::     Arrays whose length is computed at run time.
 * Empty Structures::    Structures with no members.
+* Variable Length::     Arrays whose length is computed at run time.
 * Variadic Macros::     Macros with a variable number of arguments.
 * Escaped Newlines::    Slightly looser rules for escaped newlines.
 * Subscripting::        Any array can be subscripted, even if not an lvalue.
@@ -20317,8 +20337,8 @@ extensions, accepted by GCC in C90 mode and in C++.
 * Compound Literals::   Compound literals give structures, unions
                         or arrays as values.
 * Designated Inits::    Labeling elements of initializers.
-* Cast to Union::       Casting to union type from any member of the union.
 * Case Ranges::         `case 1 ... 9' and such.
+* Cast to Union::       Casting to union type from any member of the union.
 * Mixed Declarations::  Mixing declarations and code.
 * Function Attributes:: Declaring that functions have no side effects,
                         or that they can never return.
@@ -20929,7 +20949,7 @@ be rewritten to use `typeof':
 This works with all versions of GCC.
 
 
-File: gcc.info,  Node: Conditionals,  Next: Long Long,  Prev: Typeof,  Up: C Extensions
+File: gcc.info,  Node: Conditionals,  Next: __int128,  Prev: Typeof,  Up: C Extensions
 
 6.7 Conditionals with Omitted Operands
 ======================================
@@ -20956,7 +20976,7 @@ twice.  Omitting the middle operand uses the value already computed
 without the undesirable effects of recomputing it.
 
 
-File: gcc.info,  Node: __int128,  Next: Complex,  Prev: Long Long,  Up: C Extensions
+File: gcc.info,  Node: __int128,  Next: Long Long,  Prev: Conditionals,  Up: C Extensions
 
 6.8 128-bit integers
 ====================
@@ -20969,7 +20989,7 @@ for expressing an integer constant of type `__int128' for targets with
 `long long' integer less than 128 bits wide.
 
 
-File: gcc.info,  Node: Long Long,  Next: __int128,  Prev: Conditionals,  Up: C Extensions
+File: gcc.info,  Node: Long Long,  Next: Complex,  Prev: __int128,  Up: C Extensions
 
 6.9 Double-Word Integers
 ========================
@@ -20999,7 +21019,7 @@ expects `long long int' and you pass `int'.  The best way to avoid such
 problems is to use prototypes.
 
 
-File: gcc.info,  Node: Complex,  Next: Floating Types,  Prev: __int128,  Up: C Extensions
+File: gcc.info,  Node: Complex,  Next: Floating Types,  Prev: Long Long,  Up: C Extensions
 
 6.10 Complex Numbers
 ====================
@@ -21440,7 +21460,7 @@ use runtime library support, or generate special machine instructions
 to access that address space.
 
 
-File: gcc.info,  Node: Zero Length,  Next: Variable Length,  Prev: Named Address Spaces,  Up: C Extensions
+File: gcc.info,  Node: Zero Length,  Next: Empty Structures,  Prev: Named Address Spaces,  Up: C Extensions
 
 6.17 Arrays of Length Zero
 ==========================
@@ -21523,7 +21543,7 @@ object.  For example:
      struct foo d[1] = { { 1 { 2, 3, 4 } } };  // Invalid.
 
 
-File: gcc.info,  Node: Empty Structures,  Next: Variadic Macros,  Prev: Variable Length,  Up: C Extensions
+File: gcc.info,  Node: Empty Structures,  Next: Variable Length,  Prev: Zero Length,  Up: C Extensions
 
 6.18 Structures With No Members
 ===============================
@@ -21538,7 +21558,7 @@ language.  G++ treats empty structures as if they had a single member
 of type `char'.
 
 
-File: gcc.info,  Node: Variable Length,  Next: Empty Structures,  Prev: Zero Length,  Up: C Extensions
+File: gcc.info,  Node: Variable Length,  Next: Variadic Macros,  Prev: Empty Structures,  Up: C Extensions
 
 6.19 Arrays of Variable Length
 ==============================
@@ -21608,7 +21628,7 @@ declaration in parameter name and data type.  ISO C99 does not support
 parameter forward declarations.
 
 
-File: gcc.info,  Node: Variadic Macros,  Next: Escaped Newlines,  Prev: Empty Structures,  Up: C Extensions
+File: gcc.info,  Node: Variadic Macros,  Next: Escaped Newlines,  Prev: Variable Length,  Up: C Extensions
 
 6.20 Macros with a Variable Number of Arguments.
 ================================================
@@ -21815,7 +21835,7 @@ is probably safest just to avoid the use of array compound literals in
 code compiled as C++.
 
 
-File: gcc.info,  Node: Designated Inits,  Next: Cast to Union,  Prev: Compound Literals,  Up: C Extensions
+File: gcc.info,  Node: Designated Inits,  Next: Case Ranges,  Prev: Compound Literals,  Up: C Extensions
 
 6.26 Designated Initializers
 ============================
@@ -21922,7 +21942,7 @@ side-effect, it is unspecified whether the side-effect happens or not.
 Currently, GCC discards them and issues a warning.
 
 
-File: gcc.info,  Node: Case Ranges,  Next: Mixed Declarations,  Prev: Cast to Union,  Up: C Extensions
+File: gcc.info,  Node: Case Ranges,  Next: Cast to Union,  Prev: Designated Inits,  Up: C Extensions
 
 6.27 Case Ranges
 ================
@@ -21950,7 +21970,7 @@ rather than this:
      case 1...5:
 
 
-File: gcc.info,  Node: Cast to Union,  Next: Case Ranges,  Prev: Designated Inits,  Up: C Extensions
+File: gcc.info,  Node: Cast to Union,  Next: Mixed Declarations,  Prev: Case Ranges,  Up: C Extensions
 
 6.28 Cast to a Union Type
 =========================
@@ -21985,7 +22005,7 @@ union type is equivalent to storing in a member of the union:
      hack ((union foo) x);
 
 
-File: gcc.info,  Node: Mixed Declarations,  Next: Function Attributes,  Prev: Case Ranges,  Up: C Extensions
+File: gcc.info,  Node: Mixed Declarations,  Next: Function Attributes,  Prev: Cast to Union,  Up: C Extensions
 
 6.29 Mixed Declarations and Code
 ================================
@@ -22022,11 +22042,11 @@ currently defined for functions on all targets: `aligned',
 `section', `constructor', `destructor', `used', `unused', `deprecated',
 `weak', `malloc', `alias', `ifunc', `warn_unused_result', `nonnull',
 `gnu_inline', `externally_visible', `hot', `cold', `artificial',
-`no_address_safety_analysis', `error' and `warning'.  Several other
-attributes are defined for functions on particular target systems.
-Other attributes, including `section' are supported for variables
-declarations (*note Variable Attributes::) and for types (*note Type
-Attributes::).
+`no_sanitize_address', `no_address_safety_analysis', `error' and
+`warning'.  Several other attributes are defined for functions on
+particular target systems.  Other attributes, including `section' are
+supported for variables declarations (*note Variable Attributes::) and
+for types (*note Type Attributes::).
 
  GCC plugins may provide their own attributes.
 
@@ -23186,11 +23206,14 @@ attributes.
      The `cold' attribute on labels is not implemented in GCC versions
      earlier than 4.8.
 
+`no_sanitize_address'
 `no_address_safety_analysis'
-     The `no_address_safety_analysis' attribute on functions is used to
-     inform the compiler that it should not instrument memory accesses
-     in the function when compiling with the `-fsanitize=address'
-     option.
+     The `no_sanitize_address' attribute on functions is used to inform
+     the compiler that it should not instrument memory accesses in the
+     function when compiling with the `-fsanitize=address' option.  The
+     `no_address_safety_analysis' is a deprecated alias of the
+     `no_sanitize_address' attribute, new code should use
+     `no_sanitize_address'.
 
 `regparm (NUMBER)'
      On the Intel 386, the `regparm' attribute causes the compiler to
@@ -38460,9 +38483,22 @@ case, COND can be any of the 16 floating-point conditions: `f', `un',
             some_are_false ();
 
 
+File: gcc.info,  Node: Other MIPS Built-in Functions,  Next: picoChip Built-in Functions,  Prev: MIPS Loongson Built-in Functions,  Up: Target Builtins
+
+6.55.11 Other MIPS Built-in Functions
+-------------------------------------
+
+GCC provides other MIPS-specific built-in functions:
+
+`void __builtin_mips_cache (int OP, const volatile void *ADDR)'
+     Insert a `cache' instruction with operands OP and ADDR.  GCC
+     defines the preprocessor macro `___GCC_HAVE_BUILTIN_MIPS_CACHE'
+     when this function is available.
+
+
 File: gcc.info,  Node: picoChip Built-in Functions,  Next: PowerPC Built-in Functions,  Prev: Other MIPS Built-in Functions,  Up: Target Builtins
 
-6.55.11 picoChip Built-in Functions
+6.55.12 picoChip Built-in Functions
 -----------------------------------
 
 GCC provides an interface to selected machine instructions from the
@@ -38495,19 +38531,6 @@ picoChip instruction set.
      Halt.  The processor stops execution.  This built-in is useful for
      implementing assertions.
 
-
-
-File: gcc.info,  Node: Other MIPS Built-in Functions,  Next: picoChip Built-in Functions,  Prev: MIPS Loongson Built-in Functions,  Up: Target Builtins
-
-6.55.12 Other MIPS Built-in Functions
--------------------------------------
-
-GCC provides other MIPS-specific built-in functions:
-
-`void __builtin_mips_cache (int OP, const volatile void *ADDR)'
-     Insert a `cache' instruction with operands OP and ADDR.  GCC
-     defines the preprocessor macro `___GCC_HAVE_BUILTIN_MIPS_CACHE'
-     when this function is available.
 
 
 File: gcc.info,  Node: PowerPC Built-in Functions,  Next: PowerPC AltiVec/VSX Built-in Functions,  Prev: picoChip Built-in Functions,  Up: Target Builtins
@@ -40584,44 +40607,9 @@ always generate the VSX `LXVD2X', `LXVW4X', `STXVD2X', and `STXVW4X'
 instructions.
 
 
-File: gcc.info,  Node: SH Built-in Functions,  Next: SPARC VIS Built-in Functions,  Prev: RX Built-in Functions,  Up: Target Builtins
-
-6.55.15 SH Built-in Functions
------------------------------
-
-The following built-in functions are supported on the SH1, SH2, SH3 and
-SH4 families of processors:
-
- -- Built-in Function: void __builtin_set_thread_pointer (void *PTR)
-     Sets the `GBR' register to the specified value PTR.  This is
-     usually used by system code that manages threads and execution
-     contexts.  The compiler normally does not generate code that
-     modifies the contents of `GBR' and thus the value is preserved
-     across function calls.  Changing the `GBR' value in user code must
-     be done with caution, since the compiler might use `GBR' in order
-     to access thread local variables.
-
-
- -- Built-in Function: void * __builtin_thread_pointer (void)
-     Returns the value that is currently set in the `GBR' register.
-     Memory loads and stores that use the thread pointer as a base
-     address are turned into `GBR' based displacement loads and stores,
-     if possible.  For example:
-          struct my_tcb
-          {
-             int a, b, c, d, e;
-          };
-
-          int get_tcb_value (void)
-          {
-            // Generate `mov.l @(8,gbr),r0' instruction
-            return ((my_tcb*)__builtin_thread_pointer ())->c;
-          }
-
-
 File: gcc.info,  Node: RX Built-in Functions,  Next: SH Built-in Functions,  Prev: PowerPC AltiVec/VSX Built-in Functions,  Up: Target Builtins
 
-6.55.16 RX Built-in Functions
+6.55.15 RX Built-in Functions
 -----------------------------
 
 GCC supports some of the RX instructions which cannot be expressed in
@@ -40715,6 +40703,41 @@ following functions are supported:
 
  -- Built-in Function: void __builtin_rx_wait (void)
      Generates the `wait' machine instruction.
+
+
+File: gcc.info,  Node: SH Built-in Functions,  Next: SPARC VIS Built-in Functions,  Prev: RX Built-in Functions,  Up: Target Builtins
+
+6.55.16 SH Built-in Functions
+-----------------------------
+
+The following built-in functions are supported on the SH1, SH2, SH3 and
+SH4 families of processors:
+
+ -- Built-in Function: void __builtin_set_thread_pointer (void *PTR)
+     Sets the `GBR' register to the specified value PTR.  This is
+     usually used by system code that manages threads and execution
+     contexts.  The compiler normally does not generate code that
+     modifies the contents of `GBR' and thus the value is preserved
+     across function calls.  Changing the `GBR' value in user code must
+     be done with caution, since the compiler might use `GBR' in order
+     to access thread local variables.
+
+
+ -- Built-in Function: void * __builtin_thread_pointer (void)
+     Returns the value that is currently set in the `GBR' register.
+     Memory loads and stores that use the thread pointer as a base
+     address are turned into `GBR' based displacement loads and stores,
+     if possible.  For example:
+          struct my_tcb
+          {
+             int a, b, c, d, e;
+          };
+
+          int get_tcb_value (void)
+          {
+            // Generate `mov.l @(8,gbr),r0' instruction
+            return ((my_tcb*)__builtin_thread_pointer ())->c;
+          }
 
 
 File: gcc.info,  Node: SPARC VIS Built-in Functions,  Next: SPU Built-in Functions,  Prev: SH Built-in Functions,  Up: Target Builtins
@@ -41836,7 +41859,7 @@ hexadecimal integer constants, so suffixes like `L' or `UL' can be
 applied.
 
 
-File: gcc.info,  Node: C++ Extensions,  Next: Objective-C,  Prev: C++ Implementation,  Up: Top
+File: gcc.info,  Node: C++ Extensions,  Next: Objective-C,  Prev: C Extensions,  Up: Top
 
 7 Extensions to the C++ Language
 ********************************
@@ -48432,7 +48455,7 @@ look up both forms.
                                                              (line  554)
 * fexpensive-optimizations:              Optimize Options.   (line  587)
 * fext-numeric-literals:                 C++ Dialect Options.
-                                                             (line  545)
+                                                             (line  547)
 * fextended-identifiers:                 Preprocessor Options.
                                                              (line  498)
 * fextern-tls-init:                      C++ Dialect Options.
@@ -48561,7 +48584,7 @@ look up both forms.
 * fno-enforce-eh-specs:                  C++ Dialect Options.
                                                              (line  111)
 * fno-ext-numeric-literals:              C++ Dialect Options.
-                                                             (line  545)
+                                                             (line  547)
 * fno-extern-tls-init:                   C++ Dialect Options.
                                                              (line  122)
 * fno-for-scope:                         C++ Dialect Options.
@@ -49005,7 +49028,7 @@ look up both forms.
 * mac0:                                  PDP-11 Options.     (line   16)
 * macc-4:                                FRV Options.        (line  113)
 * macc-8:                                FRV Options.        (line  116)
-* maccumulate-args:                      AVR Options.        (line  121)
+* maccumulate-args:                      AVR Options.        (line  139)
 * maccumulate-outgoing-args <1>:         SH Options.         (line  301)
 * maccumulate-outgoing-args:             i386 and x86-64 Options.
                                                              (line  738)
@@ -49099,7 +49122,7 @@ look up both forms.
                                                              (line  656)
 * mbranch-cheap:                         PDP-11 Options.     (line   65)
 * mbranch-cost <1>:                      MIPS Options.       (line  635)
-* mbranch-cost <2>:                      AVR Options.        (line  136)
+* mbranch-cost <2>:                      AVR Options.        (line  154)
 * mbranch-cost:                          Adapteva Epiphany Options.
                                                              (line   18)
 * mbranch-cost=NUM:                      SH Options.         (line  367)
@@ -49124,7 +49147,7 @@ look up both forms.
                                                              (line  519)
 * mcall-netbsd:                          RS/6000 and PowerPC Options.
                                                              (line  527)
-* mcall-prologues:                       AVR Options.        (line  141)
+* mcall-prologues:                       AVR Options.        (line  159)
 * mcall-sysv:                            RS/6000 and PowerPC Options.
                                                              (line  501)
 * mcall-sysv-eabi:                       RS/6000 and PowerPC Options.
@@ -49425,7 +49448,7 @@ look up both forms.
 * mint32 <1>:                            PDP-11 Options.     (line   44)
 * mint32 <2>:                            H8/300 Options.     (line   38)
 * mint32:                                CR16 Options.       (line   22)
-* mint8:                                 AVR Options.        (line  145)
+* mint8:                                 AVR Options.        (line  163)
 * minterlink-mips16:                     MIPS Options.       (line  118)
 * minvalid-symbols:                      SH Options.         (line  357)
 * mio-volatile:                          MeP Options.        (line   74)
@@ -49674,7 +49697,7 @@ look up both forms.
 * mno-int16:                             PDP-11 Options.     (line   44)
 * mno-int32:                             PDP-11 Options.     (line   40)
 * mno-interlink-mips16:                  MIPS Options.       (line  118)
-* mno-interrupts:                        AVR Options.        (line  151)
+* mno-interrupts:                        AVR Options.        (line  169)
 * mno-isel:                              RS/6000 and PowerPC Options.
                                                              (line  161)
 * mno-knuthdiv:                          MMIX Options.       (line   33)
@@ -49945,7 +49968,7 @@ look up both forms.
 * mrelax <3>:                            RX Options.         (line   95)
 * mrelax <4>:                            MN10300 Options.    (line   46)
 * mrelax <5>:                            H8/300 Options.     (line    9)
-* mrelax:                                AVR Options.        (line  155)
+* mrelax:                                AVR Options.        (line  173)
 * mrelax-immediate:                      MCore Options.      (line   19)
 * mrelax-pic-calls:                      MIPS Options.       (line  689)
 * mrelocatable:                          RS/6000 and PowerPC Options.
@@ -50074,7 +50097,7 @@ look up both forms.
 * msoft-float <11>:                      FRV Options.        (line   22)
 * msoft-float:                           DEC Alpha Options.  (line   10)
 * msoft-quad-float:                      SPARC Options.      (line   58)
-* msp8:                                  AVR Options.        (line  169)
+* msp8:                                  AVR Options.        (line  187)
 * mspace <1>:                            V850 Options.       (line   30)
 * mspace:                                SH Options.         (line  222)
 * mspe:                                  RS/6000 and PowerPC Options.
@@ -50106,7 +50129,7 @@ look up both forms.
                                                              (line  397)
 * mstrict-align <2>:                     M680x0 Options.     (line  287)
 * mstrict-align:                         AArch64 Options.    (line   38)
-* mstrict-X:                             AVR Options.        (line  182)
+* mstrict-X:                             AVR Options.        (line  200)
 * mstring:                               RS/6000 and PowerPC Options.
                                                              (line  333)
 * mstringop-strategy=ALG:                i386 and x86-64 Options.
@@ -50129,7 +50152,7 @@ look up both forms.
                                                              (line  746)
 * mthumb:                                ARM Options.        (line  244)
 * mthumb-interwork:                      ARM Options.        (line   25)
-* mtiny-stack:                           AVR Options.        (line  196)
+* mtiny-stack:                           AVR Options.        (line  214)
 * mtiny=:                                MeP Options.        (line  125)
 * mtls:                                  FRV Options.        (line   75)
 * mTLS:                                  FRV Options.        (line   72)
@@ -50446,7 +50469,7 @@ look up both forms.
                                                              (line  472)
 * Wdeclaration-after-statement:          Warning Options.    (line  966)
 * Wdelete-non-virtual-dtor:              C++ Dialect Options.
-                                                             (line  477)
+                                                             (line  479)
 * Wdeprecated:                           Warning Options.    (line 1321)
 * Wdeprecated-declarations:              Warning Options.    (line 1325)
 * Wdisabled-optimization:                Warning Options.    (line 1481)
@@ -50454,7 +50477,7 @@ look up both forms.
 * Wdouble-promotion:                     Warning Options.    (line  236)
 * weak_reference_mismatches:             Darwin Options.     (line  196)
 * Weffc++:                               C++ Dialect Options.
-                                                             (line  556)
+                                                             (line  558)
 * Wempty-body:                           Warning Options.    (line 1135)
 * Wendif-labels <1>:                     Preprocessor Options.
                                                              (line  148)
@@ -50499,7 +50522,7 @@ look up both forms.
 * Wlarger-than-LEN:                      Warning Options.    (line  987)
 * Wlarger-than=LEN:                      Warning Options.    (line  987)
 * Wliteral-suffix:                       C++ Dialect Options.
-                                                             (line  484)
+                                                             (line  486)
 * Wlogical-op:                           Warning Options.    (line 1190)
 * Wlong-long:                            Warning Options.    (line 1436)
 * Wmain:                                 Warning Options.    (line  388)
@@ -50513,7 +50536,7 @@ look up both forms.
 * Wmissing-prototypes:                   Warning Options.    (line 1235)
 * Wmultichar:                            Warning Options.    (line 1273)
 * Wnarrowing:                            C++ Dialect Options.
-                                                             (line  505)
+                                                             (line  507)
 * Wnested-externs:                       Warning Options.    (line 1388)
 * Wno-abi:                               C++ Dialect Options.
                                                              (line  362)
@@ -50538,14 +50561,14 @@ look up both forms.
                                                              (line  472)
 * Wno-declaration-after-statement:       Warning Options.    (line  966)
 * Wno-delete-non-virtual-dtor:           C++ Dialect Options.
-                                                             (line  477)
+                                                             (line  479)
 * Wno-deprecated:                        Warning Options.    (line 1321)
 * Wno-deprecated-declarations:           Warning Options.    (line 1325)
 * Wno-disabled-optimization:             Warning Options.    (line 1481)
 * Wno-div-by-zero:                       Warning Options.    (line  838)
 * Wno-double-promotion:                  Warning Options.    (line  236)
 * Wno-effc++:                            C++ Dialect Options.
-                                                             (line  556)
+                                                             (line  558)
 * Wno-empty-body:                        Warning Options.    (line 1135)
 * Wno-endif-labels:                      Warning Options.    (line  976)
 * Wno-enum-compare:                      Warning Options.    (line 1139)
@@ -50574,7 +50597,7 @@ look up both forms.
 * Wno-invalid-pch:                       Warning Options.    (line 1432)
 * Wno-jump-misses-init:                  Warning Options.    (line 1145)
 * Wno-literal-suffix:                    C++ Dialect Options.
-                                                             (line  484)
+                                                             (line  486)
 * Wno-logical-op:                        Warning Options.    (line 1190)
 * Wno-long-long:                         Warning Options.    (line 1436)
 * Wno-main:                              Warning Options.    (line  388)
@@ -50589,23 +50612,23 @@ look up both forms.
 * Wno-mudflap:                           Warning Options.    (line 1501)
 * Wno-multichar:                         Warning Options.    (line 1273)
 * Wno-narrowing:                         C++ Dialect Options.
-                                                             (line  505)
+                                                             (line  507)
 * Wno-nested-externs:                    Warning Options.    (line 1388)
 * Wno-noexcept:                          C++ Dialect Options.
-                                                             (line  518)
+                                                             (line  520)
 * Wno-non-template-friend:               C++ Dialect Options.
-                                                             (line  594)
+                                                             (line  596)
 * Wno-non-virtual-dtor:                  C++ Dialect Options.
-                                                             (line  524)
+                                                             (line  526)
 * Wno-nonnull:                           Warning Options.    (line  341)
 * Wno-old-style-cast:                    C++ Dialect Options.
-                                                             (line  610)
+                                                             (line  612)
 * Wno-old-style-declaration:             Warning Options.    (line 1217)
 * Wno-old-style-definition:              Warning Options.    (line 1223)
 * Wno-overflow:                          Warning Options.    (line 1331)
 * Wno-overlength-strings:                Warning Options.    (line 1505)
 * Wno-overloaded-virtual:                C++ Dialect Options.
-                                                             (line  616)
+                                                             (line  618)
 * Wno-override-init:                     Warning Options.    (line 1334)
 * Wno-packed:                            Warning Options.    (line 1342)
 * Wno-packed-bitfield-compat:            Warning Options.    (line 1359)
@@ -50615,7 +50638,7 @@ look up both forms.
 * Wno-pmf-conversions <1>:               Bound member functions.
                                                              (line   35)
 * Wno-pmf-conversions:                   C++ Dialect Options.
-                                                             (line  635)
+                                                             (line  637)
 * Wno-pointer-arith:                     Warning Options.    (line 1037)
 * Wno-pointer-sign:                      Warning Options.    (line 1490)
 * Wno-pointer-to-int-cast:               Warning Options.    (line 1428)
@@ -50624,7 +50647,7 @@ look up both forms.
                                                              (line  161)
 * Wno-redundant-decls:                   Warning Options.    (line 1383)
 * Wno-reorder:                           C++ Dialect Options.
-                                                             (line  531)
+                                                             (line  533)
 * Wno-return-local-addr:                 Warning Options.    (line  504)
 * Wno-return-type:                       Warning Options.    (line  508)
 * Wno-selector:                          Objective-C and Objective-C++ Dialect Options.
@@ -50634,12 +50657,12 @@ look up both forms.
 * Wno-sign-compare:                      Warning Options.    (line 1156)
 * Wno-sign-conversion:                   Warning Options.    (line 1163)
 * Wno-sign-promo:                        C++ Dialect Options.
-                                                             (line  639)
+                                                             (line  641)
 * Wno-sizeof-pointer-memaccess:          Warning Options.    (line 1169)
 * Wno-stack-protector:                   Warning Options.    (line 1496)
 * Wno-strict-aliasing:                   Warning Options.    (line  703)
 * Wno-strict-null-sentinel:              C++ Dialect Options.
-                                                             (line  586)
+                                                             (line  588)
 * Wno-strict-overflow:                   Warning Options.    (line  743)
 * Wno-strict-prototypes:                 Warning Options.    (line 1211)
 * Wno-strict-selector-match:             Objective-C and Objective-C++ Dialect Options.
@@ -50684,21 +50707,21 @@ look up both forms.
 * Wno-write-strings:                     Warning Options.    (line 1088)
 * Wno-zero-as-null-pointer-constant:     Warning Options.    (line 1128)
 * Wnoexcept:                             C++ Dialect Options.
-                                                             (line  518)
+                                                             (line  520)
 * Wnon-template-friend:                  C++ Dialect Options.
-                                                             (line  594)
+                                                             (line  596)
 * Wnon-virtual-dtor:                     C++ Dialect Options.
-                                                             (line  524)
+                                                             (line  526)
 * Wnonnull:                              Warning Options.    (line  341)
 * Wnormalized=:                          Warning Options.    (line 1279)
 * Wold-style-cast:                       C++ Dialect Options.
-                                                             (line  610)
+                                                             (line  612)
 * Wold-style-declaration:                Warning Options.    (line 1217)
 * Wold-style-definition:                 Warning Options.    (line 1223)
 * Woverflow:                             Warning Options.    (line 1331)
 * Woverlength-strings:                   Warning Options.    (line 1505)
 * Woverloaded-virtual:                   C++ Dialect Options.
-                                                             (line  616)
+                                                             (line  618)
 * Woverride-init:                        Warning Options.    (line 1334)
 * Wp:                                    Preprocessor Options.
                                                              (line   14)
@@ -50709,7 +50732,7 @@ look up both forms.
 * Wpedantic:                             Warning Options.    (line   73)
 * Wpedantic-ms-format:                   Warning Options.    (line 1031)
 * Wpmf-conversions:                      C++ Dialect Options.
-                                                             (line  635)
+                                                             (line  637)
 * Wpointer-arith <1>:                    Pointer Arith.      (line   13)
 * Wpointer-arith:                        Warning Options.    (line 1037)
 * Wpointer-sign:                         Warning Options.    (line 1490)
@@ -50720,7 +50743,7 @@ look up both forms.
 * wrapper:                               Overall Options.    (line  341)
 * Wredundant-decls:                      Warning Options.    (line 1383)
 * Wreorder:                              C++ Dialect Options.
-                                                             (line  531)
+                                                             (line  533)
 * Wreturn-local-addr:                    Warning Options.    (line  504)
 * Wreturn-type:                          Warning Options.    (line  508)
 * Wselector:                             Objective-C and Objective-C++ Dialect Options.
@@ -50730,14 +50753,14 @@ look up both forms.
 * Wsign-compare:                         Warning Options.    (line 1156)
 * Wsign-conversion:                      Warning Options.    (line 1163)
 * Wsign-promo:                           C++ Dialect Options.
-                                                             (line  639)
+                                                             (line  641)
 * Wsizeof-pointer-memaccess:             Warning Options.    (line 1169)
 * Wstack-protector:                      Warning Options.    (line 1496)
 * Wstack-usage:                          Warning Options.    (line 1003)
 * Wstrict-aliasing:                      Warning Options.    (line  703)
 * Wstrict-aliasing=n:                    Warning Options.    (line  711)
 * Wstrict-null-sentinel:                 C++ Dialect Options.
-                                                             (line  586)
+                                                             (line  588)
 * Wstrict-overflow:                      Warning Options.    (line  743)
 * Wstrict-prototypes:                    Warning Options.    (line 1211)
 * Wstrict-selector-match:                Objective-C and Objective-C++ Dialect Options.
@@ -50821,7 +50844,7 @@ Keyword Index
 * #pragma implementation, implied:       C++ Interface.      (line   46)
 * #pragma interface:                     C++ Interface.      (line   20)
 * #pragma, reason for not using:         Function Attributes.
-                                                             (line 1867)
+                                                             (line 1870)
 * $:                                     Dollar Signs.       (line    6)
 * % in constraint:                       Modifiers.          (line   45)
 * %include:                              Spec Files.         (line   27)
@@ -51435,7 +51458,7 @@ Keyword Index
 * earlyclobber operand:                  Modifiers.          (line   25)
 * eight-bit data on the H8/300, H8/300H, and H8S: Function Attributes.
                                                              (line  346)
-* EIND:                                  AVR Options.        (line  201)
+* EIND:                                  AVR Options.        (line  219)
 * empty structures:                      Empty Structures.   (line    6)
 * environment variables:                 Environment Variables.
                                                              (line    6)
@@ -51513,7 +51536,7 @@ Keyword Index
 * fmodf:                                 Other Builtins.     (line    6)
 * fmodl:                                 Other Builtins.     (line    6)
 * force_align_arg_pointer attribute:     Function Attributes.
-                                                             (line 1215)
+                                                             (line 1218)
 * format function attribute:             Function Attributes.
                                                              (line  419)
 * format_arg function attribute:         Function Attributes.
@@ -51680,7 +51703,7 @@ Keyword Index
 * interrupt handler functions:           Function Attributes.
                                                              (line  141)
 * interrupt handler functions on the AVR processors: Function Attributes.
-                                                             (line 1310)
+                                                             (line 1313)
 * interrupt handler functions on the Blackfin, m68k, H8/300 and SH processors: Function Attributes.
                                                              (line  735)
 * interrupt service routines on ARM:     Function Attributes.
@@ -51919,10 +51942,10 @@ Keyword Index
 * NFKC:                                  Warning Options.    (line 1279)
 * NMI handler functions on the Blackfin processor: Function Attributes.
                                                              (line  940)
-* no_address_safety_analysis function attribute: Function Attributes.
-                                                             (line 1185)
 * no_instrument_function function attribute: Function Attributes.
                                                              (line  946)
+* no_sanitize_address function attribute: Function Attributes.
+                                                             (line 1186)
 * no_split_stack function attribute:     Function Attributes.
                                                              (line  951)
 * noclone function attribute:            Function Attributes.
@@ -51989,7 +52012,7 @@ Keyword Index
 * other register constraints:            Simple Constraints. (line  163)
 * output file option:                    Overall Options.    (line  191)
 * overloaded virtual function, warning:  C++ Dialect Options.
-                                                             (line  616)
+                                                             (line  618)
 * p in constraint:                       Simple Constraints. (line  154)
 * packed attribute:                      Variable Attributes.
                                                              (line  145)
@@ -52048,7 +52071,7 @@ Keyword Index
 * pragma, push_macro:                    Push/Pop Macro Pragmas.
                                                              (line   11)
 * pragma, reason for not using:          Function Attributes.
-                                                             (line 1867)
+                                                             (line 1870)
 * pragma, redefine_extname:              Symbol-Renaming Pragmas.
                                                              (line   12)
 * pragma, segment:                       Darwin Pragmas.     (line   21)
@@ -52084,10 +52107,10 @@ Keyword Index
 * R fixed-suffix:                        Fixed-Point.        (line    6)
 * r fixed-suffix:                        Fixed-Point.        (line    6)
 * r in constraint:                       Simple Constraints. (line   66)
-* RAMPD:                                 AVR Options.        (line  317)
-* RAMPX:                                 AVR Options.        (line  317)
-* RAMPY:                                 AVR Options.        (line  317)
-* RAMPZ:                                 AVR Options.        (line  317)
+* RAMPD:                                 AVR Options.        (line  335)
+* RAMPX:                                 AVR Options.        (line  335)
+* RAMPY:                                 AVR Options.        (line  335)
+* RAMPZ:                                 AVR Options.        (line  335)
 * ranges in case statements:             Case Ranges.        (line    6)
 * read-only strings:                     Incompatibilities.  (line    9)
 * register variable after longjmp:       Global Reg Vars.    (line   65)
@@ -52097,7 +52120,7 @@ Keyword Index
 * registers, global allocation:          Explicit Reg Vars.  (line    6)
 * registers, global variables in:        Global Reg Vars.    (line    6)
 * regparm attribute:                     Function Attributes.
-                                                             (line 1191)
+                                                             (line 1194)
 * relocation truncated to fit (ColdFire): M680x0 Options.    (line  329)
 * relocation truncated to fit (MIPS):    MIPS Options.       (line  200)
 * remainder:                             Other Builtins.     (line    6)
@@ -52107,12 +52130,12 @@ Keyword Index
 * remquof:                               Other Builtins.     (line    6)
 * remquol:                               Other Builtins.     (line    6)
 * renesas attribute:                     Function Attributes.
-                                                             (line 1223)
+                                                             (line 1226)
 * reordering, warning:                   C++ Dialect Options.
-                                                             (line  531)
+                                                             (line  533)
 * reporting bugs:                        Bugs.               (line    6)
 * resbank attribute:                     Function Attributes.
-                                                             (line 1227)
+                                                             (line 1230)
 * rest argument (in macro):              Variadic Macros.    (line    6)
 * restricted pointers:                   Restricted Pointers.
                                                              (line    6)
@@ -52121,7 +52144,7 @@ Keyword Index
 * restricted this pointer:               Restricted Pointers.
                                                              (line    6)
 * returns_twice attribute:               Function Attributes.
-                                                             (line 1241)
+                                                             (line 1244)
 * rindex:                                Other Builtins.     (line    6)
 * rint:                                  Other Builtins.     (line    6)
 * rintf:                                 Other Builtins.     (line    6)
@@ -52139,9 +52162,9 @@ Keyword Index
 * S/390 and zSeries Options:             S/390 and zSeries Options.
                                                              (line    6)
 * save all registers on the Blackfin, H8/300, H8/300H, and H8S: Function Attributes.
-                                                             (line 1250)
+                                                             (line 1253)
 * save volatile registers on the MicroBlaze: Function Attributes.
-                                                             (line 1255)
+                                                             (line 1258)
 * scalb:                                 Other Builtins.     (line    6)
 * scalbf:                                Other Builtins.     (line    6)
 * scalbl:                                Other Builtins.     (line    6)
@@ -52157,11 +52180,11 @@ Keyword Index
 * Score Options:                         Score Options.      (line    6)
 * search path:                           Directory Options.  (line    6)
 * section function attribute:            Function Attributes.
-                                                             (line 1263)
+                                                             (line 1266)
 * section variable attribute:            Variable Attributes.
                                                              (line  166)
 * sentinel function attribute:           Function Attributes.
-                                                             (line 1279)
+                                                             (line 1282)
 * setjmp:                                Global Reg Vars.    (line   65)
 * setjmp incompatibilities:              Incompatibilities.  (line   39)
 * shared strings:                        Incompatibilities.  (line    9)
@@ -52198,7 +52221,7 @@ Keyword Index
 * snprintf:                              Other Builtins.     (line    6)
 * Solaris 2 options:                     Solaris 2 Options.  (line    6)
 * sp_switch attribute:                   Function Attributes.
-                                                             (line 1328)
+                                                             (line 1331)
 * SPARC options:                         SPARC Options.      (line    6)
 * Spec Files:                            Spec Files.         (line    6)
 * specified registers:                   Explicit Reg Vars.  (line    6)
@@ -52217,7 +52240,7 @@ Keyword Index
 * sscanf:                                Other Builtins.     (line    6)
 * sscanf, and constant strings:          Incompatibilities.  (line   17)
 * sseregparm attribute:                  Function Attributes.
-                                                             (line 1208)
+                                                             (line 1211)
 * statements inside expressions:         Statement Exprs.    (line    6)
 * static data in C++, declaring and defining: Static Definitions.
                                                              (line    6)
@@ -52257,7 +52280,7 @@ Keyword Index
                                                              (line    6)
 * syntax checking:                       Warning Options.    (line   13)
 * syscall_linkage attribute:             Function Attributes.
-                                                             (line 1343)
+                                                             (line 1346)
 * system headers, warnings from:         Warning Options.    (line  843)
 * sysv_abi attribute:                    Function Attributes.
                                                              (line  881)
@@ -52268,111 +52291,111 @@ Keyword Index
 * tanhl:                                 Other Builtins.     (line    6)
 * tanl:                                  Other Builtins.     (line    6)
 * target function attribute:             Function Attributes.
-                                                             (line 1350)
+                                                             (line 1353)
 * target machine, specifying:            Target Options.     (line    6)
 * target options:                        Target Options.     (line    6)
 * target("abm") attribute:               Function Attributes.
-                                                             (line 1376)
+                                                             (line 1379)
 * target("aes") attribute:               Function Attributes.
-                                                             (line 1381)
-* target("align-stringops") attribute:   Function Attributes.
-                                                             (line 1475)
-* target("altivec") attribute:           Function Attributes.
-                                                             (line 1501)
-* target("arch=ARCH") attribute:         Function Attributes.
-                                                             (line 1484)
-* target("avoid-indexed-addresses") attribute: Function Attributes.
-                                                             (line 1622)
-* target("cld") attribute:               Function Attributes.
-                                                             (line 1446)
-* target("cmpb") attribute:              Function Attributes.
-                                                             (line 1507)
-* target("cpu=CPU") attribute:           Function Attributes.
-                                                             (line 1637)
-* target("default") attribute:           Function Attributes.
                                                              (line 1384)
+* target("align-stringops") attribute:   Function Attributes.
+                                                             (line 1478)
+* target("altivec") attribute:           Function Attributes.
+                                                             (line 1504)
+* target("arch=ARCH") attribute:         Function Attributes.
+                                                             (line 1487)
+* target("avoid-indexed-addresses") attribute: Function Attributes.
+                                                             (line 1625)
+* target("cld") attribute:               Function Attributes.
+                                                             (line 1449)
+* target("cmpb") attribute:              Function Attributes.
+                                                             (line 1510)
+* target("cpu=CPU") attribute:           Function Attributes.
+                                                             (line 1640)
+* target("default") attribute:           Function Attributes.
+                                                             (line 1387)
 * target("dlmzb") attribute:             Function Attributes.
-                                                             (line 1513)
+                                                             (line 1516)
 * target("fancy-math-387") attribute:    Function Attributes.
-                                                             (line 1450)
+                                                             (line 1453)
 * target("fma4") attribute:              Function Attributes.
-                                                             (line 1430)
+                                                             (line 1433)
 * target("fpmath=FPMATH") attribute:     Function Attributes.
-                                                             (line 1492)
+                                                             (line 1495)
 * target("fprnd") attribute:             Function Attributes.
-                                                             (line 1520)
+                                                             (line 1523)
 * target("friz") attribute:              Function Attributes.
-                                                             (line 1613)
+                                                             (line 1616)
 * target("fused-madd") attribute:        Function Attributes.
-                                                             (line 1455)
+                                                             (line 1458)
 * target("hard-dfp") attribute:          Function Attributes.
-                                                             (line 1526)
+                                                             (line 1529)
 * target("ieee-fp") attribute:           Function Attributes.
-                                                             (line 1460)
+                                                             (line 1463)
 * target("inline-all-stringops") attribute: Function Attributes.
-                                                             (line 1465)
+                                                             (line 1468)
 * target("inline-stringops-dynamically") attribute: Function Attributes.
-                                                             (line 1469)
+                                                             (line 1472)
 * target("isel") attribute:              Function Attributes.
-                                                             (line 1532)
+                                                             (line 1535)
 * target("longcall") attribute:          Function Attributes.
-                                                             (line 1632)
+                                                             (line 1635)
 * target("lwp") attribute:               Function Attributes.
-                                                             (line 1438)
+                                                             (line 1441)
 * target("mfcrf") attribute:             Function Attributes.
-                                                             (line 1536)
+                                                             (line 1539)
 * target("mfpgpr") attribute:            Function Attributes.
-                                                             (line 1543)
+                                                             (line 1546)
 * target("mmx") attribute:               Function Attributes.
-                                                             (line 1389)
+                                                             (line 1392)
 * target("mulhw") attribute:             Function Attributes.
-                                                             (line 1550)
+                                                             (line 1553)
 * target("multiple") attribute:          Function Attributes.
-                                                             (line 1557)
+                                                             (line 1560)
 * target("paired") attribute:            Function Attributes.
-                                                             (line 1627)
+                                                             (line 1630)
 * target("pclmul") attribute:            Function Attributes.
-                                                             (line 1393)
+                                                             (line 1396)
 * target("popcnt") attribute:            Function Attributes.
-                                                             (line 1397)
+                                                             (line 1400)
 * target("popcntb") attribute:           Function Attributes.
-                                                             (line 1568)
+                                                             (line 1571)
 * target("popcntd") attribute:           Function Attributes.
-                                                             (line 1575)
+                                                             (line 1578)
 * target("powerpc-gfxopt") attribute:    Function Attributes.
-                                                             (line 1581)
+                                                             (line 1584)
 * target("powerpc-gpopt") attribute:     Function Attributes.
-                                                             (line 1587)
+                                                             (line 1590)
 * target("recip") attribute:             Function Attributes.
-                                                             (line 1479)
+                                                             (line 1482)
 * target("recip-precision") attribute:   Function Attributes.
-                                                             (line 1593)
+                                                             (line 1596)
 * target("sse") attribute:               Function Attributes.
-                                                             (line 1401)
+                                                             (line 1404)
 * target("sse2") attribute:              Function Attributes.
-                                                             (line 1405)
+                                                             (line 1408)
 * target("sse3") attribute:              Function Attributes.
-                                                             (line 1409)
+                                                             (line 1412)
 * target("sse4") attribute:              Function Attributes.
-                                                             (line 1413)
+                                                             (line 1416)
 * target("sse4.1") attribute:            Function Attributes.
-                                                             (line 1418)
+                                                             (line 1421)
 * target("sse4.2") attribute:            Function Attributes.
-                                                             (line 1422)
+                                                             (line 1425)
 * target("sse4a") attribute:             Function Attributes.
-                                                             (line 1426)
+                                                             (line 1429)
 * target("ssse3") attribute:             Function Attributes.
-                                                             (line 1442)
+                                                             (line 1445)
 * target("string") attribute:            Function Attributes.
-                                                             (line 1599)
+                                                             (line 1602)
 * target("tune=TUNE") attribute:         Function Attributes.
-                                                             (line 1488)
+                                                             (line 1491)
 * target("update") attribute:            Function Attributes.
-                                                             (line 1562)
+                                                             (line 1565)
 * target("vsx") attribute:               Function Attributes.
-                                                             (line 1605)
+                                                             (line 1608)
 * target("xop") attribute:               Function Attributes.
-                                                             (line 1434)
+                                                             (line 1437)
 * TC1:                                   Standards.          (line   13)
 * TC2:                                   Standards.          (line   13)
 * TC3:                                   Standards.          (line   13)
@@ -52391,7 +52414,7 @@ Keyword Index
 * TILE-Gx options:                       TILE-Gx Options.    (line    6)
 * TILEPro options:                       TILEPro Options.    (line    6)
 * tiny data section on the H8/300H and H8S: Function Attributes.
-                                                             (line 1666)
+                                                             (line 1669)
 * TLS:                                   Thread-Local.       (line    6)
 * tls_model attribute:                   Variable Attributes.
                                                              (line  235)
@@ -52404,9 +52427,9 @@ Keyword Index
 * towupper:                              Other Builtins.     (line    6)
 * traditional C language:                C Dialect Options.  (line  307)
 * trap_exit attribute:                   Function Attributes.
-                                                             (line 1673)
+                                                             (line 1676)
 * trapa_handler attribute:               Function Attributes.
-                                                             (line 1678)
+                                                             (line 1681)
 * trunc:                                 Other Builtins.     (line    6)
 * truncf:                                Other Builtins.     (line    6)
 * truncl:                                Other Builtins.     (line    6)
@@ -52441,7 +52464,7 @@ Keyword Index
 * unresolved references and -nodefaultlibs: Link Options.    (line   85)
 * unresolved references and -nostdlib:   Link Options.       (line   85)
 * unused attribute.:                     Function Attributes.
-                                                             (line 1682)
+                                                             (line 1685)
 * UR fixed-suffix:                       Fixed-Point.        (line    6)
 * ur fixed-suffix:                       Fixed-Point.        (line    6)
 * use_debug_exception_return attribute:  Function Attributes.
@@ -52449,7 +52472,7 @@ Keyword Index
 * use_shadow_register_set attribute:     Function Attributes.
                                                              (line  703)
 * used attribute.:                       Function Attributes.
-                                                             (line 1687)
+                                                             (line 1690)
 * User stack pointer in interrupts on the Blackfin: Function Attributes.
                                                              (line  754)
 * V in constraint:                       Simple Constraints. (line   43)
@@ -52471,14 +52494,14 @@ Keyword Index
 * variadic macros:                       Variadic Macros.    (line    6)
 * VAX options:                           VAX Options.        (line    6)
 * version_id attribute:                  Function Attributes.
-                                                             (line 1697)
+                                                             (line 1700)
 * vfprintf:                              Other Builtins.     (line    6)
 * vfscanf:                               Other Builtins.     (line    6)
 * visibility attribute:                  Function Attributes.
-                                                             (line 1707)
+                                                             (line 1710)
 * VLAs:                                  Variable Length.    (line    6)
 * vliw attribute:                        Function Attributes.
-                                                             (line 1800)
+                                                             (line 1803)
 * void pointers, arithmetic:             Pointer Arith.      (line    6)
 * void, size of pointer to:              Pointer Arith.      (line    6)
 * volatile access <1>:                   C++ Volatiles.      (line    6)
@@ -52499,13 +52522,13 @@ Keyword Index
 * W floating point suffix:               Floating Types.     (line    6)
 * w floating point suffix:               Floating Types.     (line    6)
 * warn_unused_result attribute:          Function Attributes.
-                                                             (line 1806)
+                                                             (line 1809)
 * warning for comparison of signed and unsigned values: Warning Options.
                                                              (line 1156)
 * warning for overloaded virtual function: C++ Dialect Options.
-                                                             (line  616)
+                                                             (line  618)
 * warning for reordering of member initializers: C++ Dialect Options.
-                                                             (line  531)
+                                                             (line  533)
 * warning for unknown pragmas:           Warning Options.    (line  691)
 * warning function attribute:            Function Attributes.
                                                              (line  166)
@@ -52514,9 +52537,9 @@ Keyword Index
 * warnings vs errors:                    Warnings and Errors.
                                                              (line    6)
 * weak attribute:                        Function Attributes.
-                                                             (line 1823)
+                                                             (line 1826)
 * weakref attribute:                     Function Attributes.
-                                                             (line 1832)
+                                                             (line 1835)
 * whitespace:                            Incompatibilities.  (line  112)
 * X in constraint:                       Simple Constraints. (line  124)
 * X3.159-1989:                           Standards.          (line   13)
@@ -52550,294 +52573,294 @@ Node: Overall Options61711
 Node: Invoking G++75810
 Node: C Dialect Options77333
 Node: C++ Dialect Options93172
-Node: Objective-C and Objective-C++ Dialect Options121127
-Node: Language Independent Options131635
-Node: Warning Options133834
-Node: Debugging Options202833
-Node: Optimize Options260224
-Ref: Type-punning318893
-Node: Preprocessor Options397766
-Ref: Wtrigraphs402548
-Ref: dashMF407296
-Ref: fdollars-in-identifiers418160
-Node: Assembler Options428427
-Node: Link Options429119
-Ref: Link Options-Footnote-1440363
-Node: Directory Options440697
-Node: Spec Files447256
-Node: Target Options468654
-Node: Submodel Options469053
-Node: Adapteva Epiphany Options470746
-Node: AArch64 Options476697
-Node: ARM Options480571
-Node: AVR Options496216
-Node: Blackfin Options515174
-Node: C6X Options523189
-Node: CRIS Options524732
-Node: CR16 Options528476
-Node: Darwin Options529383
-Node: DEC Alpha Options536816
-Node: FR30 Options548404
-Node: FRV Options548969
-Node: GNU/Linux Options555688
-Node: H8/300 Options556949
-Node: HPPA Options558399
-Node: i386 and x86-64 Options567883
-Node: i386 and x86-64 Windows Options604724
-Node: IA-64 Options607580
-Node: LM32 Options615644
-Node: M32C Options616168
-Node: M32R/D Options617442
-Node: M680x0 Options620988
-Node: MCore Options635034
-Node: MeP Options636537
-Node: MicroBlaze Options640496
-Node: MIPS Options643083
-Node: MMIX Options671983
-Node: MN10300 Options674465
-Node: Moxie Options677008
-Node: PDP-11 Options677379
-Node: picoChip Options679071
-Node: PowerPC Options681212
-Node: RL78 Options681433
-Node: RS/6000 and PowerPC Options682095
-Node: RX Options716945
-Node: S/390 and zSeries Options724279
-Node: Score Options732201
-Node: SH Options733043
-Node: Solaris 2 Options750503
-Node: SPARC Options751734
-Node: SPU Options764625
-Node: System V Options769562
-Node: TILE-Gx Options770388
-Node: TILEPro Options771312
-Node: V850 Options771816
-Node: VAX Options778529
-Node: VMS Options779064
-Node: VxWorks Options779875
-Node: x86-64 Options781030
-Node: Xstormy16 Options781248
-Node: Xtensa Options781537
-Node: zSeries Options785848
-Node: Code Gen Options786044
-Node: Environment Variables815878
-Node: Precompiled Headers823879
-Node: C Implementation829887
-Node: Translation implementation831550
-Node: Environment implementation832124
-Node: Identifiers implementation832674
-Node: Characters implementation833728
-Node: Integers implementation836534
-Node: Floating point implementation838359
-Node: Arrays and pointers implementation841288
-Ref: Arrays and pointers implementation-Footnote-1842723
-Node: Hints implementation842847
-Node: Structures unions enumerations and bit-fields implementation844313
-Node: Qualifiers implementation846299
-Node: Declarators implementation848071
-Node: Statements implementation848413
-Node: Preprocessing directives implementation848740
-Node: Library functions implementation850845
-Node: Architecture implementation851485
-Node: Locale-specific behavior implementation852188
-Node: C++ Implementation852493
-Node: Conditionally-supported behavior853773
-Node: Exception handling854283
-Node: C Extensions854692
-Node: Statement Exprs859603
-Node: Local Labels864062
-Node: Labels as Values867035
-Ref: Labels as Values-Footnote-1869434
-Node: Nested Functions869617
-Node: Constructing Calls873575
-Node: Typeof878293
-Node: Conditionals881601
-Node: __int128882492
-Node: Long Long883011
-Node: Complex884492
-Node: Floating Types887080
-Node: Half-Precision888208
-Node: Decimal Float890390
-Node: Hex Floats892245
-Node: Fixed-Point893281
-Node: Named Address Spaces896563
-Ref: AVR Named Address Spaces897244
-Node: Zero Length902449
-Node: Empty Structures905735
-Node: Variable Length906145
-Node: Variadic Macros908817
-Node: Escaped Newlines911196
-Node: Subscripting912035
-Node: Pointer Arith912761
-Node: Initializers913329
-Node: Compound Literals913825
-Node: Designated Inits917186
-Node: Case Ranges920820
-Node: Cast to Union921503
-Node: Mixed Declarations922592
-Node: Function Attributes923100
-Node: Attribute Syntax1008793
-Node: Function Prototypes1019184
-Node: C++ Comments1020965
-Node: Dollar Signs1021484
-Node: Character Escapes1021949
-Node: Variable Attributes1022243
-Ref: AVR Variable Attributes1035910
-Ref: MeP Variable Attributes1038570
-Ref: i386 Variable Attributes1040516
-Node: Type Attributes1046180
-Ref: MeP Type Attributes1060068
-Ref: i386 Type Attributes1060342
-Ref: PowerPC Type Attributes1061033
-Ref: SPU Type Attributes1061895
-Node: Alignment1062186
-Node: Inline1063556
-Node: Volatiles1068531
-Node: Extended Asm1071413
-Ref: Example of asm with clobbered asm reg1077317
-Ref: Extended asm with goto1087024
-Node: Constraints1094875
-Node: Simple Constraints1095959
-Node: Multi-Alternative1103280
-Node: Modifiers1104997
-Node: Machine Constraints1108011
-Node: Asm Labels1156975
-Node: Explicit Reg Vars1158651
-Node: Global Reg Vars1160254
-Node: Local Reg Vars1164750
-Node: Alternate Keywords1167167
-Node: Incomplete Enums1168653
-Node: Function Names1169409
-Node: Return Address1171570
-Node: Vector Extensions1175077
-Node: Offsetof1181252
-Node: __sync Builtins1182065
-Node: __atomic Builtins1187535
-Node: Object Size Checking1198780
-Node: Other Builtins1204225
-Node: Target Builtins1233369
-Node: Alpha Built-in Functions1234469
-Node: ARM iWMMXt Built-in Functions1237478
-Node: ARM NEON Intrinsics1244458
-Node: AVR Built-in Functions1452877
-Node: Blackfin Built-in Functions1455947
-Node: FR-V Built-in Functions1456564
-Node: Argument Types1457423
-Node: Directly-mapped Integer Functions1459175
-Node: Directly-mapped Media Functions1460257
-Node: Raw read/write Functions1467289
-Node: Other Built-in Functions1468201
-Node: X86 Built-in Functions1469385
-Node: MIPS DSP Built-in Functions1527944
-Node: MIPS Paired-Single Support1540439
-Node: MIPS Loongson Built-in Functions1541936
-Node: Paired-Single Arithmetic1548456
-Node: Paired-Single Built-in Functions1549404
-Node: MIPS-3D Built-in Functions1552071
-Node: picoChip Built-in Functions1557448
-Node: Other MIPS Built-in Functions1558797
-Node: PowerPC Built-in Functions1559321
-Node: PowerPC AltiVec/VSX Built-in Functions1560735
-Node: SH Built-in Functions1670722
-Node: RX Built-in Functions1672103
-Node: SPARC VIS Built-in Functions1676106
-Node: SPU Built-in Functions1681710
-Node: TI C6X Built-in Functions1683526
-Node: TILE-Gx Built-in Functions1684550
-Node: TILEPro Built-in Functions1685667
-Node: Target Format Checks1686734
-Node: Solaris Format Checks1687166
-Node: Darwin Format Checks1687592
-Node: Pragmas1688410
-Node: ARM Pragmas1689120
-Node: M32C Pragmas1689723
-Node: MeP Pragmas1690797
-Node: RS/6000 and PowerPC Pragmas1692866
-Node: Darwin Pragmas1693607
-Node: Solaris Pragmas1694674
-Node: Symbol-Renaming Pragmas1695835
-Node: Structure-Packing Pragmas1697389
-Node: Weak Pragmas1699039
-Node: Diagnostic Pragmas1699773
-Node: Visibility Pragmas1702880
-Node: Push/Pop Macro Pragmas1703632
-Node: Function Specific Option Pragmas1704604
-Node: Unnamed Fields1706861
-Node: Thread-Local1709089
-Node: C99 Thread-Local Edits1711194
-Node: C++98 Thread-Local Edits1713206
-Node: Binary constants1716650
-Node: C++ Extensions1717321
-Node: C++ Volatiles1719038
-Node: Restricted Pointers1721386
-Node: Vague Linkage1722977
-Node: C++ Interface1726601
-Ref: C++ Interface-Footnote-11730887
-Node: Template Instantiation1731023
-Node: Bound member functions1737610
-Node: C++ Attributes1739142
-Node: Function Multiversioning1741798
-Node: Namespace Association1743613
-Node: Type Traits1744993
-Node: Java Exceptions1751481
-Node: Deprecated Features1752871
-Node: Backwards Compatibility1755836
-Node: Objective-C1757188
-Node: GNU Objective-C runtime API1757797
-Node: Modern GNU Objective-C runtime API1758804
-Node: Traditional GNU Objective-C runtime API1761241
-Node: Executing code before main1761969
-Node: What you can and what you cannot do in +load1764707
-Node: Type encoding1767097
-Node: Legacy type encoding1772173
-Node: @encode1773264
-Node: Method signatures1773805
-Node: Garbage Collection1775800
-Node: Constant string objects1778489
-Node: compatibility_alias1780997
-Node: Exceptions1781719
-Node: Synchronization1784430
-Node: Fast enumeration1785614
-Node: Using fast enumeration1785926
-Node: c99-like fast enumeration syntax1787137
-Node: Fast enumeration details1787840
-Node: Fast enumeration protocol1790181
-Node: Messaging with the GNU Objective-C runtime1793333
-Node: Dynamically registering methods1794704
-Node: Forwarding hook1796395
-Node: Compatibility1799435
-Node: Gcov1806002
-Node: Gcov Intro1806535
-Node: Invoking Gcov1809253
-Node: Gcov and Optimization1822164
-Node: Gcov Data Files1825164
-Node: Cross-profiling1826559
-Node: Trouble1828410
-Node: Actual Bugs1829822
-Node: Interoperation1830269
-Node: Incompatibilities1837161
-Node: Fixed Headers1845312
-Node: Standard Libraries1846975
-Node: Disappointments1848347
-Node: C++ Misunderstandings1852705
-Node: Static Definitions1853516
-Node: Name lookup1854569
-Ref: Name lookup-Footnote-11859347
-Node: Temporaries1859534
-Node: Copy Assignment1861510
-Node: Non-bugs1863317
-Node: Warnings and Errors1873824
-Node: Bugs1875586
-Node: Bug Criteria1876150
-Node: Bug Reporting1878360
-Node: Service1878581
-Node: Contributing1879400
-Node: Funding1880140
-Node: GNU Project1882629
-Node: Copying1883275
-Node: GNU Free Documentation License1920803
-Node: Contributors1945940
-Node: Option Index1983342
-Node: Keyword Index2172973
+Node: Objective-C and Objective-C++ Dialect Options121274
+Node: Language Independent Options131782
+Node: Warning Options133981
+Node: Debugging Options202980
+Node: Optimize Options260371
+Ref: Type-punning319040
+Node: Preprocessor Options397913
+Ref: Wtrigraphs402695
+Ref: dashMF407443
+Ref: fdollars-in-identifiers418307
+Node: Assembler Options428574
+Node: Link Options429266
+Ref: Link Options-Footnote-1440510
+Node: Directory Options440844
+Node: Spec Files447403
+Node: Target Options468801
+Node: Submodel Options469200
+Node: AArch64 Options470893
+Node: Adapteva Epiphany Options474767
+Node: ARM Options480718
+Node: AVR Options496363
+Node: Blackfin Options516527
+Node: C6X Options524542
+Node: CRIS Options526085
+Node: CR16 Options529829
+Node: Darwin Options530736
+Node: DEC Alpha Options538169
+Node: FR30 Options549757
+Node: FRV Options550322
+Node: GNU/Linux Options557041
+Node: H8/300 Options558302
+Node: HPPA Options559752
+Node: i386 and x86-64 Options569236
+Node: i386 and x86-64 Windows Options606077
+Node: IA-64 Options608933
+Node: LM32 Options616997
+Node: M32C Options617521
+Node: M32R/D Options618795
+Node: M680x0 Options622341
+Node: MCore Options636387
+Node: MeP Options637890
+Node: MicroBlaze Options641849
+Node: MIPS Options644436
+Node: MMIX Options673336
+Node: MN10300 Options675818
+Node: Moxie Options678361
+Node: PDP-11 Options678732
+Node: picoChip Options680424
+Node: PowerPC Options682565
+Node: RL78 Options682786
+Node: RS/6000 and PowerPC Options683448
+Node: RX Options718298
+Node: S/390 and zSeries Options725632
+Node: Score Options733554
+Node: SH Options734396
+Node: Solaris 2 Options751856
+Node: SPARC Options753087
+Node: SPU Options765978
+Node: System V Options770915
+Node: TILE-Gx Options771741
+Node: TILEPro Options772665
+Node: V850 Options773169
+Node: VAX Options779882
+Node: VMS Options780417
+Node: VxWorks Options781228
+Node: x86-64 Options782383
+Node: Xstormy16 Options782601
+Node: Xtensa Options782890
+Node: zSeries Options787201
+Node: Code Gen Options787397
+Node: Environment Variables817231
+Node: Precompiled Headers825232
+Node: C Implementation831240
+Node: Translation implementation832909
+Node: Environment implementation833483
+Node: Identifiers implementation834033
+Node: Characters implementation835087
+Node: Integers implementation837893
+Node: Floating point implementation839718
+Node: Arrays and pointers implementation842647
+Ref: Arrays and pointers implementation-Footnote-1844082
+Node: Hints implementation844206
+Node: Structures unions enumerations and bit-fields implementation845672
+Node: Qualifiers implementation847658
+Node: Declarators implementation849430
+Node: Statements implementation849772
+Node: Preprocessing directives implementation850099
+Node: Library functions implementation852204
+Node: Architecture implementation852844
+Node: Locale-specific behavior implementation853547
+Node: C++ Implementation853852
+Node: Conditionally-supported behavior855134
+Node: Exception handling855644
+Node: C Extensions856053
+Node: Statement Exprs860962
+Node: Local Labels865421
+Node: Labels as Values868394
+Ref: Labels as Values-Footnote-1870793
+Node: Nested Functions870976
+Node: Constructing Calls874934
+Node: Typeof879652
+Node: Conditionals882960
+Node: __int128883850
+Node: Long Long884374
+Node: Complex885850
+Node: Floating Types888439
+Node: Half-Precision889567
+Node: Decimal Float891749
+Node: Hex Floats893604
+Node: Fixed-Point894640
+Node: Named Address Spaces897922
+Ref: AVR Named Address Spaces898603
+Node: Zero Length903808
+Node: Empty Structures907095
+Node: Variable Length907501
+Node: Variadic Macros910177
+Node: Escaped Newlines912555
+Node: Subscripting913394
+Node: Pointer Arith914120
+Node: Initializers914688
+Node: Compound Literals915184
+Node: Designated Inits918545
+Node: Case Ranges922177
+Node: Cast to Union922858
+Node: Mixed Declarations923949
+Node: Function Attributes924459
+Node: Attribute Syntax1010340
+Node: Function Prototypes1020731
+Node: C++ Comments1022512
+Node: Dollar Signs1023031
+Node: Character Escapes1023496
+Node: Variable Attributes1023790
+Ref: AVR Variable Attributes1037457
+Ref: MeP Variable Attributes1040117
+Ref: i386 Variable Attributes1042063
+Node: Type Attributes1047727
+Ref: MeP Type Attributes1061615
+Ref: i386 Type Attributes1061889
+Ref: PowerPC Type Attributes1062580
+Ref: SPU Type Attributes1063442
+Node: Alignment1063733
+Node: Inline1065103
+Node: Volatiles1070078
+Node: Extended Asm1072960
+Ref: Example of asm with clobbered asm reg1078864
+Ref: Extended asm with goto1088571
+Node: Constraints1096422
+Node: Simple Constraints1097506
+Node: Multi-Alternative1104827
+Node: Modifiers1106544
+Node: Machine Constraints1109558
+Node: Asm Labels1158522
+Node: Explicit Reg Vars1160198
+Node: Global Reg Vars1161801
+Node: Local Reg Vars1166297
+Node: Alternate Keywords1168714
+Node: Incomplete Enums1170200
+Node: Function Names1170956
+Node: Return Address1173117
+Node: Vector Extensions1176624
+Node: Offsetof1182799
+Node: __sync Builtins1183612
+Node: __atomic Builtins1189082
+Node: Object Size Checking1200327
+Node: Other Builtins1205772
+Node: Target Builtins1234916
+Node: Alpha Built-in Functions1236016
+Node: ARM iWMMXt Built-in Functions1239025
+Node: ARM NEON Intrinsics1246005
+Node: AVR Built-in Functions1454424
+Node: Blackfin Built-in Functions1457494
+Node: FR-V Built-in Functions1458111
+Node: Argument Types1458970
+Node: Directly-mapped Integer Functions1460722
+Node: Directly-mapped Media Functions1461804
+Node: Raw read/write Functions1468836
+Node: Other Built-in Functions1469748
+Node: X86 Built-in Functions1470932
+Node: MIPS DSP Built-in Functions1529491
+Node: MIPS Paired-Single Support1541986
+Node: MIPS Loongson Built-in Functions1543483
+Node: Paired-Single Arithmetic1550003
+Node: Paired-Single Built-in Functions1550951
+Node: MIPS-3D Built-in Functions1553618
+Node: Other MIPS Built-in Functions1558995
+Node: picoChip Built-in Functions1559519
+Node: PowerPC Built-in Functions1560868
+Node: PowerPC AltiVec/VSX Built-in Functions1562282
+Node: RX Built-in Functions1672269
+Node: SH Built-in Functions1676272
+Node: SPARC VIS Built-in Functions1677653
+Node: SPU Built-in Functions1683257
+Node: TI C6X Built-in Functions1685073
+Node: TILE-Gx Built-in Functions1686097
+Node: TILEPro Built-in Functions1687214
+Node: Target Format Checks1688281
+Node: Solaris Format Checks1688713
+Node: Darwin Format Checks1689139
+Node: Pragmas1689957
+Node: ARM Pragmas1690667
+Node: M32C Pragmas1691270
+Node: MeP Pragmas1692344
+Node: RS/6000 and PowerPC Pragmas1694413
+Node: Darwin Pragmas1695154
+Node: Solaris Pragmas1696221
+Node: Symbol-Renaming Pragmas1697382
+Node: Structure-Packing Pragmas1698936
+Node: Weak Pragmas1700586
+Node: Diagnostic Pragmas1701320
+Node: Visibility Pragmas1704427
+Node: Push/Pop Macro Pragmas1705179
+Node: Function Specific Option Pragmas1706151
+Node: Unnamed Fields1708408
+Node: Thread-Local1710636
+Node: C99 Thread-Local Edits1712741
+Node: C++98 Thread-Local Edits1714753
+Node: Binary constants1718197
+Node: C++ Extensions1718868
+Node: C++ Volatiles1720579
+Node: Restricted Pointers1722927
+Node: Vague Linkage1724518
+Node: C++ Interface1728142
+Ref: C++ Interface-Footnote-11732428
+Node: Template Instantiation1732564
+Node: Bound member functions1739151
+Node: C++ Attributes1740683
+Node: Function Multiversioning1743339
+Node: Namespace Association1745154
+Node: Type Traits1746534
+Node: Java Exceptions1753022
+Node: Deprecated Features1754412
+Node: Backwards Compatibility1757377
+Node: Objective-C1758729
+Node: GNU Objective-C runtime API1759338
+Node: Modern GNU Objective-C runtime API1760345
+Node: Traditional GNU Objective-C runtime API1762782
+Node: Executing code before main1763510
+Node: What you can and what you cannot do in +load1766248
+Node: Type encoding1768638
+Node: Legacy type encoding1773714
+Node: @encode1774805
+Node: Method signatures1775346
+Node: Garbage Collection1777341
+Node: Constant string objects1780030
+Node: compatibility_alias1782538
+Node: Exceptions1783260
+Node: Synchronization1785971
+Node: Fast enumeration1787155
+Node: Using fast enumeration1787467
+Node: c99-like fast enumeration syntax1788678
+Node: Fast enumeration details1789381
+Node: Fast enumeration protocol1791722
+Node: Messaging with the GNU Objective-C runtime1794874
+Node: Dynamically registering methods1796245
+Node: Forwarding hook1797936
+Node: Compatibility1800976
+Node: Gcov1807543
+Node: Gcov Intro1808076
+Node: Invoking Gcov1810794
+Node: Gcov and Optimization1823705
+Node: Gcov Data Files1826705
+Node: Cross-profiling1828100
+Node: Trouble1829951
+Node: Actual Bugs1831363
+Node: Interoperation1831810
+Node: Incompatibilities1838702
+Node: Fixed Headers1846853
+Node: Standard Libraries1848516
+Node: Disappointments1849888
+Node: C++ Misunderstandings1854246
+Node: Static Definitions1855057
+Node: Name lookup1856110
+Ref: Name lookup-Footnote-11860888
+Node: Temporaries1861075
+Node: Copy Assignment1863051
+Node: Non-bugs1864858
+Node: Warnings and Errors1875365
+Node: Bugs1877127
+Node: Bug Criteria1877691
+Node: Bug Reporting1879901
+Node: Service1880122
+Node: Contributing1880941
+Node: Funding1881681
+Node: GNU Project1884170
+Node: Copying1884816
+Node: GNU Free Documentation License1922344
+Node: Contributors1947481
+Node: Option Index1984883
+Node: Keyword Index2174514
 
 End Tag Table
