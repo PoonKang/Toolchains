@@ -36126,39 +36126,39 @@ be documented in `extend.texi'.
 
  -- Target Hook: bool TARGET_OPTION_VALID_ATTRIBUTE_P (tree FNDECL,
           tree NAME, tree ARGS, int FLAGS)
-     This hook is called to parse the `attribute(option("..."))', and
-     it allows the function to set different target machine compile time
-     options for the current function that might be different than the
-     options specified on the command line.  The hook should return
-     `true' if the options are valid.
+     This hook is called to parse `attribute(target("..."))', which
+     allows setting target-specific options on individual functions.
+     These function-specific options may differ from the options
+     specified on the command line.  The hook should return `true' if
+     the options are valid.
 
-     The hook should set the DECL_FUNCTION_SPECIFIC_TARGET field in the
-     function declaration to hold a pointer to a target specific STRUCT
-     CL_TARGET_OPTION structure.
+     The hook should set the `DECL_FUNCTION_SPECIFIC_TARGET' field in
+     the function declaration to hold a pointer to a target-specific
+     `struct cl_target_option' structure.
 
  -- Target Hook: void TARGET_OPTION_SAVE (struct cl_target_option *PTR)
-     This hook is called to save any additional target specific
-     information in the STRUCT CL_TARGET_OPTION structure for function
-     specific options.  *Note Option file format::.
+     This hook is called to save any additional target-specific
+     information in the `struct cl_target_option' structure for
+     function-specific options.  *Note Option file format::.
 
  -- Target Hook: void TARGET_OPTION_RESTORE (struct cl_target_option
           *PTR)
-     This hook is called to restore any additional target specific
-     information in the STRUCT CL_TARGET_OPTION structure for function
-     specific options.
+     This hook is called to restore any additional target-specific
+     information in the `struct cl_target_option' structure for
+     function-specific options.
 
  -- Target Hook: void TARGET_OPTION_PRINT (FILE *FILE, int INDENT,
           struct cl_target_option *PTR)
-     This hook is called to print any additional target specific
-     information in the STRUCT CL_TARGET_OPTION structure for function
-     specific options.
+     This hook is called to print any additional target-specific
+     information in the `struct cl_target_option' structure for
+     function-specific options.
 
  -- Target Hook: bool TARGET_OPTION_PRAGMA_PARSE (tree ARGS, tree
           POP_TARGET)
-     This target hook parses the options for `#pragma GCC option' to
-     set the machine specific options for functions that occur later in
-     the input stream.  The options should be the same as handled by the
-     `TARGET_OPTION_VALID_ATTRIBUTE_P' hook.
+     This target hook parses the options for `#pragma GCC target', which
+     sets the target-specific options for functions that occur later in
+     the input stream.  The options accepted should be the same as
+     those handled by the `TARGET_OPTION_VALID_ATTRIBUTE_P' hook.
 
  -- Target Hook: void TARGET_OPTION_OVERRIDE (void)
      Sometimes certain combinations of command options do not make
@@ -49721,52 +49721,52 @@ Node: VMS Debug1557914
 Node: Floating Point1558501
 Node: Mode Switching1562977
 Node: Target Attributes1566973
-Node: Emulated TLS1575278
-Node: MIPS Coprocessors1578668
-Node: PCH Target1579965
-Node: C++ ABI1581807
-Node: Named Address Spaces1586599
-Node: Misc1591538
-Ref: TARGET_SHIFT_TRUNCATION_MASK1598280
-Node: Host Config1643446
-Node: Host Common1644514
-Node: Filesystem1646893
-Node: Host Misc1651008
-Node: Fragments1653457
-Node: Target Fragment1654652
-Node: Host Fragment1665285
-Node: Collect21665525
-Node: Header Dirs1668161
-Node: Type Information1669584
-Node: GTY Options1672807
-Node: User GC1687128
-Node: GGC Roots1690855
-Node: Files1691571
-Node: Invoking the garbage collector1694278
-Node: Troubleshooting1695781
-Node: Plugins1696857
-Node: Plugins loading1697975
-Node: Plugin API1698844
-Node: Plugins pass1705873
-Node: Plugins GC1707842
-Node: Plugins description1709502
-Node: Plugins attr1710037
-Node: Plugins recording1711922
-Node: Plugins gate1712772
-Node: Plugins tracking1713363
-Node: Plugins building1713951
-Node: LTO1715737
-Node: LTO Overview1716598
-Node: LTO object file layout1722430
-Node: IPA1727062
-Node: WHOPR1736027
-Node: Internal flags1740718
-Node: Funding1741930
-Node: GNU Project1744413
-Node: Copying1745062
-Node: GNU Free Documentation License1782593
-Node: Contributors1807733
-Node: Option Index1845138
-Node: Concept Index1845942
+Node: Emulated TLS1575287
+Node: MIPS Coprocessors1578677
+Node: PCH Target1579974
+Node: C++ ABI1581816
+Node: Named Address Spaces1586608
+Node: Misc1591547
+Ref: TARGET_SHIFT_TRUNCATION_MASK1598289
+Node: Host Config1643455
+Node: Host Common1644523
+Node: Filesystem1646902
+Node: Host Misc1651017
+Node: Fragments1653466
+Node: Target Fragment1654661
+Node: Host Fragment1665294
+Node: Collect21665534
+Node: Header Dirs1668170
+Node: Type Information1669593
+Node: GTY Options1672816
+Node: User GC1687137
+Node: GGC Roots1690864
+Node: Files1691580
+Node: Invoking the garbage collector1694287
+Node: Troubleshooting1695790
+Node: Plugins1696866
+Node: Plugins loading1697984
+Node: Plugin API1698853
+Node: Plugins pass1705882
+Node: Plugins GC1707851
+Node: Plugins description1709511
+Node: Plugins attr1710046
+Node: Plugins recording1711931
+Node: Plugins gate1712781
+Node: Plugins tracking1713372
+Node: Plugins building1713960
+Node: LTO1715746
+Node: LTO Overview1716607
+Node: LTO object file layout1722439
+Node: IPA1727071
+Node: WHOPR1736036
+Node: Internal flags1740727
+Node: Funding1741939
+Node: GNU Project1744422
+Node: Copying1745071
+Node: GNU Free Documentation License1782602
+Node: Contributors1807742
+Node: Option Index1845147
+Node: Concept Index1845951
 
 End Tag Table
