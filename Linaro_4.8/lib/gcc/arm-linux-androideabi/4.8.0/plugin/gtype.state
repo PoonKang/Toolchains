@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "4.8.0 20130304 (experimental)")
+(!version  "4.8.0 20130306 (experimental)")
 
 (!srcdir  "/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc")
 
@@ -6181,58 +6181,58 @@ nil 511 nil )
 (!type struct 255 
 (!type already_seen 254)
  gc_pointed_to "constant_descriptor_rtx"
-(!srcfileloc  "varasm.c" 3389)
+(!srcfileloc  "varasm.c" 3374)
 
 (!fields 10 
 (!pair  "next"
 (!type already_seen 254)
 
-(!srcfileloc  "varasm.c" 3379)
+(!srcfileloc  "varasm.c" 3364)
 nil )
 (!pair  "mem"
 (!type already_seen 136)
 
-(!srcfileloc  "varasm.c" 3380)
+(!srcfileloc  "varasm.c" 3365)
 nil )
 (!pair  "sym"
 (!type already_seen 136)
 
-(!srcfileloc  "varasm.c" 3381)
+(!srcfileloc  "varasm.c" 3366)
 nil )
 (!pair  "constant"
 (!type already_seen 136)
 
-(!srcfileloc  "varasm.c" 3382)
+(!srcfileloc  "varasm.c" 3367)
 nil )
 (!pair  "offset"
 (!type already_seen 9)
 
-(!srcfileloc  "varasm.c" 3383)
+(!srcfileloc  "varasm.c" 3368)
 nil )
 (!pair  "hash"
 (!type already_seen 9)
 
-(!srcfileloc  "varasm.c" 3384)
+(!srcfileloc  "varasm.c" 3369)
 nil )
 (!pair  "mode"
 (!type already_seen 9)
 
-(!srcfileloc  "varasm.c" 3385)
+(!srcfileloc  "varasm.c" 3370)
 nil )
 (!pair  "align"
 (!type already_seen 9)
 
-(!srcfileloc  "varasm.c" 3386)
+(!srcfileloc  "varasm.c" 3371)
 nil )
 (!pair  "labelno"
 (!type already_seen 9)
 
-(!srcfileloc  "varasm.c" 3387)
+(!srcfileloc  "varasm.c" 3372)
 nil )
 (!pair  "mark"
 (!type already_seen 9)
 
-(!srcfileloc  "varasm.c" 3388)
+(!srcfileloc  "varasm.c" 3373)
 nil ))
 
 (!options 
@@ -10479,18 +10479,18 @@ nil )
 (!type struct 408 
 (!type already_seen 407)
  gc_pointed_to "throw_stmt_node"
-(!srcfileloc  "except.h" 291)
+(!srcfileloc  "except.h" 292)
 
 (!fields 2 
 (!pair  "stmt"
 (!type already_seen 310)
 
-(!srcfileloc  "except.h" 289)
+(!srcfileloc  "except.h" 290)
 nil )
 (!pair  "lp_nr"
 (!type already_seen 9)
 
-(!srcfileloc  "except.h" 290)
+(!srcfileloc  "except.h" 291)
 nil ))
 nil 511 nil )
 )
@@ -21693,11 +21693,11 @@ nil ))
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 1056 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/varasm.c:4723"nil 
+(!type struct 1056 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/varasm.c:4708"nil 
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 1057 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/varasm.c:4475"nil 
+(!type struct 1057 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/varasm.c:4460"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -23456,18 +23456,18 @@ nil )
 (!type struct 1251 
 (!type already_seen 1250)
  gc_pointed_to "rtx_constant_pool"
-(!srcfileloc  "varasm.c" 3376)
+(!srcfileloc  "varasm.c" 3361)
 
 (!fields 4 
 (!pair  "first"
 (!type already_seen 254)
 
-(!srcfileloc  "varasm.c" 3364)
+(!srcfileloc  "varasm.c" 3349)
 nil )
 (!pair  "last"
 (!type already_seen 254)
 
-(!srcfileloc  "varasm.c" 3365)
+(!srcfileloc  "varasm.c" 3350)
 nil )
 (!pair  "const_rtx_htab"
 (!type pointer 1252 nil  gc_used
@@ -23480,7 +23480,7 @@ nil )
 nil nil nil nil nil nil nil nil nil nil )
 )
 
-(!srcfileloc  "varasm.c" 3371)
+(!srcfileloc  "varasm.c" 3356)
 
 (!options 
 (!option param_is type 
@@ -23491,7 +23491,7 @@ nil nil nil nil nil nil nil nil nil nil )
 (!pair  "offset"
 (!type already_seen 9)
 
-(!srcfileloc  "varasm.c" 3375)
+(!srcfileloc  "varasm.c" 3360)
 nil ))
 nil 511 nil )
 )
@@ -26666,17 +26666,17 @@ nil )
 (!pair  "tm_alias_pair"
 (!type already_seen 1055)
 
-(!srcfileloc  "varasm.c" 5675)
+(!srcfileloc  "varasm.c" 5660)
 nil )
 (!pair  "oc_local_state"
 (!type already_seen 1056)
 
-(!srcfileloc  "varasm.c" 4747)
+(!srcfileloc  "varasm.c" 4732)
 nil )
 (!pair  "oc_outer_state"
 (!type already_seen 1057)
 
-(!srcfileloc  "varasm.c" 4478)
+(!srcfileloc  "varasm.c" 4463)
 nil )
 (!pair  "block_info"
 (!type already_seen 1068)
@@ -26781,7 +26781,7 @@ nil )
 (!pair  "duplicate_eh_regions_map"
 (!type already_seen 9)
 
-(!srcfileloc  "except.h" 250)
+(!srcfileloc  "except.h" 251)
 nil )
 (!pair  "vec<eh_landing_pad,va_gc>"
 (!type already_seen 404)
@@ -29547,7 +29547,7 @@ nil )
 (!pair  "the_parser"
 (!type already_seen 689)
 
-(!srcfileloc  "cp/parser.c" 27966)
+(!srcfileloc  "cp/parser.c" 27968)
 nil )
 (!pair  "lambda_scope_stack"
 (!type already_seen 684)
@@ -30648,17 +30648,17 @@ nil )
 (!pair  "elf_fini_array_section"
 (!type already_seen 245)
 
-(!srcfileloc  "varasm.c" 7443)
+(!srcfileloc  "varasm.c" 7428)
 nil )
 (!pair  "elf_init_array_section"
 (!type already_seen 245)
 
-(!srcfileloc  "varasm.c" 7442)
+(!srcfileloc  "varasm.c" 7427)
 nil )
 (!pair  "tm_clone_hash"
 (!type already_seen 1375)
 
-(!srcfileloc  "varasm.c" 5633)
+(!srcfileloc  "varasm.c" 5618)
 
 (!options 
 (!option param_is type 
@@ -30671,12 +30671,12 @@ nil )
 (!pair  "weakref_targets"
 (!type already_seen 5)
 
-(!srcfileloc  "varasm.c" 5323)
+(!srcfileloc  "varasm.c" 5308)
 nil )
 (!pair  "const_desc_htab"
 (!type already_seen 1377)
 
-(!srcfileloc  "varasm.c" 2670)
+(!srcfileloc  "varasm.c" 2668)
 
 (!options 
 (!option param_is type 
@@ -30687,32 +30687,32 @@ nil )
 (!pair  "initial_trampoline"
 (!type already_seen 136)
 
-(!srcfileloc  "varasm.c" 2381)
+(!srcfileloc  "varasm.c" 2379)
 nil )
 (!pair  "weak_decls"
 (!type already_seen 5)
 
-(!srcfileloc  "varasm.c" 2159)
+(!srcfileloc  "varasm.c" 2157)
 nil )
 (!pair  "pending_assemble_externals"
 (!type already_seen 5)
 
-(!srcfileloc  "varasm.c" 2089)
+(!srcfileloc  "varasm.c" 2087)
 nil )
 (!pair  "shared_constant_pool"
 (!type already_seen 1250)
 
-(!srcfileloc  "varasm.c" 186)
+(!srcfileloc  "varasm.c" 185)
 nil )
 (!pair  "anchor_labelno"
 (!type already_seen 9)
 
-(!srcfileloc  "varasm.c" 183)
+(!srcfileloc  "varasm.c" 182)
 nil )
 (!pair  "object_block_htab"
 (!type already_seen 1379)
 
-(!srcfileloc  "varasm.c" 180)
+(!srcfileloc  "varasm.c" 179)
 
 (!options 
 (!option param_is type 
@@ -30723,7 +30723,7 @@ nil )
 (!pair  "section_htab"
 (!type already_seen 1381)
 
-(!srcfileloc  "varasm.c" 177)
+(!srcfileloc  "varasm.c" 176)
 
 (!options 
 (!option param_is type 
@@ -30734,7 +30734,7 @@ nil )
 (!pair  "unnamed_sections"
 (!type already_seen 245)
 
-(!srcfileloc  "varasm.c" 169)
+(!srcfileloc  "varasm.c" 168)
 nil )
 (!pair  "const_labelno"
 (!type already_seen 9)

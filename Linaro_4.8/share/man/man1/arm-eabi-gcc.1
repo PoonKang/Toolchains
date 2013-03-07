@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-03-04" "gcc-4.8.0" "GNU"
+.TH GCC 1 "2013-03-06" "gcc-4.8.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -745,7 +745,7 @@ in the following sections.
 \&\fB\-mmemcpy \-mxl\-soft\-mul \-mxl\-soft\-div \-mxl\-barrel\-shift 
 \&\-mxl\-pattern\-compare \-mxl\-stack\-check \-mxl\-gp\-opt \-mno\-clearbss 
 \&\-mxl\-multiply\-high \-mxl\-float\-convert \-mxl\-float\-sqrt 
-\&\-mxl\-mode\-\fR\fIapp-model\fR
+\&\-mbig\-endian \-mlittle\-endian \-mxl\-reorder \-mxl\-mode\-\fR\fIapp-model\fR
 .Sp
 \&\fI\s-1MIPS\s0 Options\fR
 \&\fB\-EL  \-EB  \-march=\fR\fIarch\fR  \fB\-mtune=\fR\fIarch\fR 
@@ -14909,6 +14909,15 @@ Use hardware floating-point conversion instructions.
 .IP "\fB\-mxl\-float\-sqrt\fR" 4
 .IX Item "-mxl-float-sqrt"
 Use hardware floating-point square root instruction.
+.IP "\fB\-mbig\-endian\fR" 4
+.IX Item "-mbig-endian"
+Generate code for a big-endian target.
+.IP "\fB\-mlittle\-endian\fR" 4
+.IX Item "-mlittle-endian"
+Generate code for a little-endian target.
+.IP "\fB\-mxl\-reorder\fR" 4
+.IX Item "-mxl-reorder"
+Use reorder instructions (swap and byte reversed load/store).
 .IP "\fB\-mxl\-mode\-\fR\fIapp-model\fR" 4
 .IX Item "-mxl-mode-app-model"
 Select application model \fIapp-model\fR.  Valid models are
@@ -17762,8 +17771,8 @@ This is the default when the target is \f(CW\*(C`sh\-*\-linux*\*(C'\fR.
 Set the cost to assume for a multiply insn.
 .IP "\fB\-mdiv=\fR\fIstrategy\fR" 4
 .IX Item "-mdiv=strategy"
-Set the division strategy to use for SHmedia code.  \fIstrategy\fR must be
-one of:
+Set the division strategy to be used for integer division operations.
+For SHmedia \fIstrategy\fR can be one of:
 .RS 4
 .IP "\fBfp\fR" 4
 .IX Item "fp"
@@ -17826,6 +17835,34 @@ slows down the case of larger dividends.  \fBinv20u\fR assumes the case of a suc
 a small dividend to be unlikely, and \fBinv20l\fR assumes it to be likely.
 .RE
 .RS 4
+.Sp
+For targets other than SHmedia \fIstrategy\fR can be one of:
+.IP "\fBcall\-div1\fR" 4
+.IX Item "call-div1"
+Calls a library function that uses the single-step division instruction
+\&\f(CW\*(C`div1\*(C'\fR to perform the operation.  Division by zero calculates an
+unspecified result and does not trap.  This is the default except for \s-1SH4\s0,
+\&\s-1SH2A\s0 and SHcompact.
+.IP "\fBcall-fp\fR" 4
+.IX Item "call-fp"
+Calls a library function that performs the operation in double precision
+floating point.  Division by zero causes a floating-point exception.  This is
+the default for SHcompact with \s-1FPU\s0.  Specifying this for targets that do not
+have a double precision \s-1FPU\s0 will default to \f(CW\*(C`call\-div1\*(C'\fR.
+.IP "\fBcall-table\fR" 4
+.IX Item "call-table"
+Calls a library function that uses a lookup table for small divisors and
+the \f(CW\*(C`div1\*(C'\fR instruction with case distinction for larger divisors.  Division
+by zero calculates an unspecified result and does not trap.  This is the default
+for \s-1SH4\s0.  Specifying this for targets that do not have dynamic shift
+instructions will default to \f(CW\*(C`call\-div1\*(C'\fR.
+.RE
+.RS 4
+.Sp
+When a division strategy has not been specified the default strategy will be
+selected based on the current target.  For \s-1SH2A\s0 the default strategy is to
+use the \f(CW\*(C`divs\*(C'\fR and \f(CW\*(C`divu\*(C'\fR instructions instead of library function
+calls.
 .RE
 .IP "\fB\-maccumulate\-outgoing\-args\fR" 4
 .IX Item "-maccumulate-outgoing-args"
