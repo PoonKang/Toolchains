@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-03-06" "gcc-4.8.0" "GNU"
+.TH GCC 1 "2013-03-07" "gcc-4.8.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -7473,15 +7473,11 @@ Enabled by default with \fB\-funroll\-loops\fR.
 Assume that the current compilation unit represents the whole program being
 compiled.  All public functions and variables with the exception of \f(CW\*(C`main\*(C'\fR
 and those merged by attribute \f(CW\*(C`externally_visible\*(C'\fR become static functions
-and in effect are optimized more aggressively by interprocedural optimizers. If \fBgold\fR is used as the linker plugin, \f(CW\*(C`externally_visible\*(C'\fR attributes are automatically added to functions (not variable yet due to a current \fBgold\fR issue) that are accessed outside of \s-1LTO\s0 objects according to resolution file produced by \fBgold\fR.  For other linkers that cannot generate resolution file, explicit \f(CW\*(C`externally_visible\*(C'\fR attributes are still necessary.
-While this option is equivalent to proper use of the \f(CW\*(C`static\*(C'\fR keyword for
-programs consisting of a single file, in combination with option
-\&\fB\-flto\fR this flag can be used to
-compile many smaller scale programs since the functions and variables become
-local for the whole combined compilation unit, not for the single source file
-itself.
+and in effect are optimized more aggressively by interprocedural optimizers.
 .Sp
-This option implies \fB\-fwhole\-file\fR for Fortran programs.
+In combination with \f(CW\*(C`\-flto\*(C'\fR using this option should not be used.
+Instead relying on a linker plugin should provide safer and more precise
+information.
 .IP "\fB\-flto[=\fR\fIn\fR\fB]\fR" 4
 .IX Item "-flto[=n]"
 This option runs the standard link-time optimizer.  When invoked
