@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "4.8.0 20130310 (experimental)")
+(!version  "4.8.0 20130311 (experimental)")
 
 (!srcdir  "/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc")
 
@@ -21277,7 +21277,7 @@ nil 0 nil )
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 992 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:25856"nil 
+(!type struct 992 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:25866"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -21285,7 +21285,7 @@ nil 0 nil )
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 994 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:19405"nil 
+(!type struct 994 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:19415"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -26461,27 +26461,27 @@ nil )
 (!pair  "arm_mangle_map_entry"
 (!type already_seen 992)
 
-(!srcfileloc  "config/arm/arm.c" 25860)
+(!srcfileloc  "config/arm/arm.c" 25870)
 nil )
 (!pair  "builtin_arg"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 21141)
+(!srcfileloc  "config/arm/arm.c" 21151)
 nil )
 (!pair  "neon_builtin_datum"
 (!type already_seen 994)
 
-(!srcfileloc  "config/arm/arm.c" 19411)
+(!srcfileloc  "config/arm/arm.c" 19421)
 nil )
 (!pair  "neon_itype"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 19403)
+(!srcfileloc  "config/arm/arm.c" 19413)
 nil )
 (!pair  "neon_builtin_type_mode"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 19337)
+(!srcfileloc  "config/arm/arm.c" 19347)
 nil )
 (!pair  "arm_pragma_enum"
 (!type already_seen 9)
@@ -30386,7 +30386,7 @@ nil )
 (!type already_seen 5)
 )
 
-(!srcfileloc  "config/arm/arm.c" 19915)
+(!srcfileloc  "config/arm/arm.c" 19925)
 nil )
 (!pair  "tls_get_addr_libfunc"
 (!type already_seen 136)
