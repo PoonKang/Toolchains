@@ -20,6 +20,7 @@
 # include "config/arm/bpabi.h"
 # include "config/newlib-stdint.h"
 # include "config/arm/aout.h"
+# include "config/vxworks-dummy.h"
 # include "config/arm/arm.h"
 # include "config/initfini-array.h"
 #endif

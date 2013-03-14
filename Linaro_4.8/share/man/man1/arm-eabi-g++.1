@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-03-11" "gcc-4.8.0" "GNU"
+.TH GCC 1 "2013-03-13" "gcc-4.8.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -526,7 +526,7 @@ in the following sections.
 \&\fI\s-1AVR\s0 Options\fR
 \&\fB\-mmcu=\fR\fImcu\fR \fB\-maccumulate\-args \-mbranch\-cost=\fR\fIcost\fR 
 \&\fB\-mcall\-prologues \-mint8 \-mno\-interrupts \-mrelax 
-\&\-mstrict\-X \-mtiny\-stack\fR
+\&\-mstrict\-X \-mtiny\-stack \-Waddr\-space\-convert\fR
 .Sp
 \&\fIBlackfin Options\fR
 \&\fB\-mcpu=\fR\fIcpu\fR[\fB\-\fR\fIsirevision\fR] 
@@ -10929,6 +10929,10 @@ performed as
 .IP "\fB\-mtiny\-stack\fR" 4
 .IX Item "-mtiny-stack"
 Only change the lower 8@tie{}bits of the stack pointer.
+.IP "\fB\-Waddr\-space\-convert\fR" 4
+.IX Item "-Waddr-space-convert"
+Warn about conversions between address spaces in the case where the
+resulting address space is not contained in the incoming address space.
 .PP
 \f(CW\*(C`EIND\*(C'\fR and Devices with more than 128 Ki Bytes of Flash
 .IX Subsection "EIND and Devices with more than 128 Ki Bytes of Flash"
