@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-03-13" "gcc-4.8.0" "GNU"
+.TH GCC 1 "2013-03-24" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -255,7 +255,8 @@ in the following sections.
 .IX Item "Warning Options"
 \&\fB\-fsyntax\-only  \-fmax\-errors=\fR\fIn\fR  \fB\-Wpedantic 
 \&\-pedantic\-errors 
-\&\-w  \-Wextra  \-Wall  \-Waddress  \-Waggregate\-return  \-Warray\-bounds 
+\&\-w  \-Wextra  \-Wall  \-Waddress  \-Waggregate\-return  
+\&\-Waggressive\-loop\-optimizations \-Warray\-bounds 
 \&\-Wno\-attributes \-Wno\-builtin\-macro\-redefined 
 \&\-Wc++\-compat \-Wc++11\-compat \-Wcast\-align  \-Wcast\-qual  
 \&\-Wchar\-subscripts \-Wclobbered  \-Wcomment 
@@ -521,7 +522,8 @@ in the following sections.
 \&\-mtp=\fR\fIname\fR \fB\-mtls\-dialect=\fR\fIdialect\fR 
 \&\fB\-mword\-relocations 
 \&\-mfix\-cortex\-m3\-ldrd 
-\&\-munaligned\-access\fR
+\&\-munaligned\-access 
+\&\-mneon\-for\-64bits\fR
 .Sp
 \&\fI\s-1AVR\s0 Options\fR
 \&\fB\-mmcu=\fR\fImcu\fR \fB\-maccumulate\-args \-mbranch\-cost=\fR\fIcost\fR 
@@ -752,6 +754,7 @@ in the following sections.
 \&\fB\-mips1  \-mips2  \-mips3  \-mips4  \-mips32  \-mips32r2 
 \&\-mips64  \-mips64r2 
 \&\-mips16  \-mno\-mips16  \-mflip\-mips16 
+\&\-minterlink\-compressed \-mno\-interlink\-compressed 
 \&\-minterlink\-mips16  \-mno\-interlink\-mips16 
 \&\-mabi=\fR\fIabi\fR  \fB\-mabicalls  \-mno\-abicalls 
 \&\-mshared  \-mno\-shared  \-mplt  \-mno\-plt  \-mxgot  \-mno\-xgot 
@@ -759,6 +762,7 @@ in the following sections.
 \&\-mno\-float \-msingle\-float  \-mdouble\-float  
 \&\-mdsp  \-mno\-dsp  \-mdspr2  \-mno\-dspr2 
 \&\-mmcu \-mmno\-mcu 
+\&\-mmicromips \-mno\-micromips 
 \&\-mfpu=\fR\fIfpu-type\fR 
 \&\fB\-msmartmips  \-mno\-smartmips 
 \&\-mpaired\-single  \-mno\-paired\-single  \-mdmx  \-mno\-mdmx 
@@ -4026,6 +4030,10 @@ bit-wise operator is likely to be expected.
 Warn if any functions that return structures or unions are defined or
 called.  (In languages where you can return an array, this also elicits
 a warning.)
+.IP "\fB\-Wno\-aggressive\-loop\-optimizations\fR" 4
+.IX Item "-Wno-aggressive-loop-optimizations"
+Warn if in a loop with constant number of iterations the compiler detects
+undefined behavior in some statement during one or more of the iterations.
 .IP "\fB\-Wno\-attributes\fR" 4
 .IX Item "-Wno-attributes"
 Do not warn if an unexpected \f(CW\*(C`_\|_attribute_\|_\*(C'\fR is used, such as
@@ -10754,6 +10762,11 @@ generated object file to either true or false, depending upon the
 setting of this option.  If unaligned access is enabled then the
 preprocessor symbol \f(CW\*(C`_\|_ARM_FEATURE_UNALIGNED\*(C'\fR will also be
 defined.
+.IP "\fB\-mneon\-for\-64bits\fR" 4
+.IX Item "-mneon-for-64bits"
+Enables using Neon to handle scalar 64\-bits operations. This is
+disabled by default since the cost of moving data from core registers
+to Neon is high.
 .PP
 \fI\s-1AVR\s0 Options\fR
 .IX Subsection "AVR Options"
@@ -14976,6 +14989,7 @@ The processor names are:
 \&\fB1004kc\fR, \fB1004kf2_1\fR, \fB1004kf1_1\fR,
 \&\fBloongson2e\fR, \fBloongson2f\fR, \fBloongson3a\fR,
 \&\fBm4k\fR,
+\&\fBm14k\fR, \fBm14ke\fR, \fBm14kec\fR,
 \&\fBocteon\fR, \fBocteon+\fR, \fBocteon2\fR,
 \&\fBorion\fR,
 \&\fBr2000\fR, \fBr3000\fR, \fBr3900\fR, \fBr4000\fR, \fBr4400\fR,
@@ -15078,19 +15092,28 @@ by means of \f(CW\*(C`mips16\*(C'\fR and \f(CW\*(C`nomips16\*(C'\fR attributes.
 Generate \s-1MIPS16\s0 code on alternating functions.  This option is provided
 for regression testing of mixed MIPS16/non\-MIPS16 code generation, and is
 not intended for ordinary use in compiling user code.
+.IP "\fB\-minterlink\-compressed\fR" 4
+.IX Item "-minterlink-compressed"
+.PD 0
+.IP "\fB\-mno\-interlink\-compressed\fR" 4
+.IX Item "-mno-interlink-compressed"
+.PD
+Require (do not require) that code using the standard (uncompressed) \s-1MIPS\s0 \s-1ISA\s0
+be link-compatible with \s-1MIPS16\s0 and microMIPS code, and vice versa.
+.Sp
+For example, code using the standard \s-1ISA\s0 encoding cannot jump directly
+to \s-1MIPS16\s0 or microMIPS code; it must either use a call or an indirect jump.
+\&\fB\-minterlink\-compressed\fR therefore disables direct jumps unless \s-1GCC\s0
+knows that the target of the jump is not compressed.
 .IP "\fB\-minterlink\-mips16\fR" 4
 .IX Item "-minterlink-mips16"
 .PD 0
 .IP "\fB\-mno\-interlink\-mips16\fR" 4
 .IX Item "-mno-interlink-mips16"
 .PD
-Require (do not require) that non\-MIPS16 code be link-compatible with
-\&\s-1MIPS16\s0 code.
-.Sp
-For example, non\-MIPS16 code cannot jump directly to \s-1MIPS16\s0 code;
-it must either use a call or an indirect jump.  \fB\-minterlink\-mips16\fR
-therefore disables direct jumps unless \s-1GCC\s0 knows that the target of the
-jump is not \s-1MIPS16\s0.
+Aliases of \fB\-minterlink\-compressed\fR and
+\&\fB\-mno\-interlink\-compressed\fR.  These options predate the microMIPS \s-1ASE\s0
+and are retained for backwards compatiblity.
 .IP "\fB\-mabi=32\fR" 4
 .IX Item "-mabi=32"
 .PD 0
@@ -15308,6 +15331,16 @@ hardware floating-point support to be enabled.
 .PD
 Use (do not use) the \s-1MIPS\-3D\s0 \s-1ASE\s0.  
 The option \fB\-mips3d\fR implies \fB\-mpaired\-single\fR.
+.IP "\fB\-mmicromips\fR" 4
+.IX Item "-mmicromips"
+.PD 0
+.IP "\fB\-mno\-micromips\fR" 4
+.IX Item "-mno-micromips"
+.PD
+Generate (do not generate) microMIPS code.
+.Sp
+MicroMIPS code generation can also be controlled on a per-function basis
+by means of \f(CW\*(C`micromips\*(C'\fR and \f(CW\*(C`nomicromips\*(C'\fR attributes.
 .IP "\fB\-mmt\fR" 4
 .IX Item "-mmt"
 .PD 0
