@@ -1254,6 +1254,12 @@
 #define HAVE_neon_vabdv2sf_3 (TARGET_NEON && (!true || flag_unsafe_math_optimizations))
 #define HAVE_neon_vabdv4sf_3 (TARGET_NEON && (!true || flag_unsafe_math_optimizations))
 #define HAVE_neon_vabdv2di_3 (TARGET_NEON && (!false || flag_unsafe_math_optimizations))
+#define HAVE_atomic_loadqi (TARGET_HAVE_LDACQ)
+#define HAVE_atomic_loadhi (TARGET_HAVE_LDACQ)
+#define HAVE_atomic_loadsi (TARGET_HAVE_LDACQ)
+#define HAVE_atomic_storeqi (TARGET_HAVE_LDACQ)
+#define HAVE_atomic_storehi (TARGET_HAVE_LDACQ)
+#define HAVE_atomic_storesi (TARGET_HAVE_LDACQ)
 #define HAVE_atomic_loaddi_1 (TARGET_HAVE_LDREXD && ARM_DOUBLEWORD_ALIGN)
 #define HAVE_atomic_compare_and_swapqi_1 (TARGET_HAVE_LDREXBH && TARGET_HAVE_MEMORY_BARRIER)
 #define HAVE_atomic_compare_and_swaphi_1 (TARGET_HAVE_LDREXBH && TARGET_HAVE_MEMORY_BARRIER)
@@ -1357,13 +1363,21 @@
 	&& TARGET_HAVE_MEMORY_BARRIER)
 #define HAVE_arm_load_exclusiveqi (TARGET_HAVE_LDREXBH)
 #define HAVE_arm_load_exclusivehi (TARGET_HAVE_LDREXBH)
+#define HAVE_arm_load_acquire_exclusiveqi (TARGET_HAVE_LDACQ)
+#define HAVE_arm_load_acquire_exclusivehi (TARGET_HAVE_LDACQ)
 #define HAVE_arm_load_exclusivesi (TARGET_HAVE_LDREX)
+#define HAVE_arm_load_acquire_exclusivesi (TARGET_HAVE_LDACQ)
 #define HAVE_arm_load_exclusivedi (TARGET_HAVE_LDREXD)
+#define HAVE_arm_load_acquire_exclusivedi (TARGET_HAVE_LDACQ && ARM_DOUBLEWORD_ALIGN)
 #define HAVE_arm_store_exclusiveqi (TARGET_HAVE_LDREXBH && TARGET_HAVE_MEMORY_BARRIER)
 #define HAVE_arm_store_exclusivehi (TARGET_HAVE_LDREXBH && TARGET_HAVE_MEMORY_BARRIER)
 #define HAVE_arm_store_exclusivesi (TARGET_HAVE_LDREX && TARGET_HAVE_MEMORY_BARRIER)
 #define HAVE_arm_store_exclusivedi (TARGET_HAVE_LDREXD && ARM_DOUBLEWORD_ALIGN \
 	&& TARGET_HAVE_MEMORY_BARRIER)
+#define HAVE_arm_store_release_exclusivedi (TARGET_HAVE_LDACQ && ARM_DOUBLEWORD_ALIGN)
+#define HAVE_arm_store_release_exclusiveqi (TARGET_HAVE_LDACQ)
+#define HAVE_arm_store_release_exclusivehi (TARGET_HAVE_LDACQ)
+#define HAVE_arm_store_release_exclusivesi (TARGET_HAVE_LDACQ)
 #define HAVE_addqq3 (TARGET_32BIT)
 #define HAVE_addhq3 (TARGET_32BIT)
 #define HAVE_addsq3 (TARGET_32BIT)
@@ -3647,6 +3661,12 @@ extern rtx        gen_neon_vabdv4si_3                   (rtx, rtx, rtx);
 extern rtx        gen_neon_vabdv2sf_3                   (rtx, rtx, rtx);
 extern rtx        gen_neon_vabdv4sf_3                   (rtx, rtx, rtx);
 extern rtx        gen_neon_vabdv2di_3                   (rtx, rtx, rtx);
+extern rtx        gen_atomic_loadqi                     (rtx, rtx, rtx);
+extern rtx        gen_atomic_loadhi                     (rtx, rtx, rtx);
+extern rtx        gen_atomic_loadsi                     (rtx, rtx, rtx);
+extern rtx        gen_atomic_storeqi                    (rtx, rtx, rtx);
+extern rtx        gen_atomic_storehi                    (rtx, rtx, rtx);
+extern rtx        gen_atomic_storesi                    (rtx, rtx, rtx);
 extern rtx        gen_atomic_loaddi_1                   (rtx, rtx);
 extern rtx        gen_atomic_compare_and_swapqi_1       (rtx, rtx, rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_atomic_compare_and_swaphi_1       (rtx, rtx, rtx, rtx, rtx, rtx, rtx);
@@ -3730,12 +3750,20 @@ extern rtx        gen_atomic_nand_fetchsi               (rtx, rtx, rtx, rtx);
 extern rtx        gen_atomic_nand_fetchdi               (rtx, rtx, rtx, rtx);
 extern rtx        gen_arm_load_exclusiveqi              (rtx, rtx);
 extern rtx        gen_arm_load_exclusivehi              (rtx, rtx);
+extern rtx        gen_arm_load_acquire_exclusiveqi      (rtx, rtx);
+extern rtx        gen_arm_load_acquire_exclusivehi      (rtx, rtx);
 extern rtx        gen_arm_load_exclusivesi              (rtx, rtx);
+extern rtx        gen_arm_load_acquire_exclusivesi      (rtx, rtx);
 extern rtx        gen_arm_load_exclusivedi              (rtx, rtx);
+extern rtx        gen_arm_load_acquire_exclusivedi      (rtx, rtx);
 extern rtx        gen_arm_store_exclusiveqi             (rtx, rtx, rtx);
 extern rtx        gen_arm_store_exclusivehi             (rtx, rtx, rtx);
 extern rtx        gen_arm_store_exclusivesi             (rtx, rtx, rtx);
 extern rtx        gen_arm_store_exclusivedi             (rtx, rtx, rtx);
+extern rtx        gen_arm_store_release_exclusivedi     (rtx, rtx, rtx);
+extern rtx        gen_arm_store_release_exclusiveqi     (rtx, rtx, rtx);
+extern rtx        gen_arm_store_release_exclusivehi     (rtx, rtx, rtx);
+extern rtx        gen_arm_store_release_exclusivesi     (rtx, rtx, rtx);
 extern rtx        gen_addqq3                            (rtx, rtx, rtx);
 extern rtx        gen_addhq3                            (rtx, rtx, rtx);
 extern rtx        gen_addsq3                            (rtx, rtx, rtx);

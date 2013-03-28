@@ -8,17 +8,17 @@
 #define DOM_CC_NX_OR_Y 1
 #define DOM_CC_X_OR_Y 2
 #define CC_REGNUM 100
-#define WCGR3 46
+#define WCGR3 99
 #define SP_REGNUM 13
 #define R1_REGNUM 1
 #define PC_REGNUM 15
-#define WCGR0 43
+#define WCGR0 96
 #define VFPCC_REGNUM 101
 #define CMP_CMN 2
 #define NUM_OF_COND_CMP 4
-#define WCGR2 45
+#define WCGR2 98
 #define R0_REGNUM 0
-#define WCGR1 44
+#define WCGR1 97
 #define CMN_CMP 1
 #define LR_REGNUM 14
 #define DOM_CC_X_AND_Y 0
@@ -233,9 +233,13 @@ enum unspecv {
   VUNSPEC_ATOMIC_XCHG = 18,
   VUNSPEC_ATOMIC_OP = 19,
   VUNSPEC_LL = 20,
-  VUNSPEC_SC = 21
+  VUNSPEC_SC = 21,
+  VUNSPEC_LAX = 22,
+  VUNSPEC_SLX = 23,
+  VUNSPEC_LDA = 24,
+  VUNSPEC_STL = 25
 };
-#define NUM_UNSPECV_VALUES 22
+#define NUM_UNSPECV_VALUES 26
 extern const char *const unspecv_strings[];
 
 #endif /* GCC_INSN_CONSTANTS_H */

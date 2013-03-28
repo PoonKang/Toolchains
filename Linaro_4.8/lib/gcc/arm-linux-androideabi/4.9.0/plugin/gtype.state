@@ -4,13 +4,13 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "4.9.0 20130324 (experimental)")
+(!version  "4.9.0 20130327 (experimental)")
 
 (!srcdir  "/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc")
 
 (!languages 9 ada c cp fortran go java lto objc objcp)
 
-(!fileslist 189
+(!fileslist 188
 (!srcfile 511  "../libcpp/include/line-map.h")
 (!srcfile 511  "../libcpp/include/cpplib.h")
 (!srcfile 511  "../libcpp/include/cpp-id-data.h")
@@ -31,7 +31,6 @@
 (!srcfile 511  "config/arm/bpabi.h")
 (!srcfile 511  "config/arm/linux-eabi.h")
 (!srcfile 511  "config/arm/aout.h")
-(!srcfile 511  "config/vxworks-dummy.h")
 (!srcfile 511  "config/arm/arm.h")
 (!srcfile 511  "config/initfini-array.h")
 (!srcfile 511  "defaults.h")
@@ -10987,124 +10986,124 @@ nil )
 (!type struct 439 
 (!type already_seen 438)
  gc_maybe_pointed_to "machine_function"
-(!srcfileloc  "config/arm/arm.h" 1498)
+(!srcfileloc  "config/arm/arm.h" 1503)
 
 (!fields 15 
 (!pair  "eh_epilogue_sp_ofs"
 (!type already_seen 136)
 
-(!srcfileloc  "config/arm/arm.h" 1466)
+(!srcfileloc  "config/arm/arm.h" 1471)
 nil )
 (!pair  "far_jump_used"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1468)
+(!srcfileloc  "config/arm/arm.h" 1473)
 nil )
 (!pair  "arg_pointer_live"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1470)
+(!srcfileloc  "config/arm/arm.h" 1475)
 nil )
 (!pair  "lr_save_eliminated"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1472)
+(!srcfileloc  "config/arm/arm.h" 1477)
 nil )
 (!pair  "stack_offsets"
 (!type struct 440 nil  gc_used "arm_stack_offsets"
-(!srcfileloc  "config/arm/arm.h" 1457)
+(!srcfileloc  "config/arm/arm.h" 1462)
 
 (!fields 7 
 (!pair  "saved_args"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1450)
+(!srcfileloc  "config/arm/arm.h" 1455)
 nil )
 (!pair  "frame"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1451)
+(!srcfileloc  "config/arm/arm.h" 1456)
 nil )
 (!pair  "saved_regs"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1452)
+(!srcfileloc  "config/arm/arm.h" 1457)
 nil )
 (!pair  "soft_frame"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1453)
+(!srcfileloc  "config/arm/arm.h" 1458)
 nil )
 (!pair  "locals_base"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1454)
+(!srcfileloc  "config/arm/arm.h" 1459)
 nil )
 (!pair  "outgoing_args"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1455)
+(!srcfileloc  "config/arm/arm.h" 1460)
 nil )
 (!pair  "saved_regs_mask"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1456)
+(!srcfileloc  "config/arm/arm.h" 1461)
 nil ))
 nil 511 nil )
 
-(!srcfileloc  "config/arm/arm.h" 1474)
+(!srcfileloc  "config/arm/arm.h" 1479)
 nil )
 (!pair  "func_type"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1476)
+(!srcfileloc  "config/arm/arm.h" 1481)
 nil )
 (!pair  "uses_anonymous_args"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1478)
+(!srcfileloc  "config/arm/arm.h" 1483)
 nil )
 (!pair  "sibcall_blocked"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1481)
+(!srcfileloc  "config/arm/arm.h" 1486)
 nil )
 (!pair  "pic_reg"
 (!type already_seen 136)
 
-(!srcfileloc  "config/arm/arm.h" 1483)
+(!srcfileloc  "config/arm/arm.h" 1488)
 nil )
 (!pair  "call_via"
 (!type array 441 nil  gc_used "14" 
 (!type already_seen 136)
 )
 
-(!srcfileloc  "config/arm/arm.h" 1487)
+(!srcfileloc  "config/arm/arm.h" 1492)
 nil )
 (!pair  "return_used_this_function"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1490)
+(!srcfileloc  "config/arm/arm.h" 1495)
 nil )
 (!pair  "thumb1_cc_insn"
 (!type already_seen 136)
 
-(!srcfileloc  "config/arm/arm.h" 1493)
+(!srcfileloc  "config/arm/arm.h" 1498)
 nil )
 (!pair  "thumb1_cc_op0"
 (!type already_seen 136)
 
-(!srcfileloc  "config/arm/arm.h" 1494)
+(!srcfileloc  "config/arm/arm.h" 1499)
 nil )
 (!pair  "thumb1_cc_op1"
 (!type already_seen 136)
 
-(!srcfileloc  "config/arm/arm.h" 1495)
+(!srcfileloc  "config/arm/arm.h" 1500)
 nil )
 (!pair  "thumb1_cc_mode"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.h" 1497)
+(!srcfileloc  "config/arm/arm.h" 1502)
 nil ))
 nil 511 nil )
 )
@@ -17878,7 +17877,7 @@ nil 0 nil )
 (!type already_seen 708)
 )
  gc_pointed_to "constexpr_call"
-(!srcfileloc  "cp/semantics.c" 6412)
+(!srcfileloc  "cp/semantics.c" 6411)
 
 (!fields 4 
 (!pair  "fundef"
@@ -17886,38 +17885,38 @@ nil 0 nil )
 (!type struct 711 
 (!type already_seen 710)
  gc_pointed_to "constexpr_fundef"
-(!srcfileloc  "cp/semantics.c" 5745)
+(!srcfileloc  "cp/semantics.c" 5744)
 
 (!fields 2 
 (!pair  "decl"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/semantics.c" 5743)
+(!srcfileloc  "cp/semantics.c" 5742)
 nil )
 (!pair  "body"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/semantics.c" 5744)
+(!srcfileloc  "cp/semantics.c" 5743)
 nil ))
 nil 260 nil )
 )
 
-(!srcfileloc  "cp/semantics.c" 6396)
+(!srcfileloc  "cp/semantics.c" 6395)
 nil )
 (!pair  "bindings"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/semantics.c" 6403)
+(!srcfileloc  "cp/semantics.c" 6402)
 nil )
 (!pair  "result"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/semantics.c" 6408)
+(!srcfileloc  "cp/semantics.c" 6407)
 nil )
 (!pair  "hash"
 (!type already_seen 9)
 
-(!srcfileloc  "cp/semantics.c" 6411)
+(!srcfileloc  "cp/semantics.c" 6410)
 nil ))
 nil 260 nil )
 
@@ -21288,7 +21287,7 @@ nil 0 nil )
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 992 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:25888"nil 
+(!type struct 992 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:25899"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -21296,7 +21295,7 @@ nil 0 nil )
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 994 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:19437"nil 
+(!type struct 994 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:19448"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -24817,7 +24816,7 @@ nil 0 nil )
 
 (!type already_seen 1209)
 
-(!type struct 1314 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.h:1529"nil 
+(!type struct 1314 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.h:1534"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -25662,12 +25661,12 @@ nil )
 (!pair  "constexpr_call"
 (!type already_seen 708)
 
-(!srcfileloc  "cp/semantics.c" 6412)
+(!srcfileloc  "cp/semantics.c" 6411)
 nil )
 (!pair  "constexpr_fundef"
 (!type already_seen 711)
 
-(!srcfileloc  "cp/semantics.c" 5745)
+(!srcfileloc  "cp/semantics.c" 5744)
 nil )
 (!pair  "vec<deferred_access,va_gc>"
 (!type already_seen 712)
@@ -25702,17 +25701,17 @@ nil )
 (!pair  "reshape_iter"
 (!type already_seen 726)
 
-(!srcfileloc  "cp/decl.c" 5022)
+(!srcfileloc  "cp/decl.c" 5030)
 nil )
 (!pair  "predefined_identifier"
 (!type already_seen 727)
 
-(!srcfileloc  "cp/decl.c" 3582)
+(!srcfileloc  "cp/decl.c" 3581)
 nil )
 (!pair  "typename_info"
 (!type already_seen 728)
 
-(!srcfileloc  "cp/decl.c" 3162)
+(!srcfileloc  "cp/decl.c" 3161)
 nil )
 (!pair  "vec<incomplete_var,va_gc>"
 (!type already_seen 730)
@@ -26477,27 +26476,27 @@ nil )
 (!pair  "arm_mangle_map_entry"
 (!type already_seen 992)
 
-(!srcfileloc  "config/arm/arm.c" 25892)
+(!srcfileloc  "config/arm/arm.c" 25903)
 nil )
 (!pair  "builtin_arg"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 21173)
+(!srcfileloc  "config/arm/arm.c" 21184)
 nil )
 (!pair  "neon_builtin_datum"
 (!type already_seen 994)
 
-(!srcfileloc  "config/arm/arm.c" 19443)
+(!srcfileloc  "config/arm/arm.c" 19454)
 nil )
 (!pair  "neon_itype"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 19435)
+(!srcfileloc  "config/arm/arm.c" 19446)
 nil )
 (!pair  "neon_builtin_type_mode"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 19369)
+(!srcfileloc  "config/arm/arm.c" 19380)
 nil )
 (!pair  "arm_pragma_enum"
 (!type already_seen 9)
@@ -26682,7 +26681,7 @@ nil )
 (!pair  "tm_alias_pair"
 (!type already_seen 1055)
 
-(!srcfileloc  "varasm.c" 5660)
+(!srcfileloc  "varasm.c" 5661)
 nil )
 (!pair  "oc_local_state"
 (!type already_seen 1056)
@@ -27654,12 +27653,12 @@ nil )
 (!pair  "machine_function"
 (!type already_seen 439)
 
-(!srcfileloc  "config/arm/arm.h" 1499)
+(!srcfileloc  "config/arm/arm.h" 1504)
 nil )
 (!pair  "arm_stack_offsets"
 (!type already_seen 440)
 
-(!srcfileloc  "config/arm/arm.h" 1458)
+(!srcfileloc  "config/arm/arm.h" 1463)
 nil )
 (!pair  "arm_cc"
 (!type already_seen 9)
@@ -29614,7 +29613,7 @@ nil )
 (!pair  "constexpr_call_table"
 (!type already_seen 1361)
 
-(!srcfileloc  "cp/semantics.c" 6417)
+(!srcfileloc  "cp/semantics.c" 6416)
 
 (!options 
 (!option param_is type 
@@ -29625,7 +29624,7 @@ nil )
 (!pair  "constexpr_fundef_table"
 (!type already_seen 1363)
 
-(!srcfileloc  "cp/semantics.c" 5750)
+(!srcfileloc  "cp/semantics.c" 5749)
 
 (!options 
 (!option param_is type 
@@ -29651,7 +29650,7 @@ nil )
 (!pair  "last_error_tinst_level"
 (!type already_seen 722)
 
-(!srcfileloc  "cp/pt.c" 7932)
+(!srcfileloc  "cp/pt.c" 7931)
 nil )
 (!pair  "canonical_template_parms"
 (!type already_seen 45)
@@ -29708,22 +29707,22 @@ nil )
 (!pair  "ssdf_decls"
 (!type already_seen 45)
 
-(!srcfileloc  "cp/decl2.c" 3102)
+(!srcfileloc  "cp/decl2.c" 3098)
 nil )
 (!pair  "ssdf_decl"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/decl2.c" 3098)
+(!srcfileloc  "cp/decl2.c" 3094)
 nil )
 (!pair  "priority_decl"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/decl2.c" 3095)
+(!srcfileloc  "cp/decl2.c" 3091)
 nil )
 (!pair  "initialize_p_decl"
 (!type already_seen 5)
 
-(!srcfileloc  "cp/decl2.c" 3092)
+(!srcfileloc  "cp/decl2.c" 3088)
 nil )
 (!pair  "no_linkage_decls"
 (!type already_seen 45)
@@ -29743,12 +29742,12 @@ nil )
 (!pair  "start_cleanup_cnt"
 (!type already_seen 9)
 
-(!srcfileloc  "cp/decl.c" 6673)
+(!srcfileloc  "cp/decl.c" 6681)
 nil )
 (!pair  "typename_htab"
 (!type already_seen 53)
 
-(!srcfileloc  "cp/decl.c" 3185)
+(!srcfileloc  "cp/decl.c" 3184)
 
 (!options 
 (!option param_is type 
@@ -30402,7 +30401,7 @@ nil )
 (!type already_seen 5)
 )
 
-(!srcfileloc  "config/arm/arm.c" 19947)
+(!srcfileloc  "config/arm/arm.c" 19958)
 nil )
 (!pair  "tls_get_addr_libfunc"
 (!type already_seen 136)
@@ -30422,12 +30421,12 @@ nil )
 (!pair  "stack_chk_fail_decl"
 (!type already_seen 5)
 
-(!srcfileloc  "targhooks.c" 663)
+(!srcfileloc  "targhooks.c" 671)
 nil )
 (!pair  "stack_chk_guard_decl"
 (!type already_seen 5)
 
-(!srcfileloc  "targhooks.c" 630)
+(!srcfileloc  "targhooks.c" 638)
 nil )
 (!pair  "critical_name_mutexes"
 (!type already_seen 1369)
@@ -30664,17 +30663,17 @@ nil )
 (!pair  "elf_fini_array_section"
 (!type already_seen 245)
 
-(!srcfileloc  "varasm.c" 7428)
+(!srcfileloc  "varasm.c" 7429)
 nil )
 (!pair  "elf_init_array_section"
 (!type already_seen 245)
 
-(!srcfileloc  "varasm.c" 7427)
+(!srcfileloc  "varasm.c" 7428)
 nil )
 (!pair  "tm_clone_hash"
 (!type already_seen 1375)
 
-(!srcfileloc  "varasm.c" 5618)
+(!srcfileloc  "varasm.c" 5619)
 
 (!options 
 (!option param_is type 
@@ -31079,7 +31078,7 @@ nil )
 )
 )
 
-(!srcfileloc  "emit-rtl.c" 5971)
+(!srcfileloc  "emit-rtl.c" 5907)
 
 (!options 
 (!option deletable string  "")
@@ -31088,7 +31087,7 @@ nil )
 (!pair  "free_sequence_stack"
 (!type already_seen 1247)
 
-(!srcfileloc  "emit-rtl.c" 5117)
+(!srcfileloc  "emit-rtl.c" 5053)
 
 (!options 
 (!option deletable string  "")
@@ -31097,7 +31096,7 @@ nil )
 (!pair  "spill_slot_decl"
 (!type already_seen 5)
 
-(!srcfileloc  "emit-rtl.c" 2379)
+(!srcfileloc  "emit-rtl.c" 2315)
 nil )
 (!pair  "const_fixed_htab"
 (!type already_seen 1397)
@@ -32061,7 +32060,7 @@ nil )
 (!type already_seen 136)
 )
 
-(!srcfileloc  "config/arm/arm.h" 1504)
+(!srcfileloc  "config/arm/arm.h" 1509)
 nil )
 (!pair  "arm_target_insn"
 (!type already_seen 136)

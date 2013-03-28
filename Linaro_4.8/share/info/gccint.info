@@ -37574,6 +37574,11 @@ Here are several miscellaneous parameters.
      This value should be set if the result written by
      `atomic_test_and_set' is not exactly 1, i.e. the `bool' `true'.
 
+ -- Target Hook: bool TARGET_HAS_IFUNC_P (void)
+     It returns true if the target supports GNU indirect functions.
+     The support includes the assembler, linker and dynamic linker.
+     The default value of this hook is based on target's libc.
+
 
 File: gccint.info,  Node: Host Config,  Next: Fragments,  Prev: Target Macros,  Up: Top
 
@@ -48768,6 +48773,7 @@ Concept Index
 * TARGET_HANDLE_OPTION:                  Run-time Target.    (line   62)
 * TARGET_HARD_REGNO_SCRATCH_OK:          Values in Registers.
                                                              (line  144)
+* TARGET_HAS_IFUNC_P:                    Misc.               (line 1022)
 * TARGET_HAS_SINCOS:                     Library Calls.      (line   79)
 * TARGET_HAVE_CONDITIONAL_EXECUTION:     Misc.               (line  811)
 * TARGET_HAVE_CTORS_DTORS:               Macros for Initialization.
@@ -49760,45 +49766,45 @@ Node: C++ ABI1582908
 Node: Named Address Spaces1587700
 Node: Misc1592639
 Ref: TARGET_SHIFT_TRUNCATION_MASK1599381
-Node: Host Config1644547
-Node: Host Common1645615
-Node: Filesystem1647994
-Node: Host Misc1652109
-Node: Fragments1654558
-Node: Target Fragment1655753
-Node: Host Fragment1666386
-Node: Collect21666626
-Node: Header Dirs1669262
-Node: Type Information1670685
-Node: GTY Options1673908
-Node: User GC1688229
-Node: GGC Roots1691956
-Node: Files1692672
-Node: Invoking the garbage collector1695379
-Node: Troubleshooting1696882
-Node: Plugins1697958
-Node: Plugins loading1699076
-Node: Plugin API1699945
-Node: Plugins pass1706974
-Node: Plugins GC1708943
-Node: Plugins description1710603
-Node: Plugins attr1711138
-Node: Plugins recording1713023
-Node: Plugins gate1713873
-Node: Plugins tracking1714464
-Node: Plugins building1715052
-Node: LTO1716838
-Node: LTO Overview1717699
-Node: LTO object file layout1723531
-Node: IPA1728163
-Node: WHOPR1737128
-Node: Internal flags1741819
-Node: Funding1743031
-Node: GNU Project1745514
-Node: Copying1746163
-Node: GNU Free Documentation License1783694
-Node: Contributors1808834
-Node: Option Index1846239
-Node: Concept Index1847043
+Node: Host Config1644795
+Node: Host Common1645863
+Node: Filesystem1648242
+Node: Host Misc1652357
+Node: Fragments1654806
+Node: Target Fragment1656001
+Node: Host Fragment1666634
+Node: Collect21666874
+Node: Header Dirs1669510
+Node: Type Information1670933
+Node: GTY Options1674156
+Node: User GC1688477
+Node: GGC Roots1692204
+Node: Files1692920
+Node: Invoking the garbage collector1695627
+Node: Troubleshooting1697130
+Node: Plugins1698206
+Node: Plugins loading1699324
+Node: Plugin API1700193
+Node: Plugins pass1707222
+Node: Plugins GC1709191
+Node: Plugins description1710851
+Node: Plugins attr1711386
+Node: Plugins recording1713271
+Node: Plugins gate1714121
+Node: Plugins tracking1714712
+Node: Plugins building1715300
+Node: LTO1717086
+Node: LTO Overview1717947
+Node: LTO object file layout1723779
+Node: IPA1728411
+Node: WHOPR1737376
+Node: Internal flags1742067
+Node: Funding1743279
+Node: GNU Project1745762
+Node: Copying1746411
+Node: GNU Free Documentation License1783942
+Node: Contributors1809082
+Node: Option Index1846487
+Node: Concept Index1847291
 
 End Tag Table

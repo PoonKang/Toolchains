@@ -31,7 +31,6 @@
 # include "config/arm/bpabi.h"
 # include "config/arm/linux-eabi.h"
 # include "config/arm/aout.h"
-# include "config/vxworks-dummy.h"
 # include "config/arm/arm.h"
 # include "config/initfini-array.h"
 #endif

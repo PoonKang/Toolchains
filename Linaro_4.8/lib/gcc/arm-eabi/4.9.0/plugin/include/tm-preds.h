@@ -63,6 +63,7 @@ extern int equality_operator (rtx, enum machine_mode);
 extern int expandable_comparison_operator (rtx, enum machine_mode);
 extern int arm_comparison_operator (rtx, enum machine_mode);
 extern int lt_ge_comparison_operator (rtx, enum machine_mode);
+extern int arm_vsel_comparison_operator (rtx, enum machine_mode);
 extern int noov_comparison_operator (rtx, enum machine_mode);
 extern int minmax_operator (rtx, enum machine_mode);
 extern int cc_register (rtx, enum machine_mode);

@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-03-24" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-03-27" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -778,7 +778,7 @@ in the following sections.
 \&\-mcheck\-zero\-division  \-mno\-check\-zero\-division 
 \&\-mdivide\-traps  \-mdivide\-breaks 
 \&\-mmemcpy  \-mno\-memcpy  \-mlong\-calls  \-mno\-long\-calls 
-\&\-mmad  \-mno\-mad  \-mfused\-madd  \-mno\-fused\-madd  \-nocpp 
+\&\-mmad \-mno\-mad \-mimadd \-mno\-imadd \-mfused\-madd  \-mno\-fused\-madd  \-nocpp 
 \&\-mfix\-24k \-mno\-fix\-24k 
 \&\-mfix\-r4000  \-mno\-fix\-r4000  \-mfix\-r4400  \-mno\-fix\-r4400 
 \&\-mfix\-r10000 \-mno\-fix\-r10000  \-mfix\-vr4120  \-mno\-fix\-vr4120 
@@ -937,7 +937,6 @@ See \s-1RS/6000\s0 and PowerPC Options.
 \&\-mfaster\-structs  \-mno\-faster\-structs  \-mflat  \-mno\-flat 
 \&\-mfpu  \-mno\-fpu  \-mhard\-float  \-msoft\-float 
 \&\-mhard\-quad\-float  \-msoft\-quad\-float 
-\&\-mlittle\-endian 
 \&\-mstack\-bias  \-mno\-stack\-bias 
 \&\-munaligned\-doubles  \-mno\-unaligned\-doubles 
 \&\-mv8plus  \-mno\-v8plus  \-mvis  \-mno\-vis 
@@ -10516,7 +10515,7 @@ assembly code.  Permissible names are: \fBarm2\fR, \fBarm250\fR,
 \&\fBarm1156t2\-s\fR, \fBarm1156t2f\-s\fR, \fBarm1176jz\-s\fR, \fBarm1176jzf\-s\fR,
 \&\fBcortex\-a5\fR, \fBcortex\-a7\fR, \fBcortex\-a8\fR, \fBcortex\-a9\fR, 
 \&\fBcortex\-a15\fR, \fBcortex\-r4\fR, \fBcortex\-r4f\fR, \fBcortex\-r5\fR,
-\&\fBcortex\-m4\fR, \fBcortex\-m3\fR,
+\&\fBcortex\-r7\fR, \fBcortex\-m4\fR, \fBcortex\-m3\fR,
 \&\fBcortex\-m1\fR,
 \&\fBcortex\-m0\fR,
 \&\fBcortex\-m0plus\fR,
@@ -15568,6 +15567,16 @@ This option has no effect on abicalls code.  The default is
 .PD
 Enable (disable) use of the \f(CW\*(C`mad\*(C'\fR, \f(CW\*(C`madu\*(C'\fR and \f(CW\*(C`mul\*(C'\fR
 instructions, as provided by the R4650 \s-1ISA\s0.
+.IP "\fB\-mimadd\fR" 4
+.IX Item "-mimadd"
+.PD 0
+.IP "\fB\-mno\-imadd\fR" 4
+.IX Item "-mno-imadd"
+.PD
+Enable (disable) use of the \f(CW\*(C`madd\*(C'\fR and \f(CW\*(C`msub\*(C'\fR integer
+instructions.  The default is \fB\-mimadd\fR on architectures
+that support \f(CW\*(C`madd\*(C'\fR and \f(CW\*(C`msub\*(C'\fR except for the 74k 
+architecture where it was found to generate slower code.
 .IP "\fB\-mfused\-madd\fR" 4
 .IX Item "-mfused-madd"
 .PD 0
@@ -18330,10 +18339,6 @@ processor (which corresponds to erratum #13 of the \s-1AT697E\s0 processor).
 .PP
 These \fB\-m\fR options are supported in addition to the above
 on \s-1SPARC\-V9\s0 processors in 64\-bit environments:
-.IP "\fB\-mlittle\-endian\fR" 4
-.IX Item "-mlittle-endian"
-Generate code for a processor running in little-endian mode.  It is only
-available for a few configurations and most notably not on Solaris and Linux.
 .IP "\fB\-m32\fR" 4
 .IX Item "-m32"
 .PD 0
