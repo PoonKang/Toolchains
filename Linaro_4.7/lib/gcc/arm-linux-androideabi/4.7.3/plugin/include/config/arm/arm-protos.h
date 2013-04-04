@@ -241,6 +241,8 @@ struct tune_params
   int l1_cache_line_size;
   bool prefer_constant_pool;
   int (*branch_cost) (bool, bool);
+  /* Prefer Neon for 64-bit bitops.  */
+  bool prefer_neon_for_64bits;
 };
 
 extern const struct tune_params *current_tune;
