@@ -23372,7 +23372,7 @@ nil 0 nil )
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 1203 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-4.7-bzr/build/objdir/../build/../gcc/gcc-linaro-4.7/gcc/config/arm/arm.c:24997"nil 
+(!type struct 1203 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-4.7-bzr/build/objdir/../build/../gcc/gcc-linaro-4.7/gcc/config/arm/arm.c:25090"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -23380,15 +23380,15 @@ nil 0 nil )
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 1205 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-4.7-bzr/build/objdir/../build/../gcc/gcc-linaro-4.7/gcc/config/arm/arm.c:19523"nil 
+(!type struct 1205 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-4.7-bzr/build/objdir/../build/../gcc/gcc-linaro-4.7/gcc/config/arm/arm.c:19616"nil 
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 1206 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-4.7-bzr/build/objdir/../build/../gcc/gcc-linaro-4.7/gcc/config/arm/arm.c:2086"nil 
+(!type struct 1206 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-4.7-bzr/build/objdir/../build/../gcc/gcc-linaro-4.7/gcc/config/arm/arm.c:2122"nil 
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 1207 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-4.7-bzr/build/objdir/../build/../gcc/gcc-linaro-4.7/gcc/config/arm/arm.c:1107"nil 
+(!type struct 1207 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-4.7-bzr/build/objdir/../build/../gcc/gcc-linaro-4.7/gcc/config/arm/arm.c:1143"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -30996,42 +30996,42 @@ nil )
 (!pair  "arm_mangle_map_entry"
 (!type already_seen 1203)
 
-(!srcfileloc  "config/arm/arm.c" 25001)
+(!srcfileloc  "config/arm/arm.c" 25094)
 nil )
 (!pair  "builtin_arg"
 (!type already_seen 11)
 
-(!srcfileloc  "config/arm/arm.c" 21092)
+(!srcfileloc  "config/arm/arm.c" 21185)
 nil )
 (!pair  "neon_builtin_datum"
 (!type already_seen 1205)
 
-(!srcfileloc  "config/arm/arm.c" 19529)
+(!srcfileloc  "config/arm/arm.c" 19622)
 nil )
 (!pair  "neon_itype"
 (!type already_seen 11)
 
-(!srcfileloc  "config/arm/arm.c" 19521)
+(!srcfileloc  "config/arm/arm.c" 19614)
 nil )
 (!pair  "neon_builtin_type_mode"
 (!type already_seen 11)
 
-(!srcfileloc  "config/arm/arm.c" 19456)
+(!srcfileloc  "config/arm/arm.c" 19549)
 nil )
 (!pair  "arm_pragma_enum"
 (!type already_seen 11)
 
-(!srcfileloc  "config/arm/arm.c" 5034)
+(!srcfileloc  "config/arm/arm.c" 5070)
 nil )
 (!pair  "isr_attribute_arg"
 (!type already_seen 1206)
 
-(!srcfileloc  "config/arm/arm.c" 2090)
+(!srcfileloc  "config/arm/arm.c" 2126)
 nil )
 (!pair  "arm_fixed_mode_set"
 (!type already_seen 1207)
 
-(!srcfileloc  "config/arm/arm.c" 1110)
+(!srcfileloc  "config/arm/arm.c" 1146)
 nil )
 (!pair  "Mfix"
 (!type already_seen 1211)
@@ -35592,22 +35592,22 @@ nil )
 (!type already_seen 26)
 )
 
-(!srcfileloc  "config/arm/arm.c" 19943)
+(!srcfileloc  "config/arm/arm.c" 20036)
 nil )
 (!pair  "tls_get_addr_libfunc"
 (!type already_seen 156)
 
-(!srcfileloc  "config/arm/arm.c" 6322)
+(!srcfileloc  "config/arm/arm.c" 6358)
 nil )
 (!pair  "pic_labelno"
 (!type already_seen 11)
 
-(!srcfileloc  "config/arm/arm.c" 5627)
+(!srcfileloc  "config/arm/arm.c" 5663)
 nil )
 (!pair  "va_list_type"
 (!type already_seen 26)
 
-(!srcfileloc  "config/arm/arm.c" 1434)
+(!srcfileloc  "config/arm/arm.c" 1470)
 nil )
 (!pair  "stack_chk_fail_decl"
 (!type already_seen 26)
