@@ -8,7 +8,7 @@ enum machine_mode
 {
   VOIDmode,                /* machmode.def:172 */
   BLKmode,                 /* machmode.def:176 */
-  CCmode,                  /* machmode.def:204 */
+  CCmode,                  /* machmode.def:207 */
   CC_NOOVmode,             /* config/arm/arm-modes.def:46 */
   CC_Zmode,                /* config/arm/arm-modes.def:47 */
   CC_CZmode,               /* config/arm/arm-modes.def:48 */
@@ -29,53 +29,53 @@ enum machine_mode
   CC_Cmode,                /* config/arm/arm-modes.def:63 */
   CC_Nmode,                /* config/arm/arm-modes.def:64 */
   BImode,                  /* machmode.def:179 */
-  QImode,                  /* machmode.def:184 */
-  HImode,                  /* machmode.def:185 */
-  SImode,                  /* machmode.def:186 */
-  DImode,                  /* machmode.def:187 */
-  TImode,                  /* machmode.def:188 */
+  QImode,                  /* machmode.def:187 */
+  HImode,                  /* machmode.def:188 */
+  SImode,                  /* machmode.def:189 */
+  DImode,                  /* machmode.def:190 */
+  TImode,                  /* machmode.def:191 */
   EImode,                  /* config/arm/arm-modes.def:81 */
   OImode,                  /* config/arm/arm-modes.def:82 */
   CImode,                  /* config/arm/arm-modes.def:83 */
   XImode,                  /* config/arm/arm-modes.def:84 */
-  QQmode,                  /* machmode.def:207 */
-  HQmode,                  /* machmode.def:208 */
-  SQmode,                  /* machmode.def:209 */
-  DQmode,                  /* machmode.def:210 */
-  TQmode,                  /* machmode.def:211 */
-  UQQmode,                 /* machmode.def:213 */
-  UHQmode,                 /* machmode.def:214 */
-  USQmode,                 /* machmode.def:215 */
-  UDQmode,                 /* machmode.def:216 */
-  UTQmode,                 /* machmode.def:217 */
-  HAmode,                  /* machmode.def:219 */
-  SAmode,                  /* machmode.def:220 */
-  DAmode,                  /* machmode.def:221 */
-  TAmode,                  /* machmode.def:222 */
-  UHAmode,                 /* machmode.def:224 */
-  USAmode,                 /* machmode.def:225 */
-  UDAmode,                 /* machmode.def:226 */
-  UTAmode,                 /* machmode.def:227 */
+  QQmode,                  /* machmode.def:210 */
+  HQmode,                  /* machmode.def:211 */
+  SQmode,                  /* machmode.def:212 */
+  DQmode,                  /* machmode.def:213 */
+  TQmode,                  /* machmode.def:214 */
+  UQQmode,                 /* machmode.def:216 */
+  UHQmode,                 /* machmode.def:217 */
+  USQmode,                 /* machmode.def:218 */
+  UDQmode,                 /* machmode.def:219 */
+  UTQmode,                 /* machmode.def:220 */
+  HAmode,                  /* machmode.def:222 */
+  SAmode,                  /* machmode.def:223 */
+  DAmode,                  /* machmode.def:224 */
+  TAmode,                  /* machmode.def:225 */
+  UHAmode,                 /* machmode.def:227 */
+  USAmode,                 /* machmode.def:228 */
+  UDAmode,                 /* machmode.def:229 */
+  UTAmode,                 /* machmode.def:230 */
   HFmode,                  /* config/arm/arm-modes.def:29 */
-  SFmode,                  /* machmode.def:199 */
-  DFmode,                  /* machmode.def:200 */
+  SFmode,                  /* machmode.def:202 */
+  DFmode,                  /* machmode.def:203 */
   XFmode,                  /* config/arm/arm-modes.def:26 */
-  SDmode,                  /* machmode.def:239 */
-  DDmode,                  /* machmode.def:240 */
-  TDmode,                  /* machmode.def:241 */
-  CQImode,                 /* machmode.def:235 */
-  CHImode,                 /* machmode.def:235 */
-  CSImode,                 /* machmode.def:235 */
-  CDImode,                 /* machmode.def:235 */
-  CTImode,                 /* machmode.def:235 */
-  CEImode,                 /* machmode.def:235 */
-  COImode,                 /* machmode.def:235 */
-  CCImode,                 /* machmode.def:235 */
-  CXImode,                 /* machmode.def:235 */
-  HCmode,                  /* machmode.def:236 */
-  SCmode,                  /* machmode.def:236 */
-  DCmode,                  /* machmode.def:236 */
-  XCmode,                  /* machmode.def:236 */
+  SDmode,                  /* machmode.def:242 */
+  DDmode,                  /* machmode.def:243 */
+  TDmode,                  /* machmode.def:244 */
+  CQImode,                 /* machmode.def:238 */
+  CHImode,                 /* machmode.def:238 */
+  CSImode,                 /* machmode.def:238 */
+  CDImode,                 /* machmode.def:238 */
+  CTImode,                 /* machmode.def:238 */
+  CEImode,                 /* machmode.def:238 */
+  COImode,                 /* machmode.def:238 */
+  CCImode,                 /* machmode.def:238 */
+  CXImode,                 /* machmode.def:238 */
+  HCmode,                  /* machmode.def:239 */
+  SCmode,                  /* machmode.def:239 */
+  DCmode,                  /* machmode.def:239 */
+  XCmode,                  /* machmode.def:239 */
   V4QImode,                /* config/arm/arm-modes.def:67 */
   V2HImode,                /* config/arm/arm-modes.def:67 */
   V8QImode,                /* config/arm/arm-modes.def:68 */
@@ -159,5 +159,8 @@ enum machine_mode
 #define CONST_MODE_BASE_ALIGN const
 #define CONST_MODE_IBIT const
 #define CONST_MODE_FBIT const
+
+#define MAX_BITSIZE_MODE_ANY_INT 64*BITS_PER_UNIT
+#define MAX_BITSIZE_MODE_ANY_MODE 128*BITS_PER_UNIT
 
 #endif /* insn-modes.h */

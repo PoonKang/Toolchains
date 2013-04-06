@@ -182,6 +182,34 @@ gen_rtx_fmt_iuuBeiiee_stat (RTX_CODE code, enum machine_mode mode,
         gen_rtx_fmt_iuuBeiiee_stat (c, m, p0, p1, p2, p3, p4, p5, p6, p7, p8 MEM_STAT_INFO)
 
 static inline rtx
+gen_rtx_fmt_iuuBe0000_stat (RTX_CODE code, enum machine_mode mode,
+	int arg0,
+	rtx arg1,
+	rtx arg2,
+	basic_block arg3,
+	rtx arg4 MEM_STAT_DECL)
+{
+  rtx rt;
+  rt = rtx_alloc_stat (code PASS_MEM_STAT);
+
+  PUT_MODE (rt, mode);
+  XINT (rt, 0) = arg0;
+  XEXP (rt, 1) = arg1;
+  XEXP (rt, 2) = arg2;
+  XBBDEF (rt, 3) = arg3;
+  XEXP (rt, 4) = arg4;
+  X0EXP (rt, 5) = NULL_RTX;
+  X0EXP (rt, 6) = NULL_RTX;
+  X0EXP (rt, 7) = NULL_RTX;
+  X0EXP (rt, 8) = NULL_RTX;
+
+  return rt;
+}
+
+#define gen_rtx_fmt_iuuBe0000(c, m, p0, p1, p2, p3, p4)\
+        gen_rtx_fmt_iuuBe0000_stat (c, m, p0, p1, p2, p3, p4 MEM_STAT_INFO)
+
+static inline rtx
 gen_rtx_fmt_iuu00000_stat (RTX_CODE code, enum machine_mode mode,
 	int arg0,
 	rtx arg1,
@@ -879,6 +907,8 @@ gen_rtx_fmt_ssss_stat (RTX_CODE code, enum machine_mode mode,
   gen_rtx_fmt_iuuBeiie0 (JUMP_INSN, (MODE), (ARG0), (ARG1), (ARG2), (ARG3), (ARG4), (ARG5), (ARG6), (ARG7))
 #define gen_rtx_CALL_INSN(MODE, ARG0, ARG1, ARG2, ARG3, ARG4, ARG5, ARG6, ARG7, ARG8) \
   gen_rtx_fmt_iuuBeiiee (CALL_INSN, (MODE), (ARG0), (ARG1), (ARG2), (ARG3), (ARG4), (ARG5), (ARG6), (ARG7), (ARG8))
+#define gen_rtx_JUMP_TABLE_DATA(MODE, ARG0, ARG1, ARG2, ARG3, ARG4) \
+  gen_rtx_fmt_iuuBe0000 (JUMP_TABLE_DATA, (MODE), (ARG0), (ARG1), (ARG2), (ARG3), (ARG4))
 #define gen_rtx_BARRIER(MODE, ARG0, ARG1, ARG2) \
   gen_rtx_fmt_iuu00000 (BARRIER, (MODE), (ARG0), (ARG1), (ARG2))
 #define gen_rtx_CODE_LABEL(MODE, ARG0, ARG1, ARG2, ARG3, ARG4, ARG5) \
