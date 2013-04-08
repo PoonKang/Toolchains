@@ -1438,12 +1438,10 @@
 #define HAVE_arm_usatsihi (TARGET_INT_SIMD)
 #define HAVE_adddi3 1
 #define HAVE_addsi3 1
-#define HAVE_incscc (TARGET_32BIT)
 #define HAVE_addsf3 (TARGET_32BIT && TARGET_HARD_FLOAT)
 #define HAVE_adddf3 (TARGET_32BIT && TARGET_HARD_FLOAT && !TARGET_VFP_SINGLE)
 #define HAVE_subdi3 1
 #define HAVE_subsi3 1
-#define HAVE_decscc (TARGET_32BIT)
 #define HAVE_subsf3 (TARGET_32BIT && TARGET_HARD_FLOAT)
 #define HAVE_subdf3 (TARGET_32BIT && TARGET_HARD_FLOAT && !TARGET_VFP_SINGLE)
 #define HAVE_mulsi3 1
@@ -3824,12 +3822,10 @@ extern rtx        gen_arm_ssatsihi_shift                (rtx, rtx, rtx, rtx);
 extern rtx        gen_arm_usatsihi                      (rtx, rtx);
 extern rtx        gen_adddi3                            (rtx, rtx, rtx);
 extern rtx        gen_addsi3                            (rtx, rtx, rtx);
-extern rtx        gen_incscc                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_addsf3                            (rtx, rtx, rtx);
 extern rtx        gen_adddf3                            (rtx, rtx, rtx);
 extern rtx        gen_subdi3                            (rtx, rtx, rtx);
 extern rtx        gen_subsi3                            (rtx, rtx, rtx);
-extern rtx        gen_decscc                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_subsf3                            (rtx, rtx, rtx);
 extern rtx        gen_subdf3                            (rtx, rtx, rtx);
 extern rtx        gen_mulsi3                            (rtx, rtx, rtx);

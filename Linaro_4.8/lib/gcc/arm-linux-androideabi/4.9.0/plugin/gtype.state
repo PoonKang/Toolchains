@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "4.9.0 20130404 (experimental)")
+(!version  "4.9.0 20130407 (experimental)")
 
 (!srcdir  "/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc")
 
@@ -21383,7 +21383,7 @@ nil 0 nil )
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 993 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:25893"nil 
+(!type struct 993 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:26025"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -21391,15 +21391,15 @@ nil 0 nil )
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 995 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:19446"nil 
+(!type struct 995 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:19725"nil 
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 996 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:2174"nil 
+(!type struct 996 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:2181"nil 
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 997 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:1211"nil 
+(!type struct 997 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:1218"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -26574,42 +26574,42 @@ nil )
 (!pair  "arm_mangle_map_entry"
 (!type already_seen 993)
 
-(!srcfileloc  "config/arm/arm.c" 25897)
+(!srcfileloc  "config/arm/arm.c" 26029)
 nil )
 (!pair  "builtin_arg"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 21182)
+(!srcfileloc  "config/arm/arm.c" 21314)
 nil )
 (!pair  "neon_builtin_datum"
 (!type already_seen 995)
 
-(!srcfileloc  "config/arm/arm.c" 19452)
+(!srcfileloc  "config/arm/arm.c" 19731)
 nil )
 (!pair  "neon_itype"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 19444)
+(!srcfileloc  "config/arm/arm.c" 19723)
 nil )
 (!pair  "neon_builtin_type_mode"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 19378)
+(!srcfileloc  "config/arm/arm.c" 19657)
 nil )
 (!pair  "arm_pragma_enum"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 5079)
+(!srcfileloc  "config/arm/arm.c" 5086)
 nil )
 (!pair  "isr_attribute_arg"
 (!type already_seen 996)
 
-(!srcfileloc  "config/arm/arm.c" 2178)
+(!srcfileloc  "config/arm/arm.c" 2185)
 nil )
 (!pair  "arm_fixed_mode_set"
 (!type already_seen 997)
 
-(!srcfileloc  "config/arm/arm.c" 1214)
+(!srcfileloc  "config/arm/arm.c" 1221)
 nil )
 (!pair  "Mfix"
 (!type already_seen 1001)
@@ -29660,7 +29660,7 @@ nil )
 (!pair  "the_parser"
 (!type already_seen 692)
 
-(!srcfileloc  "cp/parser.c" 28204)
+(!srcfileloc  "cp/parser.c" 28225)
 nil )
 (!pair  "lambda_scope_stack"
 (!type already_seen 687)
@@ -30499,22 +30499,22 @@ nil )
 (!type already_seen 5)
 )
 
-(!srcfileloc  "config/arm/arm.c" 19956)
+(!srcfileloc  "config/arm/arm.c" 20088)
 nil )
 (!pair  "tls_get_addr_libfunc"
 (!type already_seen 136)
 
-(!srcfileloc  "config/arm/arm.c" 6389)
+(!srcfileloc  "config/arm/arm.c" 6396)
 nil )
 (!pair  "pic_labelno"
 (!type already_seen 9)
 
-(!srcfileloc  "config/arm/arm.c" 5672)
+(!srcfileloc  "config/arm/arm.c" 5679)
 nil )
 (!pair  "va_list_type"
 (!type already_seen 5)
 
-(!srcfileloc  "config/arm/arm.c" 1538)
+(!srcfileloc  "config/arm/arm.c" 1545)
 nil )
 (!pair  "stack_chk_fail_decl"
 (!type already_seen 5)
