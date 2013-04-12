@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "4.9.0 20130407 (experimental)")
+(!version  "4.9.0 20130410 (experimental)")
 
 (!srcdir  "/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc")
 
@@ -23316,7 +23316,7 @@ nil 511 nil )
 (!fields 0 )
 nil 0 nil )
 
-(!type struct 1232 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/basic-block.h:566"nil 
+(!type struct 1232 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/basic-block.h:571"nil 
 (!fields 0 )
 nil 0 nil )
 
@@ -24127,7 +24127,7 @@ nil 0 nil )
 (!type already_seen 869)
 
 (!type struct 1272 nil  gc_used "builtin_info_type_d"
-(!srcfileloc  "tree.h" 6489)
+(!srcfileloc  "tree.h" 6486)
 
 (!fields 2 
 (!pair  "decl"
@@ -24135,14 +24135,14 @@ nil 0 nil )
 (!type already_seen 5)
 )
 
-(!srcfileloc  "tree.h" 6487)
+(!srcfileloc  "tree.h" 6484)
 nil )
 (!pair  "implicit_p"
 (!type array 1274 nil  gc_used "(int)END_BUILTINS" 
 (!type already_seen 9)
 )
 
-(!srcfileloc  "tree.h" 6488)
+(!srcfileloc  "tree.h" 6485)
 nil ))
 nil 511 nil )
 
@@ -24159,27 +24159,27 @@ nil 0 nil )
 (!type already_seen 1277)
 )
  gc_pointed_to "tree_vec_map"
-(!srcfileloc  "tree.h" 6314)
+(!srcfileloc  "tree.h" 6311)
 
 (!fields 2 
 (!pair  "base"
 (!type struct 1279 nil  gc_used "tree_map_base"
-(!srcfileloc  "tree.h" 6256)
+(!srcfileloc  "tree.h" 6253)
 
 (!fields 1 
 (!pair  "from"
 (!type already_seen 5)
 
-(!srcfileloc  "tree.h" 6255)
+(!srcfileloc  "tree.h" 6252)
 nil ))
 nil 511 nil )
 
-(!srcfileloc  "tree.h" 6312)
+(!srcfileloc  "tree.h" 6309)
 nil )
 (!pair  "to"
 (!type already_seen 45)
 
-(!srcfileloc  "tree.h" 6313)
+(!srcfileloc  "tree.h" 6310)
 nil ))
 nil 511 nil )
 
@@ -24188,23 +24188,23 @@ nil 511 nil )
 (!type already_seen 1280)
 )
  gc_pointed_to "tree_priority_map"
-(!srcfileloc  "tree.h" 6303)
+(!srcfileloc  "tree.h" 6300)
 
 (!fields 3 
 (!pair  "base"
 (!type already_seen 1279)
 
-(!srcfileloc  "tree.h" 6300)
+(!srcfileloc  "tree.h" 6297)
 nil )
 (!pair  "init"
 (!type already_seen 9)
 
-(!srcfileloc  "tree.h" 6301)
+(!srcfileloc  "tree.h" 6298)
 nil )
 (!pair  "fini"
 (!type already_seen 9)
 
-(!srcfileloc  "tree.h" 6302)
+(!srcfileloc  "tree.h" 6299)
 nil ))
 nil 511 nil )
 
@@ -24213,18 +24213,18 @@ nil 511 nil )
 (!type already_seen 1282)
 )
  gc_pointed_to "tree_int_map"
-(!srcfileloc  "tree.h" 6291)
+(!srcfileloc  "tree.h" 6288)
 
 (!fields 2 
 (!pair  "base"
 (!type already_seen 1279)
 
-(!srcfileloc  "tree.h" 6289)
+(!srcfileloc  "tree.h" 6286)
 nil )
 (!pair  "to"
 (!type already_seen 9)
 
-(!srcfileloc  "tree.h" 6290)
+(!srcfileloc  "tree.h" 6287)
 nil ))
 nil 511 nil )
 
@@ -24233,18 +24233,18 @@ nil 511 nil )
 (!type already_seen 1284)
 )
  gc_pointed_to "tree_decl_map"
-(!srcfileloc  "tree.h" 6280)
+(!srcfileloc  "tree.h" 6277)
 
 (!fields 2 
 (!pair  "base"
 (!type already_seen 1279)
 
-(!srcfileloc  "tree.h" 6278)
+(!srcfileloc  "tree.h" 6275)
 nil )
 (!pair  "to"
 (!type already_seen 5)
 
-(!srcfileloc  "tree.h" 6279)
+(!srcfileloc  "tree.h" 6276)
 nil ))
 nil 511 nil )
 
@@ -24253,23 +24253,23 @@ nil 511 nil )
 (!type already_seen 1286)
 )
  gc_pointed_to "tree_map"
-(!srcfileloc  "tree.h" 6269)
+(!srcfileloc  "tree.h" 6266)
 
 (!fields 3 
 (!pair  "base"
 (!type already_seen 1279)
 
-(!srcfileloc  "tree.h" 6266)
+(!srcfileloc  "tree.h" 6263)
 nil )
 (!pair  "hash"
 (!type already_seen 9)
 
-(!srcfileloc  "tree.h" 6267)
+(!srcfileloc  "tree.h" 6264)
 nil )
 (!pair  "to"
 (!type already_seen 5)
 
-(!srcfileloc  "tree.h" 6268)
+(!srcfileloc  "tree.h" 6265)
 nil ))
 nil 511 nil )
 
@@ -25795,17 +25795,17 @@ nil )
 (!pair  "reshape_iter"
 (!type already_seen 727)
 
-(!srcfileloc  "cp/decl.c" 5029)
+(!srcfileloc  "cp/decl.c" 5038)
 nil )
 (!pair  "predefined_identifier"
 (!type already_seen 728)
 
-(!srcfileloc  "cp/decl.c" 3580)
+(!srcfileloc  "cp/decl.c" 3589)
 nil )
 (!pair  "typename_info"
 (!type already_seen 729)
 
-(!srcfileloc  "cp/decl.c" 3160)
+(!srcfileloc  "cp/decl.c" 3169)
 nil )
 (!pair  "vec<incomplete_var,va_gc>"
 (!type already_seen 731)
@@ -27320,12 +27320,12 @@ nil )
 (!pair  "gcov_working_set_t"
 (!type already_seen 1231)
 
-(!srcfileloc  "basic-block.h" 927)
+(!srcfileloc  "basic-block.h" 932)
 nil )
 (!pair  "edge_iterator"
 (!type already_seen 1232)
 
-(!srcfileloc  "basic-block.h" 569)
+(!srcfileloc  "basic-block.h" 574)
 nil )
 (!pair  "ce_if_block_t"
 (!type already_seen 1234)
@@ -27462,32 +27462,32 @@ nil )
 (!pair  "builtin_info_type"
 (!type already_seen 1272)
 
-(!srcfileloc  "tree.h" 6489)
+(!srcfileloc  "tree.h" 6486)
 nil )
 (!pair  "const_call_expr_arg_iterator"
 (!type already_seen 1275)
 
-(!srcfileloc  "tree.h" 6383)
+(!srcfileloc  "tree.h" 6380)
 nil )
 (!pair  "call_expr_arg_iterator"
 (!type already_seen 1276)
 
-(!srcfileloc  "tree.h" 6377)
+(!srcfileloc  "tree.h" 6374)
 nil )
 (!pair  "tree_node_kind"
 (!type already_seen 9)
 
-(!srcfileloc  "tree.h" 6238)
+(!srcfileloc  "tree.h" 6235)
 nil )
 (!pair  "walk_tree_lh"
 (!type already_seen 9)
 
-(!srcfileloc  "tree.h" 6200)
+(!srcfileloc  "tree.h" 6197)
 nil )
 (!pair  "walk_tree_fn"
 (!type already_seen 9)
 
-(!srcfileloc  "tree.h" 6195)
+(!srcfileloc  "tree.h" 6192)
 nil )
 (!pair  "function_args_iterator"
 (!type already_seen 1289)
@@ -29656,7 +29656,7 @@ nil )
 (!pair  "the_parser"
 (!type already_seen 692)
 
-(!srcfileloc  "cp/parser.c" 28225)
+(!srcfileloc  "cp/parser.c" 28230)
 nil )
 (!pair  "lambda_scope_stack"
 (!type already_seen 687)
@@ -29836,12 +29836,12 @@ nil )
 (!pair  "start_cleanup_cnt"
 (!type already_seen 9)
 
-(!srcfileloc  "cp/decl.c" 6680)
+(!srcfileloc  "cp/decl.c" 6689)
 nil )
 (!pair  "typename_htab"
 (!type already_seen 53)
 
-(!srcfileloc  "cp/decl.c" 3183)
+(!srcfileloc  "cp/decl.c" 3192)
 
 (!options 
 (!option param_is type 
@@ -30469,7 +30469,7 @@ nil )
 (!pair  "clone_fn_id_num"
 (!type already_seen 9)
 
-(!srcfileloc  "cgraphclones.c" 248)
+(!srcfileloc  "cgraphclones.c" 250)
 nil )
 (!pair  "vtable_entry_type"
 (!type already_seen 5)
@@ -30484,7 +30484,7 @@ nil )
 (!pair  "order"
 (!type already_seen 912)
 
-(!srcfileloc  "passes.c" 1726)
+(!srcfileloc  "passes.c" 1725)
 
 (!options 
 (!option length string  "nnodes")
@@ -30525,7 +30525,7 @@ nil )
 (!pair  "critical_name_mutexes"
 (!type already_seen 1370)
 
-(!srcfileloc  "omp-low.c" 6123)
+(!srcfileloc  "omp-low.c" 6153)
 
 (!options 
 (!option param2_is type 
@@ -32028,7 +32028,7 @@ nil )
 (!pair  "builtin_info"
 (!type already_seen 1272)
 
-(!srcfileloc  "tree.h" 6491)
+(!srcfileloc  "tree.h" 6488)
 nil )
 (!pair  "current_function_func_begin_label"
 (!type already_seen 36)
