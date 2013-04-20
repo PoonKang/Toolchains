@@ -1153,6 +1153,10 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_rtl_bb_info() ((struct rtl_bb_info *)(ggc_internal_cleared_alloc_stat (sizeof (struct rtl_bb_info) MEM_STAT_INFO)))
 #define ggc_alloc_vec_rtl_bb_info(n) ((struct rtl_bb_info *)(ggc_internal_vec_alloc_stat (sizeof (struct rtl_bb_info), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_rtl_bb_info(n) ((struct rtl_bb_info *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct rtl_bb_info), n MEM_STAT_INFO)))
+#define ggc_alloc_niter_desc() ((struct niter_desc *)(ggc_internal_alloc_stat (sizeof (struct niter_desc) MEM_STAT_INFO)))
+#define ggc_alloc_cleared_niter_desc() ((struct niter_desc *)(ggc_internal_cleared_alloc_stat (sizeof (struct niter_desc) MEM_STAT_INFO)))
+#define ggc_alloc_vec_niter_desc(n) ((struct niter_desc *)(ggc_internal_vec_alloc_stat (sizeof (struct niter_desc), n MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_niter_desc(n) ((struct niter_desc *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct niter_desc), n MEM_STAT_INFO)))
 #define ggc_alloc_vec_loop_p_va_gc_() ((vec<loop_p,va_gc> *)(ggc_internal_alloc_stat (sizeof (vec<loop_p,va_gc>) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_loop_p_va_gc_() ((vec<loop_p,va_gc> *)(ggc_internal_cleared_alloc_stat (sizeof (vec<loop_p,va_gc>) MEM_STAT_INFO)))
 #define ggc_alloc_vec_vec_loop_p_va_gc_(n) ((vec<loop_p,va_gc> *)(ggc_internal_vec_alloc_stat (sizeof (vec<loop_p,va_gc>), n MEM_STAT_INFO)))
@@ -3382,6 +3386,10 @@ extern void gt_ggc_mx_vec_edge_va_gc_ (void *);
   if (X != NULL) gt_ggc_mx_rtl_bb_info (X);\
   } while (0)
 extern void gt_ggc_mx_rtl_bb_info (void *);
+#define gt_ggc_m_10niter_desc(X) do { \
+  if (X != NULL) gt_ggc_mx_niter_desc (X);\
+  } while (0)
+extern void gt_ggc_mx_niter_desc (void *);
 #define gt_ggc_m_17vec_loop_p_va_gc_(X) do { \
   if (X != NULL) gt_ggc_mx_vec_loop_p_va_gc_ (X);\
   } while (0)
@@ -4234,6 +4242,10 @@ extern void gt_pch_nx_vec_edge_va_gc_ (void *);
   if (X != NULL) gt_pch_nx_rtl_bb_info (X);\
   } while (0)
 extern void gt_pch_nx_rtl_bb_info (void *);
+#define gt_pch_n_10niter_desc(X) do { \
+  if (X != NULL) gt_pch_nx_niter_desc (X);\
+  } while (0)
+extern void gt_pch_nx_niter_desc (void *);
 #define gt_pch_n_17vec_loop_p_va_gc_(X) do { \
   if (X != NULL) gt_pch_nx_vec_loop_p_va_gc_ (X);\
   } while (0)
@@ -4804,6 +4816,8 @@ extern void gt_pch_p_22vec_basic_block_va_gc_
 extern void gt_pch_p_15vec_edge_va_gc_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_11rtl_bb_info
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_10niter_desc
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_17vec_loop_p_va_gc_
     (void *, void *, gt_pointer_operator, void *);

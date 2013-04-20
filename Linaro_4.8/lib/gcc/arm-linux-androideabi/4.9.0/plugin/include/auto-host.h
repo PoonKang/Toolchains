@@ -1206,7 +1206,8 @@
 #endif
 
 
-/* Define if your linker supports --as-needed and --no-as-needed options. */
+/* Define if your linker supports --as-needed/--no-as-needed or equivalent
+   options. */
 #ifndef USED_FOR_TARGET
 #define HAVE_LD_AS_NEEDED 1
 #endif
@@ -1643,9 +1644,21 @@
 #endif
 
 
+/* Define to the linker option to ignore unused dependencies. */
+#ifndef USED_FOR_TARGET
+#define LD_AS_NEEDED_OPTION "--as-needed"
+#endif
+
+
 /* Define to the linker option to enable use of shared objects. */
 #ifndef USED_FOR_TARGET
 #define LD_DYNAMIC_OPTION "-Bdynamic"
+#endif
+
+
+/* Define to the linker option to keep unused dependencies. */
+#ifndef USED_FOR_TARGET
+#define LD_NO_AS_NEEDED_OPTION "--no-as-needed"
 #endif
 
 
