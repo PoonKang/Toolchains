@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-04-22" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-04-23" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -400,7 +400,7 @@ in the following sections.
 \&\fB\-fivopts \-fkeep\-inline\-functions \-fkeep\-static\-consts 
 \&\-floop\-block \-floop\-interchange \-floop\-strip\-mine \-floop\-nest\-optimize 
 \&\-floop\-parallelize\-all \-flto \-flto\-compression\-level 
-\&\-flto\-partition=\fR\fIalg\fR \fB\-flto\-report \-fmerge\-all\-constants 
+\&\-flto\-partition=\fR\fIalg\fR \fB\-flto\-report \-flto\-report\-wpa \-fmerge\-all\-constants 
 \&\-fmerge\-constants \-fmodulo\-sched \-fmodulo\-sched\-allow\-regmoves 
 \&\-fmove\-loop\-invariants fmudflap \-fmudflapir \-fmudflapth \-fno\-branch\-count\-reg 
 \&\-fno\-default\-inline 
@@ -7757,6 +7757,10 @@ It is meant to be useful to \s-1GCC\s0 developers when processing object
 files in \s-1LTO\s0 mode (via \fB\-flto\fR).
 .Sp
 Disabled by default.
+.IP "\fB\-flto\-report\-wpa\fR" 4
+.IX Item "-flto-report-wpa"
+Like \fB\-flto\-report\fR, but only print for the \s-1WPA\s0 phase of Link
+Time Optimization.
 .IP "\fB\-fuse\-linker\-plugin\fR" 4
 .IX Item "-fuse-linker-plugin"
 Enables the use of a linker plugin during link-time optimization.  This
