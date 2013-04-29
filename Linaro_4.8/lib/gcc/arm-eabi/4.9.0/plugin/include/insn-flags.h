@@ -832,6 +832,8 @@
 #define HAVE_neon_vcvtv4sf (TARGET_NEON)
 #define HAVE_neon_vcvtv2si (TARGET_NEON)
 #define HAVE_neon_vcvtv4si (TARGET_NEON)
+#define HAVE_neon_vcvtv4sfv4hf (TARGET_NEON && TARGET_FP16)
+#define HAVE_neon_vcvtv4hfv4sf (TARGET_NEON && TARGET_FP16)
 #define HAVE_neon_vcvt_nv2sf (TARGET_NEON)
 #define HAVE_neon_vcvt_nv4sf (TARGET_NEON)
 #define HAVE_neon_vcvt_nv2si (TARGET_NEON)
@@ -3238,6 +3240,8 @@ extern rtx        gen_neon_vcvtv2sf                     (rtx, rtx, rtx);
 extern rtx        gen_neon_vcvtv4sf                     (rtx, rtx, rtx);
 extern rtx        gen_neon_vcvtv2si                     (rtx, rtx, rtx);
 extern rtx        gen_neon_vcvtv4si                     (rtx, rtx, rtx);
+extern rtx        gen_neon_vcvtv4sfv4hf                 (rtx, rtx);
+extern rtx        gen_neon_vcvtv4hfv4sf                 (rtx, rtx);
 extern rtx        gen_neon_vcvt_nv2sf                   (rtx, rtx, rtx, rtx);
 extern rtx        gen_neon_vcvt_nv4sf                   (rtx, rtx, rtx, rtx);
 extern rtx        gen_neon_vcvt_nv2si                   (rtx, rtx, rtx, rtx);
