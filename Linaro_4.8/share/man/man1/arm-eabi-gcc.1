@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-04-25" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-05-01" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -2801,9 +2801,10 @@ a message which is too long to fit on a single line.
 .IX Item "-fno-diagnostics-color"
 .PD
 Use color in diagnostics.  \fI\s-1WHEN\s0\fR is \fBnever\fR, \fBalways\fR,
-or \fBauto\fR.  The default is \fBnever\fR, \fBauto\fR means to use color
-only when the standard error is a terminal. The forms
-\&\fB\-fdiagnostics\-color\fR and \fB\-fno\-diagnostics\-color\fR are
+or \fBauto\fR.  The default is \fBnever\fR if \fB\s-1GCC_COLORS\s0\fR environment
+variable isn't present in the environment, and \fBauto\fR otherwise.
+\&\fBauto\fR means to use color only when the standard error is a terminal.
+The forms \fB\-fdiagnostics\-color\fR and \fB\-fno\-diagnostics\-color\fR are
 aliases for \fB\-fdiagnostics\-color=always\fR and
 \&\fB\-fdiagnostics\-color=never\fR, respectively.
 .Sp

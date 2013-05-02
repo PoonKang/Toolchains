@@ -1505,6 +1505,12 @@ extern int flag_devirtualize;
 #define flag_devirtualize global_options.x_flag_devirtualize
 #endif
 #ifdef GENERATOR_FILE
+extern int flag_diagnostics_show_color;
+#else
+  int x_flag_diagnostics_show_color;
+#define flag_diagnostics_show_color global_options.x_flag_diagnostics_show_color
+#endif
+#ifdef GENERATOR_FILE
 extern int flag_diagnostics_show_caret;
 #else
   int x_flag_diagnostics_show_caret;
