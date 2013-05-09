@@ -35122,7 +35122,9 @@ sequence, otherwise it contains the `sequence' rtx being output.
      `ASSEMBLER_DIALECT' is zero, one, two, etc.  Any special characters
      within these strings retain their usual meaning.  If there are
      fewer alternatives within the braces than the value of
-     `ASSEMBLER_DIALECT', the construct outputs nothing.
+     `ASSEMBLER_DIALECT', the construct outputs nothing. If it's needed
+     to print curly braces or `|' character in assembler output
+     directly, `%{', `%}' and `%|' can be used.
 
      If you do not define this macro, the characters `{', `|' and `}'
      do not have any special meaning when used in templates or operands
@@ -45780,8 +45782,8 @@ Concept Index
 * ASM_OUTPUT_OPCODE:                     Instruction Output. (line   36)
 * ASM_OUTPUT_POOL_EPILOGUE:              Data Output.        (line  110)
 * ASM_OUTPUT_POOL_PROLOGUE:              Data Output.        (line   73)
-* ASM_OUTPUT_REG_POP:                    Instruction Output. (line  206)
-* ASM_OUTPUT_REG_PUSH:                   Instruction Output. (line  201)
+* ASM_OUTPUT_REG_POP:                    Instruction Output. (line  208)
+* ASM_OUTPUT_REG_PUSH:                   Instruction Output. (line  203)
 * ASM_OUTPUT_SIZE_DIRECTIVE:             Label Output.       (line   47)
 * ASM_OUTPUT_SKIP:                       Alignment Output.   (line   73)
 * ASM_OUTPUT_SOURCE_FILENAME:            File Framework.     (line   85)
@@ -49778,65 +49780,65 @@ Node: Label Output1479931
 Node: Initialization1502899
 Node: Macros for Initialization1508861
 Node: Instruction Output1515584
-Node: Dispatch Tables1526086
-Node: Exception Region Output1530470
-Node: Alignment Output1537153
-Node: Debugging Info1541731
-Node: All Debuggers1542401
-Node: DBX Options1545256
-Node: DBX Hooks1550705
-Node: File Names and DBX1552014
-Node: SDB and DWARF1554126
-Node: VMS Debug1560198
-Node: Floating Point1560785
-Node: Mode Switching1565261
-Node: Target Attributes1569257
-Node: Emulated TLS1577571
-Node: MIPS Coprocessors1580961
-Node: PCH Target1582258
-Node: C++ ABI1584100
-Node: Named Address Spaces1588892
-Node: Misc1593831
-Ref: TARGET_SHIFT_TRUNCATION_MASK1600573
-Node: Host Config1646353
-Node: Host Common1647421
-Node: Filesystem1649800
-Node: Host Misc1653915
-Node: Fragments1656364
-Node: Target Fragment1657559
-Node: Host Fragment1668192
-Node: Collect21668432
-Node: Header Dirs1671068
-Node: Type Information1672491
-Node: GTY Options1675714
-Node: User GC1690035
-Node: GGC Roots1693762
-Node: Files1694478
-Node: Invoking the garbage collector1697185
-Node: Troubleshooting1698688
-Node: Plugins1699764
-Node: Plugins loading1700882
-Node: Plugin API1701751
-Node: Plugins pass1708780
-Node: Plugins GC1710749
-Node: Plugins description1712409
-Node: Plugins attr1712944
-Node: Plugins recording1714829
-Node: Plugins gate1715679
-Node: Plugins tracking1716270
-Node: Plugins building1716858
-Node: LTO1718644
-Node: LTO Overview1719505
-Node: LTO object file layout1725337
-Node: IPA1729969
-Node: WHOPR1738934
-Node: Internal flags1743625
-Node: Funding1744837
-Node: GNU Project1747320
-Node: Copying1747969
-Node: GNU Free Documentation License1785500
-Node: Contributors1810640
-Node: Option Index1848045
-Node: Concept Index1848849
+Node: Dispatch Tables1526213
+Node: Exception Region Output1530597
+Node: Alignment Output1537280
+Node: Debugging Info1541858
+Node: All Debuggers1542528
+Node: DBX Options1545383
+Node: DBX Hooks1550832
+Node: File Names and DBX1552141
+Node: SDB and DWARF1554253
+Node: VMS Debug1560325
+Node: Floating Point1560912
+Node: Mode Switching1565388
+Node: Target Attributes1569384
+Node: Emulated TLS1577698
+Node: MIPS Coprocessors1581088
+Node: PCH Target1582385
+Node: C++ ABI1584227
+Node: Named Address Spaces1589019
+Node: Misc1593958
+Ref: TARGET_SHIFT_TRUNCATION_MASK1600700
+Node: Host Config1646480
+Node: Host Common1647548
+Node: Filesystem1649927
+Node: Host Misc1654042
+Node: Fragments1656491
+Node: Target Fragment1657686
+Node: Host Fragment1668319
+Node: Collect21668559
+Node: Header Dirs1671195
+Node: Type Information1672618
+Node: GTY Options1675841
+Node: User GC1690162
+Node: GGC Roots1693889
+Node: Files1694605
+Node: Invoking the garbage collector1697312
+Node: Troubleshooting1698815
+Node: Plugins1699891
+Node: Plugins loading1701009
+Node: Plugin API1701878
+Node: Plugins pass1708907
+Node: Plugins GC1710876
+Node: Plugins description1712536
+Node: Plugins attr1713071
+Node: Plugins recording1714956
+Node: Plugins gate1715806
+Node: Plugins tracking1716397
+Node: Plugins building1716985
+Node: LTO1718771
+Node: LTO Overview1719632
+Node: LTO object file layout1725464
+Node: IPA1730096
+Node: WHOPR1739061
+Node: Internal flags1743752
+Node: Funding1744964
+Node: GNU Project1747447
+Node: Copying1748096
+Node: GNU Free Documentation License1785627
+Node: Contributors1810767
+Node: Option Index1848172
+Node: Concept Index1848976
 
 End Tag Table
