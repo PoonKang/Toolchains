@@ -61,7 +61,7 @@ Introduction
 This manual documents the internals of the GNU compilers, including how
 to port them to new targets and some information about how to write
 front ends for new languages.  It corresponds to the compilers
-(Linaro GCC 4.7-2013.04-1~dev) version 4.7.3.  The use of the GNU
+(Linaro GCC 4.7-2013.04-1~dev) version 4.7.4.  The use of the GNU
 compilers is documented in a separate manual.  *Note Introduction:
 (gcc)Top.
 
@@ -35262,6 +35262,11 @@ Here are macros for SDB and DWARF output.
      should be emitted.  These sections are not used on most platforms,
      and in particular GDB does not use them.
 
+ -- Target Hook: bool TARGET_FORCE_AT_COMP_DIR
+     True if the `DW_AT_comp_dir' attribute should be emitted for each
+     compilation unit.  This attribute is required for the darwin
+     linker  to emit debug information.
+
  -- Target Hook: bool TARGET_DELAY_SCHED2
      True if sched2 is not to be run at its normal place.  This usually
      means it will be run as part of machine-specific reorg.
@@ -44931,11 +44936,11 @@ Concept Index
 * ASM_OUTPUT_DEBUG_LABEL:                Label Output.       (line  355)
 * ASM_OUTPUT_DEF:                        Label Output.       (line  404)
 * ASM_OUTPUT_DEF_FROM_DECLS:             Label Output.       (line  412)
-* ASM_OUTPUT_DWARF_DELTA:                SDB and DWARF.      (line   69)
-* ASM_OUTPUT_DWARF_OFFSET:               SDB and DWARF.      (line   78)
-* ASM_OUTPUT_DWARF_PCREL:                SDB and DWARF.      (line   84)
-* ASM_OUTPUT_DWARF_TABLE_REF:            SDB and DWARF.      (line   89)
-* ASM_OUTPUT_DWARF_VMS_DELTA:            SDB and DWARF.      (line   73)
+* ASM_OUTPUT_DWARF_DELTA:                SDB and DWARF.      (line   74)
+* ASM_OUTPUT_DWARF_OFFSET:               SDB and DWARF.      (line   83)
+* ASM_OUTPUT_DWARF_PCREL:                SDB and DWARF.      (line   89)
+* ASM_OUTPUT_DWARF_TABLE_REF:            SDB and DWARF.      (line   94)
+* ASM_OUTPUT_DWARF_VMS_DELTA:            SDB and DWARF.      (line   78)
 * ASM_OUTPUT_EXTERNAL:                   Label Output.       (line  284)
 * ASM_OUTPUT_FDESC:                      Data Output.        (line   60)
 * ASM_OUTPUT_FUNCTION_LABEL:             Label Output.       (line   17)
@@ -47191,7 +47196,7 @@ Concept Index
 * PUT_CODE:                              RTL Objects.        (line   47)
 * PUT_MODE:                              Machine Modes.      (line  283)
 * PUT_REG_NOTE_KIND:                     Insns.              (line  351)
-* PUT_SDB_:                              SDB and DWARF.      (line  101)
+* PUT_SDB_:                              SDB and DWARF.      (line  106)
 * QCmode:                                Machine Modes.      (line  197)
 * QFmode:                                Machine Modes.      (line   54)
 * QImode:                                Machine Modes.      (line   25)
@@ -47462,11 +47467,11 @@ Concept Index
 * scratch_operand:                       Machine-Independent Predicates.
                                                              (line   50)
 * SDATA_SECTION_ASM_OP:                  Sections.           (line   58)
-* SDB_ALLOW_FORWARD_REFERENCES:          SDB and DWARF.      (line  119)
-* SDB_ALLOW_UNKNOWN_REFERENCES:          SDB and DWARF.      (line  114)
+* SDB_ALLOW_FORWARD_REFERENCES:          SDB and DWARF.      (line  124)
+* SDB_ALLOW_UNKNOWN_REFERENCES:          SDB and DWARF.      (line  119)
 * SDB_DEBUGGING_INFO:                    SDB and DWARF.      (line    9)
-* SDB_DELIM:                             SDB and DWARF.      (line  107)
-* SDB_OUTPUT_SOURCE_LINE:                SDB and DWARF.      (line  124)
+* SDB_DELIM:                             SDB and DWARF.      (line  112)
+* SDB_OUTPUT_SOURCE_LINE:                SDB and DWARF.      (line  129)
 * SDmode:                                Machine Modes.      (line   85)
 * sdot_prodM instruction pattern:        Standard Names.     (line  338)
 * search options:                        Including Patterns. (line   44)
@@ -47805,7 +47810,7 @@ Concept Index
 * TARGET_ASM_OPEN_PAREN:                 Data Output.        (line  130)
 * TARGET_ASM_OUTPUT_ADDR_CONST_EXTRA:    Data Output.        (line   40)
 * TARGET_ASM_OUTPUT_ANCHOR:              Anchored Addresses. (line   44)
-* TARGET_ASM_OUTPUT_DWARF_DTPREL:        SDB and DWARF.      (line   96)
+* TARGET_ASM_OUTPUT_DWARF_DTPREL:        SDB and DWARF.      (line  101)
 * TARGET_ASM_OUTPUT_MI_THUNK:            Function Entry.     (line  195)
 * TARGET_ASM_OUTPUT_SOURCE_FILENAME:     File Framework.     (line   94)
 * TARGET_ASM_RECORD_GCC_SWITCHES:        File Framework.     (line  164)
@@ -47876,8 +47881,8 @@ Concept Index
 * TARGET_DEFAULT_SHORT_ENUMS:            Type Layout.        (line  167)
 * TARGET_DEFAULT_TARGET_FLAGS:           Run-time Target.    (line   56)
 * TARGET_DEFERRED_OUTPUT_DEFS:           Label Output.       (line  422)
-* TARGET_DELAY_SCHED2:                   SDB and DWARF.      (line   61)
-* TARGET_DELAY_VARTRACK:                 SDB and DWARF.      (line   65)
+* TARGET_DELAY_SCHED2:                   SDB and DWARF.      (line   66)
+* TARGET_DELAY_VARTRACK:                 SDB and DWARF.      (line   70)
 * TARGET_DELEGITIMIZE_ADDRESS:           Addressing Modes.   (line  238)
 * TARGET_DLLIMPORT_DECL_ATTRIBUTES:      Target Attributes.  (line   55)
 * TARGET_DWARF_CALLING_CONVENTION:       SDB and DWARF.      (line   18)
@@ -47919,6 +47924,7 @@ Concept Index
 * TARGET_FLT_EVAL_METHOD:                Type Layout.        (line  148)
 * TARGET_FN_ABI_VA_LIST:                 Register Arguments. (line  289)
 * TARGET_FOLD_BUILTIN:                   Misc.               (line  650)
+* TARGET_FORCE_AT_COMP_DIR:              SDB and DWARF.      (line   61)
 * TARGET_FORMAT_TYPES:                   Misc.               (line  850)
 * TARGET_FRAME_POINTER_REQUIRED:         Elimination.        (line    9)
 * TARGET_FUNCTION_ARG:                   Register Arguments. (line   12)
@@ -48892,40 +48898,40 @@ Node: DBX Options1521943
 Node: DBX Hooks1527392
 Node: File Names and DBX1529318
 Node: SDB and DWARF1531430
-Node: VMS Debug1537277
-Node: Floating Point1537864
-Node: Mode Switching1542687
-Node: Target Attributes1546613
-Node: Emulated TLS1554525
-Node: MIPS Coprocessors1557915
-Node: PCH Target1559484
-Node: C++ ABI1561326
-Node: Named Address Spaces1566118
-Node: Misc1571057
-Ref: TARGET_SHIFT_TRUNCATION_MASK1578485
-Node: Host Config1621607
-Node: Host Common1622675
-Node: Filesystem1625054
-Node: Host Misc1629169
-Node: Fragments1631618
-Node: Target Fragment1632813
-Node: Host Fragment1641843
-Node: Collect21642083
-Node: Header Dirs1644719
-Node: Type Information1646142
-Node: GTY Options1648499
-Node: GGC Roots1662327
-Node: Files1663047
-Node: Invoking the garbage collector1665793
-Node: Troubleshooting1667296
-Node: Plugins1668372
-Node: LTO1685250
-Node: Funding1710296
-Node: GNU Project1712779
-Node: Copying1713428
-Node: GNU Free Documentation License1750959
-Node: Contributors1776099
-Node: Option Index1813504
-Node: Concept Index1814308
+Node: VMS Debug1537502
+Node: Floating Point1538089
+Node: Mode Switching1542912
+Node: Target Attributes1546838
+Node: Emulated TLS1554750
+Node: MIPS Coprocessors1558140
+Node: PCH Target1559709
+Node: C++ ABI1561551
+Node: Named Address Spaces1566343
+Node: Misc1571282
+Ref: TARGET_SHIFT_TRUNCATION_MASK1578710
+Node: Host Config1621832
+Node: Host Common1622900
+Node: Filesystem1625279
+Node: Host Misc1629394
+Node: Fragments1631843
+Node: Target Fragment1633038
+Node: Host Fragment1642068
+Node: Collect21642308
+Node: Header Dirs1644944
+Node: Type Information1646367
+Node: GTY Options1648724
+Node: GGC Roots1662552
+Node: Files1663272
+Node: Invoking the garbage collector1666018
+Node: Troubleshooting1667521
+Node: Plugins1668597
+Node: LTO1685475
+Node: Funding1710521
+Node: GNU Project1713004
+Node: Copying1713653
+Node: GNU Free Documentation License1751184
+Node: Contributors1776324
+Node: Option Index1813729
+Node: Concept Index1814533
 
 End Tag Table
