@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "4.7.4 20130508 (prerelease)")
+(!version  "4.7.4 20130603 (prerelease)")
 
 (!srcdir  "/mnt/jenkins/workspace/linaro-android_toolchain-4.7-bzr/build/objdir/../build/../gcc/gcc-linaro-4.7/gcc")
 
@@ -34972,7 +34972,7 @@ nil )
 (!pair  "list_hash_table"
 (!type already_seen 64)
 
-(!srcfileloc  "cp/tree.c" 1547)
+(!srcfileloc  "cp/tree.c" 1549)
 
 (!options 
 (!option param_is type 
@@ -35396,12 +35396,12 @@ nil )
 (!pair  "gnat_vms_condition_handler_decl"
 (!type already_seen 26)
 
-(!srcfileloc  "ada/gcc-interface/trans.c" 2619)
+(!srcfileloc  "ada/gcc-interface/trans.c" 2624)
 nil )
 (!pair  "vms_builtin_establish_handler_decl"
 (!type already_seen 26)
 
-(!srcfileloc  "ada/gcc-interface/trans.c" 2618)
+(!srcfileloc  "ada/gcc-interface/trans.c" 2623)
 nil )
 (!pair  "gnu_program_error_label_stack"
 (!type already_seen 53)
