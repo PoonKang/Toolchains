@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "4.7.4 20130603 (prerelease)")
+(!version  "4.7.4 20130626 (prerelease)")
 
 (!srcdir  "/mnt/jenkins/workspace/linaro-android_toolchain-4.7-bzr/build/objdir/../build/../gcc/gcc-linaro-4.7/gcc")
 
