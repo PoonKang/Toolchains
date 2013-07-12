@@ -157,6 +157,11 @@ along with GCC; see the file COPYING3.  If not see
 	       true, true, true, ATTRS, true, \
 	       (flag_asan || flag_tsan))
 
+#undef DEF_CILKPLUS_BUILTIN
+#define DEF_CILKPLUS_BUILTIN(ENUM, NAME, TYPE, ATTRS)  \
+  DEF_BUILTIN (ENUM, NAME, BUILT_IN_NORMAL, BT_FN_INT_VAR, BT_LAST, \
+  	       false, false, false, ATTRS, false, flag_enable_cilkplus) 
+
 /* Define an attribute list for math functions that are normally
    "impure" because some of them may write into global memory for
    `errno'.  If !flag_errno_math they are instead "const".  */
@@ -732,7 +737,7 @@ DEF_LIB_BUILTIN        (BUILT_IN_REALLOC, "realloc", BT_FN_PTR_PTR_SIZE, ATTR_NO
 DEF_GCC_BUILTIN        (BUILT_IN_RETURN, "return", BT_FN_VOID_PTR, ATTR_NORETURN_NOTHROW_LEAF_LIST)
 DEF_GCC_BUILTIN        (BUILT_IN_RETURN_ADDRESS, "return_address", BT_FN_PTR_UINT, ATTR_LEAF_LIST)
 DEF_GCC_BUILTIN        (BUILT_IN_SAVEREGS, "saveregs", BT_FN_PTR_VAR, ATTR_NULL)
-DEF_GCC_BUILTIN        (BUILT_IN_SETJMP, "setjmp", BT_FN_INT_PTR, ATTR_NULL)
+DEF_GCC_BUILTIN        (BUILT_IN_SETJMP, "setjmp", BT_FN_INT_PTR, ATTR_NOTHROW_LEAF_LIST)
 DEF_EXT_LIB_BUILTIN    (BUILT_IN_STRFMON, "strfmon", BT_FN_SSIZE_STRING_SIZE_CONST_STRING_VAR, ATTR_FORMAT_STRFMON_NOTHROW_3_4)
 DEF_LIB_BUILTIN        (BUILT_IN_STRFTIME, "strftime", BT_FN_SIZE_STRING_SIZE_CONST_STRING_CONST_PTR, ATTR_FORMAT_STRFTIME_NOTHROW_3_0)
 DEF_GCC_BUILTIN        (BUILT_IN_TRAP, "trap", BT_FN_VOID, ATTR_NORETURN_NOTHROW_LEAF_LIST)
@@ -837,3 +842,5 @@ DEF_GCC_BUILTIN (BUILT_IN_LINE, "LINE", BT_FN_INT, ATTR_NOTHROW_LEAF_LIST)
 /* Sanitizer builtins. */
 #include "sanitizer.def"
 
+/* Cilk Plus builtins.  */
+#include "cilkplus.def"

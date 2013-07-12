@@ -535,11 +535,11 @@ _Description_:
      team sizes and `false' disables it.
 
 _C/C++_:
-     _Prototype_:  `void omp_set_dynamic(int set);'
+     _Prototype_:  `void omp_set_dynamic(int dynamic_threads);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_set_dynamic(set)'
-                   `logical, intent(in) :: set'
+     _Interface_:  `subroutine omp_set_dynamic(dynamic_threads)'
+                   `logical, intent(in) :: dynamic_threads'
 
 _See also_:
      *note OMP_DYNAMIC::, *note omp_get_dynamic::
@@ -584,11 +584,11 @@ _Description_:
      enables dynamic adjustment of team sizes and `false' disables it.
 
 _C/C++_:
-     _Prototype_:  `void omp_set_nested(int set);'
+     _Prototype_:  `void omp_set_nested(int nested);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_set_nested(set)'
-                   `logical, intent(in) :: set'
+     _Interface_:  `subroutine omp_set_nested(nested)'
+                   `logical, intent(in) :: nested'
 
 _See also_:
      *note OMP_NESTED::, *note omp_get_nested::
@@ -608,11 +608,11 @@ _Description_:
      The argument of `omp_set_num_threads' shall be a positive integer.
 
 _C/C++_:
-     _Prototype_:  `void omp_set_num_threads(int n);'
+     _Prototype_:  `void omp_set_num_threads(int num_threads);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_set_num_threads(n)'
-                   `integer, intent(in) :: n'
+     _Interface_:  `subroutine omp_set_num_threads(num_threads)'
+                   `integer, intent(in) :: num_threads'
 
 _See also_:
      *note OMP_NUM_THREADS::, *note omp_get_num_threads::, *note
@@ -665,8 +665,8 @@ _C/C++_:
      _Prototype_:  `void omp_init_lock(omp_lock_t *lock);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_init_lock(lock)'
-                   `integer(omp_lock_kind), intent(out) :: lock'
+     _Interface_:  `subroutine omp_init_lock(svar)'
+                   `integer(omp_lock_kind), intent(out) :: svar'
 
 _See also_:
      *note omp_destroy_lock::
@@ -690,8 +690,8 @@ _C/C++_:
      _Prototype_:  `void omp_set_lock(omp_lock_t *lock);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_set_lock(lock)'
-                   `integer(omp_lock_kind), intent(inout) :: lock'
+     _Interface_:  `subroutine omp_set_lock(svar)'
+                   `integer(omp_lock_kind), intent(inout) :: svar'
 
 _See also_:
      *note omp_init_lock::, *note omp_test_lock::, *note
@@ -717,8 +717,8 @@ _C/C++_:
      _Prototype_:  `int omp_test_lock(omp_lock_t *lock);'
 
 _Fortran_:
-     _Interface_:  `logical function omp_test_lock(lock)'
-                   `integer(omp_lock_kind), intent(inout) :: lock'
+     _Interface_:  `logical function omp_test_lock(svar)'
+                   `integer(omp_lock_kind), intent(inout) :: svar'
 
 _See also_:
      *note omp_init_lock::, *note omp_set_lock::, *note omp_set_lock::
@@ -744,8 +744,8 @@ _C/C++_:
      _Prototype_:  `void omp_unset_lock(omp_lock_t *lock);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_unset_lock(lock)'
-                   `integer(omp_lock_kind), intent(inout) :: lock'
+     _Interface_:  `subroutine omp_unset_lock(svar)'
+                   `integer(omp_lock_kind), intent(inout) :: svar'
 
 _See also_:
      *note omp_set_lock::, *note omp_test_lock::
@@ -767,8 +767,8 @@ _C/C++_:
      _Prototype_:  `void omp_destroy_lock(omp_lock_t *lock);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_destroy_lock(lock)'
-                   `integer(omp_lock_kind), intent(inout) :: lock'
+     _Interface_:  `subroutine omp_destroy_lock(svar)'
+                   `integer(omp_lock_kind), intent(inout) :: svar'
 
 _See also_:
      *note omp_init_lock::
@@ -790,8 +790,8 @@ _C/C++_:
      _Prototype_:  `void omp_init_nest_lock(omp_nest_lock_t *lock);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_init_nest_lock(lock)'
-                   `integer(omp_nest_lock_kind), intent(out) :: lock'
+     _Interface_:  `subroutine omp_init_nest_lock(nvar)'
+                   `integer(omp_nest_lock_kind), intent(out) :: nvar'
 
 _See also_:
      *note omp_destroy_nest_lock::
@@ -815,8 +815,8 @@ _C/C++_:
      _Prototype_:  `void omp_set_nest_lock(omp_nest_lock_t *lock);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_set_nest_lock(lock)'
-                   `integer(omp_nest_lock_kind), intent(inout) :: lock'
+     _Interface_:  `subroutine omp_set_nest_lock(nvar)'
+                   `integer(omp_nest_lock_kind), intent(inout) :: nvar'
 
 _See also_:
      *note omp_init_nest_lock::, *note omp_unset_nest_lock::
@@ -842,8 +842,8 @@ _C/C++_:
      _Prototype_:  `int omp_test_nest_lock(omp_nest_lock_t *lock);'
 
 _Fortran_:
-     _Interface_:  `logical function omp_test_nest_lock(lock)'
-                   `integer(omp_nest_lock_kind), intent(inout) :: lock'
+     _Interface_:  `logical function omp_test_nest_lock(nvar)'
+                   `integer(omp_nest_lock_kind), intent(inout) :: nvar'
 
 _See also_:
      *note omp_init_lock::, *note omp_set_lock::, *note omp_set_lock::
@@ -870,8 +870,8 @@ _C/C++_:
      _Prototype_:  `void omp_unset_nest_lock(omp_nest_lock_t *lock);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_unset_nest_lock(lock)'
-                   `integer(omp_nest_lock_kind), intent(inout) :: lock'
+     _Interface_:  `subroutine omp_unset_nest_lock(nvar)'
+                   `integer(omp_nest_lock_kind), intent(inout) :: nvar'
 
 _See also_:
      *note omp_set_nest_lock::
@@ -894,8 +894,8 @@ _C/C++_:
      _Prototype_:  `void omp_destroy_nest_lock(omp_nest_lock_t *);'
 
 _Fortran_:
-     _Interface_:  `subroutine omp_destroy_nest_lock(lock)'
-                   `integer(omp_nest_lock_kind), intent(inout) :: lock'
+     _Interface_:  `subroutine omp_destroy_nest_lock(nvar)'
+                   `integer(omp_nest_lock_kind), intent(inout) :: nvar'
 
 _See also_:
      *note omp_init_lock::
@@ -2869,53 +2869,53 @@ Node: omp_get_thread_num16130
 Node: omp_in_parallel16998
 Node: omp_in_final17645
 Node: omp_set_dynamic18316
-Node: omp_set_max_active_levels19153
-Node: omp_set_nested19933
-Node: omp_set_num_threads20812
-Node: omp_set_schedule21648
-Node: omp_init_lock22720
-Node: omp_set_lock23371
-Node: omp_test_lock24222
-Node: omp_unset_lock25193
-Node: omp_destroy_lock26119
-Node: omp_init_nest_lock26793
-Node: omp_set_nest_lock27526
-Node: omp_test_nest_lock28437
-Node: omp_unset_nest_lock29466
-Node: omp_destroy_nest_lock30476
-Node: omp_get_wtick31224
-Node: omp_get_wtime31815
-Node: Environment Variables32589
-Node: OMP_DYNAMIC33717
-Node: OMP_MAX_ACTIVE_LEVELS34285
-Node: OMP_NESTED34924
-Node: OMP_NUM_THREADS35528
-Node: OMP_SCHEDULE36216
-Node: OMP_STACKSIZE36910
-Node: OMP_THREAD_LIMIT37736
-Node: OMP_WAIT_POLICY38331
-Node: OMP_PROC_BIND38892
-Node: GOMP_CPU_AFFINITY39450
-Node: GOMP_STACKSIZE40991
-Node: The libgomp ABI41801
-Node: Implementing MASTER construct42600
-Node: Implementing CRITICAL construct43014
-Node: Implementing ATOMIC construct43753
-Node: Implementing FLUSH construct44234
-Node: Implementing BARRIER construct44505
-Node: Implementing THREADPRIVATE construct44774
-Node: Implementing PRIVATE clause45426
-Node: Implementing FIRSTPRIVATE LASTPRIVATE COPYIN and COPYPRIVATE clauses46007
-Node: Implementing REDUCTION clause47331
-Node: Implementing PARALLEL construct47888
-Node: Implementing FOR construct49145
-Node: Implementing ORDERED construct51143
-Node: Implementing SECTIONS construct51449
-Node: Implementing SINGLE construct52215
-Node: Reporting Bugs52877
-Node: Copying53187
-Node: GNU Free Documentation License90752
-Node: Funding115894
-Node: Library Index118419
+Node: omp_set_max_active_levels19189
+Node: omp_set_nested19969
+Node: omp_set_num_threads20857
+Node: omp_set_schedule21723
+Node: omp_init_lock22795
+Node: omp_set_lock23446
+Node: omp_test_lock24297
+Node: omp_unset_lock25268
+Node: omp_destroy_lock26194
+Node: omp_init_nest_lock26868
+Node: omp_set_nest_lock27601
+Node: omp_test_nest_lock28512
+Node: omp_unset_nest_lock29541
+Node: omp_destroy_nest_lock30551
+Node: omp_get_wtick31299
+Node: omp_get_wtime31890
+Node: Environment Variables32664
+Node: OMP_DYNAMIC33792
+Node: OMP_MAX_ACTIVE_LEVELS34360
+Node: OMP_NESTED34999
+Node: OMP_NUM_THREADS35603
+Node: OMP_SCHEDULE36291
+Node: OMP_STACKSIZE36985
+Node: OMP_THREAD_LIMIT37811
+Node: OMP_WAIT_POLICY38406
+Node: OMP_PROC_BIND38967
+Node: GOMP_CPU_AFFINITY39525
+Node: GOMP_STACKSIZE41066
+Node: The libgomp ABI41876
+Node: Implementing MASTER construct42675
+Node: Implementing CRITICAL construct43089
+Node: Implementing ATOMIC construct43828
+Node: Implementing FLUSH construct44309
+Node: Implementing BARRIER construct44580
+Node: Implementing THREADPRIVATE construct44849
+Node: Implementing PRIVATE clause45501
+Node: Implementing FIRSTPRIVATE LASTPRIVATE COPYIN and COPYPRIVATE clauses46082
+Node: Implementing REDUCTION clause47406
+Node: Implementing PARALLEL construct47963
+Node: Implementing FOR construct49220
+Node: Implementing ORDERED construct51218
+Node: Implementing SECTIONS construct51524
+Node: Implementing SINGLE construct52290
+Node: Reporting Bugs52952
+Node: Copying53262
+Node: GNU Free Documentation License90827
+Node: Funding115969
+Node: Library Index118494
 
 End Tag Table

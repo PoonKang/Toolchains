@@ -73,10 +73,6 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_objc_map_private() ((struct objc_map_private *)(ggc_internal_cleared_alloc_stat (sizeof (struct objc_map_private) MEM_STAT_INFO)))
 #define ggc_alloc_vec_objc_map_private(n) ((struct objc_map_private *)(ggc_internal_vec_alloc_stat (sizeof (struct objc_map_private), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_objc_map_private(n) ((struct objc_map_private *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct objc_map_private), n MEM_STAT_INFO)))
-#define ggc_alloc_gimple_type_leader_entry_s() ((struct gimple_type_leader_entry_s *)(ggc_internal_alloc_stat (sizeof (struct gimple_type_leader_entry_s) MEM_STAT_INFO)))
-#define ggc_alloc_cleared_gimple_type_leader_entry_s() ((struct gimple_type_leader_entry_s *)(ggc_internal_cleared_alloc_stat (sizeof (struct gimple_type_leader_entry_s) MEM_STAT_INFO)))
-#define ggc_alloc_vec_gimple_type_leader_entry_s(n) ((struct gimple_type_leader_entry_s *)(ggc_internal_vec_alloc_stat (sizeof (struct gimple_type_leader_entry_s), n MEM_STAT_INFO)))
-#define ggc_alloc_cleared_vec_gimple_type_leader_entry_s(n) ((struct gimple_type_leader_entry_s *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct gimple_type_leader_entry_s), n MEM_STAT_INFO)))
 #define ggc_alloc_builtin_record() ((struct builtin_record *)(ggc_internal_alloc_stat (sizeof (struct builtin_record) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_builtin_record() ((struct builtin_record *)(ggc_internal_cleared_alloc_stat (sizeof (struct builtin_record) MEM_STAT_INFO)))
 #define ggc_alloc_vec_builtin_record(n) ((struct builtin_record *)(ggc_internal_vec_alloc_stat (sizeof (struct builtin_record), n MEM_STAT_INFO)))
@@ -645,6 +641,10 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_ipa_pass_through_data() ((struct ipa_pass_through_data *)(ggc_internal_cleared_alloc_stat (sizeof (struct ipa_pass_through_data) MEM_STAT_INFO)))
 #define ggc_alloc_vec_ipa_pass_through_data(n) ((struct ipa_pass_through_data *)(ggc_internal_vec_alloc_stat (sizeof (struct ipa_pass_through_data), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_ipa_pass_through_data(n) ((struct ipa_pass_through_data *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct ipa_pass_through_data), n MEM_STAT_INFO)))
+#define ggc_alloc_ipa_constant_data() ((struct ipa_constant_data *)(ggc_internal_alloc_stat (sizeof (struct ipa_constant_data) MEM_STAT_INFO)))
+#define ggc_alloc_cleared_ipa_constant_data() ((struct ipa_constant_data *)(ggc_internal_cleared_alloc_stat (sizeof (struct ipa_constant_data) MEM_STAT_INFO)))
+#define ggc_alloc_vec_ipa_constant_data(n) ((struct ipa_constant_data *)(ggc_internal_vec_alloc_stat (sizeof (struct ipa_constant_data), n MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_ipa_constant_data(n) ((struct ipa_constant_data *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct ipa_constant_data), n MEM_STAT_INFO)))
 #define ggc_alloc_ipa_known_type_data() ((struct ipa_known_type_data *)(ggc_internal_alloc_stat (sizeof (struct ipa_known_type_data) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_ipa_known_type_data() ((struct ipa_known_type_data *)(ggc_internal_cleared_alloc_stat (sizeof (struct ipa_known_type_data) MEM_STAT_INFO)))
 #define ggc_alloc_vec_ipa_known_type_data(n) ((struct ipa_known_type_data *)(ggc_internal_vec_alloc_stat (sizeof (struct ipa_known_type_data), n MEM_STAT_INFO)))
@@ -2339,10 +2339,6 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_objc_map_t() ((objc_map_t *)(ggc_internal_cleared_alloc_stat (sizeof (objc_map_t) MEM_STAT_INFO)))
 #define ggc_alloc_vec_objc_map_t(n) ((objc_map_t *)(ggc_internal_vec_alloc_stat (sizeof (objc_map_t), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_objc_map_t(n) ((objc_map_t *)(ggc_internal_cleared_vec_alloc_stat (sizeof (objc_map_t), n MEM_STAT_INFO)))
-#define ggc_alloc_gimple_type_leader_entry() ((gimple_type_leader_entry *)(ggc_internal_alloc_stat (sizeof (gimple_type_leader_entry) MEM_STAT_INFO)))
-#define ggc_alloc_cleared_gimple_type_leader_entry() ((gimple_type_leader_entry *)(ggc_internal_cleared_alloc_stat (sizeof (gimple_type_leader_entry) MEM_STAT_INFO)))
-#define ggc_alloc_vec_gimple_type_leader_entry(n) ((gimple_type_leader_entry *)(ggc_internal_vec_alloc_stat (sizeof (gimple_type_leader_entry), n MEM_STAT_INFO)))
-#define ggc_alloc_cleared_vec_gimple_type_leader_entry(n) ((gimple_type_leader_entry *)(ggc_internal_cleared_vec_alloc_stat (sizeof (gimple_type_leader_entry), n MEM_STAT_INFO)))
 #define ggc_alloc_method_entry() ((method_entry *)(ggc_internal_alloc_stat (sizeof (method_entry) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_method_entry() ((method_entry *)(ggc_internal_cleared_alloc_stat (sizeof (method_entry) MEM_STAT_INFO)))
 #define ggc_alloc_vec_method_entry(n) ((method_entry *)(ggc_internal_vec_alloc_stat (sizeof (method_entry), n MEM_STAT_INFO)))
@@ -2862,10 +2858,6 @@ extern void gt_ggc_mx_hashed_entry (void *);
   if (X != NULL) gt_ggc_mx_objc_map_private (X);\
   } while (0)
 extern void gt_ggc_mx_objc_map_private (void *);
-#define gt_ggc_m_26gimple_type_leader_entry_s(X) do { \
-  if (X != NULL) gt_ggc_mx_gimple_type_leader_entry_s (X);\
-  } while (0)
-extern void gt_ggc_mx_gimple_type_leader_entry_s (void *);
 #define gt_ggc_m_23vec_method_entry_va_gc_(X) do { \
   if (X != NULL) gt_ggc_mx_vec_method_entry_va_gc_ (X);\
   } while (0)
@@ -3718,10 +3710,6 @@ extern void gt_pch_nx_hashed_entry (void *);
   if (X != NULL) gt_pch_nx_objc_map_private (X);\
   } while (0)
 extern void gt_pch_nx_objc_map_private (void *);
-#define gt_pch_n_26gimple_type_leader_entry_s(X) do { \
-  if (X != NULL) gt_pch_nx_gimple_type_leader_entry_s (X);\
-  } while (0)
-extern void gt_pch_nx_gimple_type_leader_entry_s (void *);
 #define gt_pch_n_23vec_method_entry_va_gc_(X) do { \
   if (X != NULL) gt_pch_nx_vec_method_entry_va_gc_ (X);\
   } while (0)
@@ -4554,8 +4542,6 @@ extern void gt_pch_p_16hashed_attribute
 extern void gt_pch_p_12hashed_entry
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_16objc_map_private
-    (void *, void *, gt_pointer_operator, void *);
-extern void gt_pch_p_26gimple_type_leader_entry_s
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_23vec_method_entry_va_gc_
     (void *, void *, gt_pointer_operator, void *);
