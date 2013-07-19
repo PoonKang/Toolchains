@@ -43235,6 +43235,21 @@ Some attributes only make sense for C++ programs.
      interface are dispatched using GCJ's interface table mechanism,
      instead of regular virtual table dispatch.
 
+`warn_unused'
+     For C++ types with non-trivial constructors and/or destructors it
+     is impossible for the compiler to determine whether a variable of
+     this type is truly unused if it is not referenced. This type
+     attribute informs the compiler that variables of this type should
+     be warned about if they appear to be unused, just like variables
+     of fundamental types.
+
+     This attribute is appropriate for types which just represent a
+     value, such as `std::string'; it is not appropriate for types which
+     control a resource, such as `std::mutex'.
+
+     This attribute is also accepted in C, but it is unnecessary
+     because C does not have constructors or destructors.
+
 
  See also *note Namespace Association::.
 
@@ -53524,6 +53539,7 @@ Keyword Index
 * VxWorks Options:                       VxWorks Options.    (line    6)
 * W floating point suffix:               Floating Types.     (line    6)
 * w floating point suffix:               Floating Types.     (line    6)
+* warn_unused attribute:                 C++ Attributes.     (line   57)
 * warn_unused_result attribute:          Function Attributes.
                                                              (line 1831)
 * warning for comparison of signed and unsigned values: Warning Options.
@@ -53808,68 +53824,68 @@ Ref: C++ Interface-Footnote-11772013
 Node: Template Instantiation1772149
 Node: Bound member functions1778736
 Node: C++ Attributes1780268
-Node: Function Multiversioning1782924
-Node: Namespace Association1784739
-Node: Type Traits1786119
-Node: Java Exceptions1792607
-Node: Deprecated Features1793997
-Node: Backwards Compatibility1796962
-Node: Objective-C1798314
-Node: GNU Objective-C runtime API1798923
-Node: Modern GNU Objective-C runtime API1799930
-Node: Traditional GNU Objective-C runtime API1802367
-Node: Executing code before main1803095
-Node: What you can and what you cannot do in +load1805833
-Node: Type encoding1808223
-Node: Legacy type encoding1813299
-Node: @encode1814390
-Node: Method signatures1814931
-Node: Garbage Collection1816926
-Node: Constant string objects1819615
-Node: compatibility_alias1822123
-Node: Exceptions1822845
-Node: Synchronization1825556
-Node: Fast enumeration1826740
-Node: Using fast enumeration1827052
-Node: c99-like fast enumeration syntax1828263
-Node: Fast enumeration details1828966
-Node: Fast enumeration protocol1831307
-Node: Messaging with the GNU Objective-C runtime1834459
-Node: Dynamically registering methods1835830
-Node: Forwarding hook1837521
-Node: Compatibility1840561
-Node: Gcov1847128
-Node: Gcov Intro1847661
-Node: Invoking Gcov1850379
-Node: Gcov and Optimization1864624
-Node: Gcov Data Files1867624
-Node: Cross-profiling1869019
-Node: Trouble1870870
-Node: Actual Bugs1872282
-Node: Interoperation1872729
-Node: Incompatibilities1879621
-Node: Fixed Headers1887772
-Node: Standard Libraries1889435
-Node: Disappointments1890807
-Node: C++ Misunderstandings1895165
-Node: Static Definitions1895976
-Node: Name lookup1897029
-Ref: Name lookup-Footnote-11901807
-Node: Temporaries1901994
-Node: Copy Assignment1903970
-Node: Non-bugs1905777
-Node: Warnings and Errors1916284
-Node: Bugs1918046
-Node: Bug Criteria1918610
-Node: Bug Reporting1920820
-Node: Service1921041
-Node: Contributing1921860
-Node: Funding1922600
-Node: GNU Project1925089
-Node: Copying1925735
-Node: GNU Free Documentation License1963263
-Node: Contributors1988400
-Node: Option Index2025802
-Node: Keyword Index2218533
+Node: Function Multiversioning1783628
+Node: Namespace Association1785443
+Node: Type Traits1786823
+Node: Java Exceptions1793311
+Node: Deprecated Features1794701
+Node: Backwards Compatibility1797666
+Node: Objective-C1799018
+Node: GNU Objective-C runtime API1799627
+Node: Modern GNU Objective-C runtime API1800634
+Node: Traditional GNU Objective-C runtime API1803071
+Node: Executing code before main1803799
+Node: What you can and what you cannot do in +load1806537
+Node: Type encoding1808927
+Node: Legacy type encoding1814003
+Node: @encode1815094
+Node: Method signatures1815635
+Node: Garbage Collection1817630
+Node: Constant string objects1820319
+Node: compatibility_alias1822827
+Node: Exceptions1823549
+Node: Synchronization1826260
+Node: Fast enumeration1827444
+Node: Using fast enumeration1827756
+Node: c99-like fast enumeration syntax1828967
+Node: Fast enumeration details1829670
+Node: Fast enumeration protocol1832011
+Node: Messaging with the GNU Objective-C runtime1835163
+Node: Dynamically registering methods1836534
+Node: Forwarding hook1838225
+Node: Compatibility1841265
+Node: Gcov1847832
+Node: Gcov Intro1848365
+Node: Invoking Gcov1851083
+Node: Gcov and Optimization1865328
+Node: Gcov Data Files1868328
+Node: Cross-profiling1869723
+Node: Trouble1871574
+Node: Actual Bugs1872986
+Node: Interoperation1873433
+Node: Incompatibilities1880325
+Node: Fixed Headers1888476
+Node: Standard Libraries1890139
+Node: Disappointments1891511
+Node: C++ Misunderstandings1895869
+Node: Static Definitions1896680
+Node: Name lookup1897733
+Ref: Name lookup-Footnote-11902511
+Node: Temporaries1902698
+Node: Copy Assignment1904674
+Node: Non-bugs1906481
+Node: Warnings and Errors1916988
+Node: Bugs1918750
+Node: Bug Criteria1919314
+Node: Bug Reporting1921524
+Node: Service1921745
+Node: Contributing1922564
+Node: Funding1923304
+Node: GNU Project1925793
+Node: Copying1926439
+Node: GNU Free Documentation License1963967
+Node: Contributors1989104
+Node: Option Index2026506
+Node: Keyword Index2219237
 
 End Tag Table
