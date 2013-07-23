@@ -60,6 +60,7 @@ extern int vfp_compare_operand (rtx, enum machine_mode);
 extern int arm_float_compare_operand (rtx, enum machine_mode);
 extern int index_operand (rtx, enum machine_mode);
 extern int shiftable_operator (rtx, enum machine_mode);
+extern int shiftable_operator_strict_it (rtx, enum machine_mode);
 extern int logical_binary_operator (rtx, enum machine_mode);
 extern int commutative_binary_operator (rtx, enum machine_mode);
 extern int shift_operator (rtx, enum machine_mode);
@@ -150,6 +151,7 @@ enum constraint_num
   CONSTRAINT_Pw,
   CONSTRAINT_Px,
   CONSTRAINT_Py,
+  CONSTRAINT_Pz,
   CONSTRAINT_G,
   CONSTRAINT_Dz,
   CONSTRAINT_Da,
