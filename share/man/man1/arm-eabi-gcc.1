@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-07-22" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-07-24" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -482,7 +482,7 @@ in the following sections.
 .IP "\fIMachine Dependent Options\fR" 4
 .IX Item "Machine Dependent Options"
 \&\fIAArch64 Options\fR
-\&\fB\-mbig\-endian  \-mlittle\-endian 
+\&\fB\-mabi=\fR\fIname\fR  \fB\-mbig\-endian  \-mlittle\-endian 
 \&\-mgeneral\-regs\-only 
 \&\-mcmodel=tiny  \-mcmodel=small  \-mcmodel=large 
 \&\-mstrict\-align 
@@ -10286,6 +10286,16 @@ platform.
 .IX Subsection "AArch64 Options"
 .PP
 These options are defined for AArch64 implementations:
+.IP "\fB\-mabi=\fR\fIname\fR" 4
+.IX Item "-mabi=name"
+Generate code for the specified data model.  Permissible values
+are \fBilp32\fR for SysV-like data model where int, long int and pointer
+are 32\-bit, and \fBlp64\fR for SysV-like data model where int is 32\-bit,
+but long int and pointer are 64\-bit.
+.Sp
+The default depends on the specific target configuration.  Note that
+the \s-1LP64\s0 and \s-1ILP32\s0 ABIs are not link-compatible; you must compile your
+entire program with the same \s-1ABI\s0, and link with a compatible set of libraries.
 .IP "\fB\-mbig\-endian\fR" 4
 .IX Item "-mbig-endian"
 Generate big-endian code.  This is the default when \s-1GCC\s0 is configured for an
@@ -18343,10 +18353,10 @@ the rules of the \s-1ABI\s0.
 Set the instruction set, register set, and instruction scheduling parameters
 for machine type \fIcpu_type\fR.  Supported values for \fIcpu_type\fR are
 \&\fBv7\fR, \fBcypress\fR, \fBv8\fR, \fBsupersparc\fR, \fBhypersparc\fR,
-\&\fBleon\fR, \fBsparclite\fR, \fBf930\fR, \fBf934\fR, \fBsparclite86x\fR,
-\&\fBsparclet\fR, \fBtsc701\fR, \fBv9\fR, \fBultrasparc\fR,
-\&\fBultrasparc3\fR, \fBniagara\fR, \fBniagara2\fR, \fBniagara3\fR,
-and \fBniagara4\fR.
+\&\fBleon\fR, \fBleon3\fR, \fBsparclite\fR, \fBf930\fR, \fBf934\fR,
+\&\fBsparclite86x\fR, \fBsparclet\fR, \fBtsc701\fR, \fBv9\fR,
+\&\fBultrasparc\fR, \fBultrasparc3\fR, \fBniagara\fR, \fBniagara2\fR,
+\&\fBniagara3\fR and \fBniagara4\fR.
 .Sp
 Native Solaris and GNU/Linux toolchains also support the value \fBnative\fR,
 which selects the best architecture option for the host processor.
@@ -18365,7 +18375,7 @@ implementations.
 cypress
 .IP "v8" 4
 .IX Item "v8"
-supersparc, hypersparc, leon
+supersparc, hypersparc, leon, leon3
 .IP "sparclite" 4
 .IX Item "sparclite"
 f930, f934, sparclite86x
@@ -18428,10 +18438,11 @@ option \fB\-mcpu=\fR\fIcpu_type\fR does.
 The same values for \fB\-mcpu=\fR\fIcpu_type\fR can be used for
 \&\fB\-mtune=\fR\fIcpu_type\fR, but the only useful values are those
 that select a particular \s-1CPU\s0 implementation.  Those are \fBcypress\fR,
-\&\fBsupersparc\fR, \fBhypersparc\fR, \fBleon\fR, \fBf930\fR, \fBf934\fR,
-\&\fBsparclite86x\fR, \fBtsc701\fR, \fBultrasparc\fR, \fBultrasparc3\fR,
-\&\fBniagara\fR, \fBniagara2\fR, \fBniagara3\fR and \fBniagara4\fR.  With
-native Solaris and GNU/Linux toolchains, \fBnative\fR can also be used.
+\&\fBsupersparc\fR, \fBhypersparc\fR, \fBleon\fR, \fBleon3\fR, \fBf930\fR,
+\&\fBf934\fR, \fBsparclite86x\fR, \fBtsc701\fR, \fBultrasparc\fR,
+\&\fBultrasparc3\fR, \fBniagara\fR, \fBniagara2\fR, \fBniagara3\fR and
+\&\fBniagara4\fR.  With native Solaris and GNU/Linux toolchains, \fBnative\fR
+can also be used.
 .IP "\fB\-mv8plus\fR" 4
 .IX Item "-mv8plus"
 .PD 0
@@ -18508,8 +18519,8 @@ Enable the documented workaround for the single erratum of the Atmel \s-1AT697F\
 processor (which corresponds to erratum #13 of the \s-1AT697E\s0 processor).
 .IP "\fB\-mfix\-ut699\fR" 4
 .IX Item "-mfix-ut699"
-Enable the documented workarounds for the floating-point errata of the \s-1UT699\s0
-processor.
+Enable the documented workarounds for the floating-point errata and the data
+cache nullify errata of the \s-1UT699\s0 processor.
 .PP
 These \fB\-m\fR options are supported in addition to the above
 on \s-1SPARC\-V9\s0 processors in 64\-bit environments:
