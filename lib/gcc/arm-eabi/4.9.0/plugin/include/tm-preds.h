@@ -181,7 +181,7 @@ enum constraint_num
   CONSTRAINT_Q,
   CONSTRAINT_Uu,
   CONSTRAINT_Uw,
-  CONSTRAINT_Ss,
+  CONSTRAINT_US,
   CONSTRAINT__LIMIT
 };
 
@@ -196,7 +196,6 @@ insn_constraint_len (char fc, const char *str ATTRIBUTE_UNUSED)
     case 'C': return 2;
     case 'D': return 2;
     case 'P': return 2;
-    case 'S': return 2;
     case 'T': return 2;
     case 'U': return 2;
     default: break;

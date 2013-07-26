@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "4.9.0 20130724 (experimental)")
+(!version  "4.9.0 20130725 (experimental)")
 (!srcdir  "/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc")
 (!languages 9 ada c cp fortran go java lto objc objcp)
 (!fileslist 188
@@ -17837,7 +17837,7 @@
   (!fields 0 )
   nil 0 nil )
  
- (!type struct 1007 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:26709"nil 
+ (!type struct 1007 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:26718"nil 
   (!fields 0 )
   nil 0 nil )
  
@@ -17845,7 +17845,7 @@
   (!fields 0 )
   nil 0 nil )
  
- (!type struct 1009 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:20284"nil 
+ (!type struct 1009 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:20293"nil 
   (!fields 0 )
   nil 0 nil )
  
@@ -22674,23 +22674,23 @@
   nil )
  (!pair  "arm_mangle_map_entry"
   (!type already_seen 1007)
-  (!srcfileloc  "config/arm/arm.c" 26713)
+  (!srcfileloc  "config/arm/arm.c" 26722)
   nil )
  (!pair  "builtin_arg"
   (!type already_seen 9)
-  (!srcfileloc  "config/arm/arm.c" 21914)
+  (!srcfileloc  "config/arm/arm.c" 21923)
   nil )
  (!pair  "neon_builtin_datum"
   (!type already_seen 1009)
-  (!srcfileloc  "config/arm/arm.c" 20290)
+  (!srcfileloc  "config/arm/arm.c" 20299)
   nil )
  (!pair  "neon_itype"
   (!type already_seen 9)
-  (!srcfileloc  "config/arm/arm.c" 20282)
+  (!srcfileloc  "config/arm/arm.c" 20291)
   nil )
  (!pair  "neon_builtin_type_mode"
   (!type already_seen 9)
-  (!srcfileloc  "config/arm/arm.c" 20213)
+  (!srcfileloc  "config/arm/arm.c" 20222)
   nil )
  (!pair  "arm_pragma_enum"
   (!type already_seen 9)
@@ -26025,7 +26025,7 @@
   (!type array 1509 nil  gc_used "ARM_BUILTIN_MAX" 
    (!type already_seen 5)
   )
-  (!srcfileloc  "config/arm/arm.c" 20647)
+  (!srcfileloc  "config/arm/arm.c" 20656)
   nil )
  (!pair  "tls_get_addr_libfunc"
   (!type already_seen 136)
