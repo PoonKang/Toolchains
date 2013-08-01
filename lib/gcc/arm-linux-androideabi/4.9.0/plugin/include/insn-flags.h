@@ -56,6 +56,7 @@
 #define HAVE_arm_casesi_internal (TARGET_ARM)
 #define HAVE_thumb1_casesi_dispatch (TARGET_THUMB1)
 #define HAVE_nop 1
+#define HAVE_movcond_addsi (TARGET_32BIT)
 #define HAVE_movcond (TARGET_ARM)
 #define HAVE_prologue_thumb1_interwork (TARGET_THUMB1)
 #define HAVE_stack_tie 1
@@ -1447,6 +1448,7 @@
 #define HAVE_subsi3 1
 #define HAVE_subsf3 (TARGET_32BIT && TARGET_HARD_FLOAT)
 #define HAVE_subdf3 (TARGET_32BIT && TARGET_HARD_FLOAT && !TARGET_VFP_SINGLE)
+#define HAVE_mulhi3 (TARGET_DSP_MULTIPLY)
 #define HAVE_mulsi3 1
 #define HAVE_maddsidi4 (TARGET_32BIT && arm_arch3m)
 #define HAVE_mulsidi3 (TARGET_32BIT && arm_arch3m)
@@ -2472,6 +2474,7 @@ extern rtx        gen_blockage                          (void);
 extern rtx        gen_arm_casesi_internal               (rtx, rtx, rtx, rtx);
 extern rtx        gen_thumb1_casesi_dispatch            (rtx);
 extern rtx        gen_nop                               (void);
+extern rtx        gen_movcond_addsi                     (rtx, rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_movcond                           (rtx, rtx, rtx, rtx, rtx, rtx);
 extern rtx        gen_prologue_thumb1_interwork         (void);
 extern rtx        gen_stack_tie                         (rtx, rtx);
@@ -3838,6 +3841,7 @@ extern rtx        gen_subdi3                            (rtx, rtx, rtx);
 extern rtx        gen_subsi3                            (rtx, rtx, rtx);
 extern rtx        gen_subsf3                            (rtx, rtx, rtx);
 extern rtx        gen_subdf3                            (rtx, rtx, rtx);
+extern rtx        gen_mulhi3                            (rtx, rtx, rtx);
 extern rtx        gen_mulsi3                            (rtx, rtx, rtx);
 extern rtx        gen_maddsidi4                         (rtx, rtx, rtx, rtx);
 extern rtx        gen_mulsidi3                          (rtx, rtx, rtx);

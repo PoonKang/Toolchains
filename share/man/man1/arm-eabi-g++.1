@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-07-25" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-07-31" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -762,8 +762,9 @@ in the following sections.
 \&\-mabi=\fR\fIabi\fR  \fB\-mabicalls  \-mno\-abicalls 
 \&\-mshared  \-mno\-shared  \-mplt  \-mno\-plt  \-mxgot  \-mno\-xgot 
 \&\-mgp32  \-mgp64  \-mfp32  \-mfp64  \-mhard\-float  \-msoft\-float 
-\&\-mno\-float \-msingle\-float  \-mdouble\-float  
-\&\-mdsp  \-mno\-dsp  \-mdspr2  \-mno\-dspr2 
+\&\-mno\-float  \-msingle\-float  \-mdouble\-float 
+\&\-mabs=\fR\fImode\fR  \fB\-mnan=\fR\fIencoding\fR 
+\&\fB\-mdsp  \-mno\-dsp  \-mdspr2  \-mno\-dspr2 
 \&\-mmcu \-mmno\-mcu 
 \&\-meva \-mno\-eva 
 \&\-mmicromips \-mno\-micromips 
@@ -15386,6 +15387,50 @@ operations.
 .IX Item "-mdouble-float"
 Assume that the floating-point coprocessor supports double-precision
 operations.  This is the default.
+.IP "\fB\-mabs=2008\fR" 4
+.IX Item "-mabs=2008"
+.PD 0
+.IP "\fB\-mabs=legacy\fR" 4
+.IX Item "-mabs=legacy"
+.PD
+These options control the treatment of the special not-a-number (NaN)
+\&\s-1IEEE\s0 754 floating-point data with the \f(CW\*(C`abs.\f(CIfmt\f(CW\*(C'\fR and
+\&\f(CW\*(C`neg.\f(CIfmt\f(CW\*(C'\fR machine instructions.
+.Sp
+By default or when the \fB\-mabs=legacy\fR is used the legacy
+treatment is selected.  In this case these instructions are considered
+arithmetic and avoided where correct operation is required and the
+input operand might be a NaN.  A longer sequence of instructions that
+manipulate the sign bit of floating-point datum manually is used
+instead unless the \fB\-ffinite\-math\-only\fR option has also been
+specified.
+.Sp
+The \fB\-mabs=2008\fR option selects the \s-1IEEE\s0 754\-2008 treatment.  In
+this case these instructions are considered non-arithmetic and therefore
+operating correctly in all cases, including in particular where the
+input operand is a NaN.  These instructions are therefore always used
+for the respective operations.
+.IP "\fB\-mnan=2008\fR" 4
+.IX Item "-mnan=2008"
+.PD 0
+.IP "\fB\-mnan=legacy\fR" 4
+.IX Item "-mnan=legacy"
+.PD
+These options control the encoding of the special not-a-number (NaN)
+\&\s-1IEEE\s0 754 floating-point data.
+.Sp
+The \fB\-mnan=legacy\fR option selects the legacy encoding.  In this
+case quiet NaNs (qNaNs) are denoted by the first bit of their trailing
+significand field being 0, whereas signalling NaNs (sNaNs) are denoted
+by the first bit of their trailing significand field being 1.
+.Sp
+The \fB\-mnan=2008\fR option selects the \s-1IEEE\s0 754\-2008 encoding.  In
+this case qNaNs are denoted by the first bit of their trailing
+significand field being 1, whereas sNaNs are denoted by the first bit of
+their trailing significand field being 0.
+.Sp
+The default is \fB\-mnan=legacy\fR unless \s-1GCC\s0 has been configured with
+\&\fB\-\-with\-nan=2008\fR.
 .IP "\fB\-mllsc\fR" 4
 .IX Item "-mllsc"
 .PD 0
