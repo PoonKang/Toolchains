@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "4.9.0 20130731 (experimental)")
+(!version  "4.9.0 20130804 (experimental)")
 (!srcdir  "/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc")
 (!languages 9 ada c cp fortran go java lto objc objcp)
 (!fileslist 184
@@ -1454,23 +1454,23 @@
                                                    nil )
                                                   (!pair  "deferred_access_check"
                                                    (!type struct 73 nil  gc_used "deferred_access_check"
-                                                    (!srcfileloc  "cp/cp-tree.h" 5633)
+                                                    (!srcfileloc  "cp/cp-tree.h" 5632)
                                                     (!fields 4 
                                                      (!pair  "binfo"
                                                       (!type already_seen 5)
-                                                      (!srcfileloc  "cp/cp-tree.h" 5626)
+                                                      (!srcfileloc  "cp/cp-tree.h" 5625)
                                                       nil )
                                                      (!pair  "decl"
                                                       (!type already_seen 5)
-                                                      (!srcfileloc  "cp/cp-tree.h" 5628)
+                                                      (!srcfileloc  "cp/cp-tree.h" 5627)
                                                       nil )
                                                      (!pair  "diag_decl"
                                                       (!type already_seen 5)
-                                                      (!srcfileloc  "cp/cp-tree.h" 5630)
+                                                      (!srcfileloc  "cp/cp-tree.h" 5629)
                                                       nil )
                                                      (!pair  "loc"
                                                       (!type already_seen 9)
-                                                      (!srcfileloc  "cp/cp-tree.h" 5632)
+                                                      (!srcfileloc  "cp/cp-tree.h" 5631)
                                                       nil )
                                                     )
                                                     nil 260 nil )
@@ -14774,39 +14774,39 @@
    (!type already_seen 710)
   )
   gc_pointed_to "constexpr_call"
-  (!srcfileloc  "cp/semantics.c" 6494)
+  (!srcfileloc  "cp/semantics.c" 6483)
   (!fields 4 
    (!pair  "fundef"
     (!type pointer 712 nil  gc_used
      (!type struct 713 
       (!type already_seen 712)
       gc_pointed_to "constexpr_fundef"
-      (!srcfileloc  "cp/semantics.c" 5827)
+      (!srcfileloc  "cp/semantics.c" 5816)
       (!fields 2 
        (!pair  "decl"
         (!type already_seen 5)
-        (!srcfileloc  "cp/semantics.c" 5825)
+        (!srcfileloc  "cp/semantics.c" 5814)
         nil )
        (!pair  "body"
         (!type already_seen 5)
-        (!srcfileloc  "cp/semantics.c" 5826)
+        (!srcfileloc  "cp/semantics.c" 5815)
         nil )
       )
       nil 260 nil )
     )
-    (!srcfileloc  "cp/semantics.c" 6478)
+    (!srcfileloc  "cp/semantics.c" 6467)
     nil )
    (!pair  "bindings"
     (!type already_seen 5)
-    (!srcfileloc  "cp/semantics.c" 6485)
+    (!srcfileloc  "cp/semantics.c" 6474)
     nil )
    (!pair  "result"
     (!type already_seen 5)
-    (!srcfileloc  "cp/semantics.c" 6490)
+    (!srcfileloc  "cp/semantics.c" 6479)
     nil )
    (!pair  "hash"
     (!type already_seen 9)
-    (!srcfileloc  "cp/semantics.c" 6493)
+    (!srcfileloc  "cp/semantics.c" 6482)
     nil )
   )
   nil 260 nil )
@@ -17395,7 +17395,7 @@
         (!type already_seen 9)
         (!srcfileloc  "cgraph.h" 302)
         nil )
-       (!pair  "abstract_and_needed"
+       (!pair  "used_as_abstract_origin"
         (!type already_seen 9)
         (!srcfileloc  "cgraph.h" 306)
         nil )
@@ -17492,13 +17492,13 @@
   nil 0 nil )
  
  (!type user_struct 969 nil  gc_unused "vec<ipa_parm_adjustment_t>"
-  (!srcfileloc  "ipa-prop.h" 635)
+  (!srcfileloc  "ipa-prop.h" 646)
   (!fields 1 
    (!pair  "ipa_parm_adjustment_t"
     (!type struct 970 nil  gc_unused "ipa_parm_adjustment"nil 
      (!fields 0 )
      nil 0 nil )
-    (!srcfileloc  "ipa-prop.h" 635)
+    (!srcfileloc  "ipa-prop.h" 646)
     nil )
   )
  )
@@ -17508,26 +17508,26 @@
    (!type already_seen 971)
   )
   gc_pointed_to "vec<ipa_edge_args_t,va_gc>"
-  (!srcfileloc  "ipa-prop.h" 478)
+  (!srcfileloc  "ipa-prop.h" 489)
   (!fields 2 
    (!pair  "va_gc"
     (!type already_seen 3)
-    (!srcfileloc  "ipa-prop.h" 478)
+    (!srcfileloc  "ipa-prop.h" 489)
     nil )
    (!pair  "ipa_edge_args_t"
     (!type struct 973 nil  gc_used "ipa_edge_args"
-     (!srcfileloc  "ipa-prop.h" 445)
+     (!srcfileloc  "ipa-prop.h" 456)
      (!fields 1 
       (!pair  "jump_functions"
        (!type pointer 974 nil  gc_used
         (!type user_struct 975 
          (!type already_seen 974)
          gc_pointed_to "vec<ipa_jump_func_t,va_gc>"
-         (!srcfileloc  "ipa-prop.h" 444)
+         (!srcfileloc  "ipa-prop.h" 455)
          (!fields 2 
           (!pair  "va_gc"
            (!type already_seen 3)
-           (!srcfileloc  "ipa-prop.h" 444)
+           (!srcfileloc  "ipa-prop.h" 455)
            nil )
           (!pair  "ipa_jump_func_t"
            (!type struct 976 nil  gc_used "ipa_jump_func"
@@ -17703,16 +17703,16 @@
              )
             )
             nil 511 nil )
-           (!srcfileloc  "ipa-prop.h" 444)
+           (!srcfileloc  "ipa-prop.h" 455)
            nil )
          )
         )
        )
-       (!srcfileloc  "ipa-prop.h" 444)
+       (!srcfileloc  "ipa-prop.h" 455)
        nil )
      )
      nil 511 nil )
-    (!srcfileloc  "ipa-prop.h" 478)
+    (!srcfileloc  "ipa-prop.h" 489)
     nil )
   )
  )
@@ -17722,43 +17722,43 @@
    (!type already_seen 989)
   )
   gc_pointed_to "vec<ipa_agg_replacement_value_p,va_gc>"
-  (!srcfileloc  "ipa-prop.h" 476)
+  (!srcfileloc  "ipa-prop.h" 487)
   (!fields 2 
    (!pair  "va_gc"
     (!type already_seen 3)
-    (!srcfileloc  "ipa-prop.h" 476)
+    (!srcfileloc  "ipa-prop.h" 487)
     nil )
    (!pair  "ipa_agg_replacement_value_p"
     (!type pointer 991 nil  gc_used
      (!type struct 992 
       (!type already_seen 991)
       gc_pointed_to "ipa_agg_replacement_value"
-      (!srcfileloc  "ipa-prop.h" 432)
+      (!srcfileloc  "ipa-prop.h" 443)
       (!fields 5 
        (!pair  "next"
         (!type already_seen 991)
-        (!srcfileloc  "ipa-prop.h" 423)
+        (!srcfileloc  "ipa-prop.h" 434)
         nil )
        (!pair  "offset"
         (!type already_seen 9)
-        (!srcfileloc  "ipa-prop.h" 425)
+        (!srcfileloc  "ipa-prop.h" 436)
         nil )
        (!pair  "value"
         (!type already_seen 5)
-        (!srcfileloc  "ipa-prop.h" 427)
+        (!srcfileloc  "ipa-prop.h" 438)
         nil )
        (!pair  "index"
         (!type already_seen 9)
-        (!srcfileloc  "ipa-prop.h" 429)
+        (!srcfileloc  "ipa-prop.h" 440)
         nil )
        (!pair  "by_ref"
         (!type already_seen 9)
-        (!srcfileloc  "ipa-prop.h" 431)
+        (!srcfileloc  "ipa-prop.h" 442)
         nil )
       )
       nil 511 nil )
     )
-    (!srcfileloc  "ipa-prop.h" 476)
+    (!srcfileloc  "ipa-prop.h" 487)
     nil )
   )
  )
@@ -17833,7 +17833,7 @@
   (!fields 0 )
   nil 0 nil )
  
- (!type struct 1007 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:26718"nil 
+ (!type struct 1007 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:26482"nil 
   (!fields 0 )
   nil 0 nil )
  
@@ -17841,7 +17841,7 @@
   (!fields 0 )
   nil 0 nil )
  
- (!type struct 1009 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:20293"nil 
+ (!type struct 1009 nil  gc_unused "anonymous:/mnt/jenkins/workspace/linaro-android_toolchain-trunk/build/objdir/../build/../gcc/gcc-4.8/gcc/config/arm/arm.c:20303"nil 
   (!fields 0 )
   nil 0 nil )
  
@@ -19685,19 +19685,19 @@
    (!type already_seen 1261)
   )
   gc_pointed_to "constant_descriptor_tree"
-  (!srcfileloc  "cgraph.h" 1187)
+  (!srcfileloc  "cgraph.h" 1195)
   (!fields 3 
    (!pair  "rtl"
     (!type already_seen 136)
-    (!srcfileloc  "cgraph.h" 1178)
+    (!srcfileloc  "cgraph.h" 1186)
     nil )
    (!pair  "value"
     (!type already_seen 5)
-    (!srcfileloc  "cgraph.h" 1181)
+    (!srcfileloc  "cgraph.h" 1189)
     nil )
    (!pair  "hash"
     (!type already_seen 9)
-    (!srcfileloc  "cgraph.h" 1186)
+    (!srcfileloc  "cgraph.h" 1194)
     nil )
   )
   nil 511 nil )
@@ -21724,7 +21724,7 @@
   nil )
  (!pair  "type_pair_t"
   (!type already_seen 649)
-  (!srcfileloc  "lto/lto.c" 314)
+  (!srcfileloc  "lto/lto.c" 312)
   nil )
  (!pair  "rewrite_rule"
   (!type already_seen 651)
@@ -22002,11 +22002,11 @@
   nil )
  (!pair  "constexpr_call"
   (!type already_seen 710)
-  (!srcfileloc  "cp/semantics.c" 6494)
+  (!srcfileloc  "cp/semantics.c" 6483)
   nil )
  (!pair  "constexpr_fundef"
   (!type already_seen 713)
-  (!srcfileloc  "cp/semantics.c" 5827)
+  (!srcfileloc  "cp/semantics.c" 5816)
   nil )
  (!pair  "vec<deferred_access,va_gc>"
   (!type already_seen 714)
@@ -22074,11 +22074,11 @@
   nil )
  (!pair  "deferred_access_check"
   (!type already_seen 73)
-  (!srcfileloc  "cp/cp-tree.h" 5633)
+  (!srcfileloc  "cp/cp-tree.h" 5632)
   nil )
  (!pair  "walk_namespaces_fn"
   (!type already_seen 9)
-  (!srcfileloc  "cp/cp-tree.h" 5226)
+  (!srcfileloc  "cp/cp-tree.h" 5225)
   nil )
  (!pair  "cp_parameter_declarator"
   (!type already_seen 741)
@@ -22598,43 +22598,43 @@
   nil )
  (!pair  "ipa_parm_adjustment_vec"
   (!type already_seen 969)
-  (!srcfileloc  "ipa-prop.h" 635)
+  (!srcfileloc  "ipa-prop.h" 646)
   nil )
  (!pair  "vec<ipa_parm_adjustment_t>"
   (!type already_seen 969)
-  (!srcfileloc  "ipa-prop.h" 635)
+  (!srcfileloc  "ipa-prop.h" 646)
   nil )
  (!pair  "ipa_parm_adjustment_t"
   (!type already_seen 970)
-  (!srcfileloc  "ipa-prop.h" 633)
+  (!srcfileloc  "ipa-prop.h" 644)
   nil )
  (!pair  "vec<ipa_edge_args_t,va_gc>"
   (!type already_seen 971)
-  (!srcfileloc  "ipa-prop.h" 478)
+  (!srcfileloc  "ipa-prop.h" 489)
   nil )
  (!pair  "vec<ipa_agg_replacement_value_p,va_gc>"
   (!type already_seen 989)
-  (!srcfileloc  "ipa-prop.h" 476)
+  (!srcfileloc  "ipa-prop.h" 487)
   nil )
  (!pair  "ipa_node_params_t"
   (!type already_seen 1235)
-  (!srcfileloc  "ipa-prop.h" 469)
+  (!srcfileloc  "ipa-prop.h" 480)
   nil )
  (!pair  "ipa_edge_args_t"
   (!type already_seen 973)
-  (!srcfileloc  "ipa-prop.h" 445)
+  (!srcfileloc  "ipa-prop.h" 456)
   nil )
  (!pair  "vec<ipa_jump_func_t,va_gc>"
   (!type already_seen 975)
-  (!srcfileloc  "ipa-prop.h" 444)
+  (!srcfileloc  "ipa-prop.h" 455)
   nil )
  (!pair  "ipa_agg_replacement_value_p"
   (!type already_seen 991)
-  (!srcfileloc  "ipa-prop.h" 434)
+  (!srcfileloc  "ipa-prop.h" 445)
   nil )
  (!pair  "ipa_param_descriptor_t"
   (!type already_seen 993)
-  (!srcfileloc  "ipa-prop.h" 327)
+  (!srcfileloc  "ipa-prop.h" 328)
   nil )
  (!pair  "ipa_jump_func_t"
   (!type already_seen 976)
@@ -22670,23 +22670,23 @@
   nil )
  (!pair  "arm_mangle_map_entry"
   (!type already_seen 1007)
-  (!srcfileloc  "config/arm/arm.c" 26722)
+  (!srcfileloc  "config/arm/arm.c" 26486)
   nil )
  (!pair  "builtin_arg"
   (!type already_seen 9)
-  (!srcfileloc  "config/arm/arm.c" 21923)
+  (!srcfileloc  "config/arm/arm.c" 21933)
   nil )
  (!pair  "neon_builtin_datum"
   (!type already_seen 1009)
-  (!srcfileloc  "config/arm/arm.c" 20299)
+  (!srcfileloc  "config/arm/arm.c" 20309)
   nil )
  (!pair  "neon_itype"
   (!type already_seen 9)
-  (!srcfileloc  "config/arm/arm.c" 20291)
+  (!srcfileloc  "config/arm/arm.c" 20301)
   nil )
  (!pair  "neon_builtin_type_mode"
   (!type already_seen 9)
-  (!srcfileloc  "config/arm/arm.c" 20222)
+  (!srcfileloc  "config/arm/arm.c" 20232)
   nil )
  (!pair  "arm_pragma_enum"
   (!type already_seen 9)
@@ -23314,19 +23314,19 @@
   nil )
  (!pair  "cgraph_2node_hook"
   (!type already_seen 9)
-  (!srcfileloc  "cgraph.h" 675)
+  (!srcfileloc  "cgraph.h" 682)
   nil )
  (!pair  "cgraph_2edge_hook"
   (!type already_seen 9)
-  (!srcfileloc  "cgraph.h" 673)
+  (!srcfileloc  "cgraph.h" 680)
   nil )
  (!pair  "cgraph_node_hook"
   (!type already_seen 9)
-  (!srcfileloc  "cgraph.h" 671)
+  (!srcfileloc  "cgraph.h" 678)
   nil )
  (!pair  "cgraph_edge_hook"
   (!type already_seen 9)
-  (!srcfileloc  "cgraph.h" 670)
+  (!srcfileloc  "cgraph.h" 677)
   nil )
  (!pair  "cgraph_edge_p"
   (!type already_seen 937)
@@ -24577,25 +24577,25 @@
   nil )
  (!pair  "lto_eh_personality_decl"
   (!type already_seen 5)
-  (!srcfileloc  "lto/lto.c" 3760)
+  (!srcfileloc  "lto/lto.c" 3758)
   nil )
  (!pair  "real_file_decl_data"
   (!type already_seen 933)
-  (!srcfileloc  "lto/lto.c" 3353)
+  (!srcfileloc  "lto/lto.c" 3351)
   (!options 
    (!option length string  "real_file_count + 1")
   )
  )
  (!pair  "all_file_decl_data"
   (!type already_seen 933)
-  (!srcfileloc  "lto/lto.c" 3321)
+  (!srcfileloc  "lto/lto.c" 3319)
   (!options 
    (!option length string  "lto_stats.num_input_files + 1")
   )
  )
  (!pair  "tree_with_vars"
   (!type already_seen 53)
-  (!srcfileloc  "lto/lto.c" 1322)
+  (!srcfileloc  "lto/lto.c" 1320)
   (!options 
    (!option param_is type 
     (!type already_seen 7)
@@ -24605,7 +24605,7 @@
  )
  (!pair  "type_hash_cache"
   (!type already_seen 1420)
-  (!srcfileloc  "lto/lto.c" 296)
+  (!srcfileloc  "lto/lto.c" 294)
   (!options 
    (!option param_is type 
     (!type already_seen 1327)
@@ -24615,7 +24615,7 @@
  )
  (!pair  "gimple_types"
   (!type already_seen 53)
-  (!srcfileloc  "lto/lto.c" 294)
+  (!srcfileloc  "lto/lto.c" 292)
   (!options 
    (!option param_is type 
     (!type already_seen 7)
@@ -25345,7 +25345,7 @@
   nil )
  (!pair  "the_parser"
   (!type already_seen 693)
-  (!srcfileloc  "cp/parser.c" 28617)
+  (!srcfileloc  "cp/parser.c" 28613)
   nil )
  (!pair  "lambda_scope_stack"
   (!type already_seen 688)
@@ -25386,7 +25386,7 @@
  )
  (!pair  "constexpr_call_table"
   (!type already_seen 1408)
-  (!srcfileloc  "cp/semantics.c" 6499)
+  (!srcfileloc  "cp/semantics.c" 6488)
   (!options 
    (!option param_is type 
     (!type already_seen 710)
@@ -25395,7 +25395,7 @@
  )
  (!pair  "constexpr_fundef_table"
   (!type already_seen 1410)
-  (!srcfileloc  "cp/semantics.c" 5832)
+  (!srcfileloc  "cp/semantics.c" 5821)
   (!options 
    (!option param_is type 
     (!type already_seen 713)
@@ -25416,7 +25416,7 @@
   nil )
  (!pair  "last_error_tinst_level"
   (!type already_seen 724)
-  (!srcfileloc  "cp/pt.c" 7945)
+  (!srcfileloc  "cp/pt.c" 8018)
   nil )
  (!pair  "canonical_template_parms"
   (!type already_seen 45)
@@ -25515,11 +25515,11 @@
   nil )
  (!pair  "unemitted_tinfo_decls"
   (!type already_seen 45)
-  (!srcfileloc  "cp/cp-tree.h" 5566)
+  (!srcfileloc  "cp/cp-tree.h" 5565)
   nil )
  (!pair  "deferred_mark_used_calls"
   (!type already_seen 45)
-  (!srcfileloc  "cp/cp-tree.h" 5250)
+  (!srcfileloc  "cp/cp-tree.h" 5249)
   nil )
  (!pair  "assignment_operator_name_info"
   (!type array 1492 nil  gc_used "(int) MAX_TREE_CODES" 
@@ -25971,11 +25971,11 @@
  )
  (!pair  "ipa_edge_args_vector"
   (!type already_seen 972)
-  (!srcfileloc  "ipa-prop.h" 478)
+  (!srcfileloc  "ipa-prop.h" 489)
   nil )
  (!pair  "ipa_node_agg_replacements"
   (!type already_seen 990)
-  (!srcfileloc  "ipa-prop.h" 476)
+  (!srcfileloc  "ipa-prop.h" 487)
   nil )
  (!pair  "ipa_escaped_pt"
   (!type already_seen 322)
@@ -26021,7 +26021,7 @@
   (!type array 1509 nil  gc_used "ARM_BUILTIN_MAX" 
    (!type already_seen 5)
   )
-  (!srcfileloc  "config/arm/arm.c" 20656)
+  (!srcfileloc  "config/arm/arm.c" 20666)
   nil )
  (!pair  "tls_get_addr_libfunc"
   (!type already_seen 136)
@@ -26315,13 +26315,13 @@
   nil )
  (!pair  "gcc_eh_personality_decl"
   (!type already_seen 5)
-  (!srcfileloc  "tree.c" 11703)
+  (!srcfileloc  "tree.c" 11717)
   nil )
  (!pair  "nonstandard_integer_type_cache"
   (!type array 1510 nil  gc_used "2 * MAX_INT_CACHED_PREC + 2" 
    (!type already_seen 5)
   )
-  (!srcfileloc  "tree.c" 7529)
+  (!srcfileloc  "tree.c" 7543)
   nil )
  (!pair  "init_priority_for_decl"
   (!type already_seen 1430)
