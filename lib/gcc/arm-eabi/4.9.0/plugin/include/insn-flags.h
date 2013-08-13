@@ -1039,7 +1039,6 @@
 #define HAVE_neon_vld1_dupv4hi (TARGET_NEON)
 #define HAVE_neon_vld1_dupv2si (TARGET_NEON)
 #define HAVE_neon_vld1_dupv2sf (TARGET_NEON)
-#define HAVE_neon_vld1_dupdi (TARGET_NEON)
 #define HAVE_neon_vld1_dupv16qi (TARGET_NEON)
 #define HAVE_neon_vld1_dupv8hi (TARGET_NEON)
 #define HAVE_neon_vld1_dupv4si (TARGET_NEON)
@@ -1784,16 +1783,16 @@
 #define HAVE_movoi (TARGET_NEON)
 #define HAVE_movci (TARGET_NEON)
 #define HAVE_movxi (TARGET_NEON)
-#define HAVE_movmisalignv8qi (TARGET_NEON && !BYTES_BIG_ENDIAN)
-#define HAVE_movmisalignv16qi (TARGET_NEON && !BYTES_BIG_ENDIAN)
-#define HAVE_movmisalignv4hi (TARGET_NEON && !BYTES_BIG_ENDIAN)
-#define HAVE_movmisalignv8hi (TARGET_NEON && !BYTES_BIG_ENDIAN)
-#define HAVE_movmisalignv2si (TARGET_NEON && !BYTES_BIG_ENDIAN)
-#define HAVE_movmisalignv4si (TARGET_NEON && !BYTES_BIG_ENDIAN)
-#define HAVE_movmisalignv2sf (TARGET_NEON && !BYTES_BIG_ENDIAN)
-#define HAVE_movmisalignv4sf (TARGET_NEON && !BYTES_BIG_ENDIAN)
-#define HAVE_movmisaligndi (TARGET_NEON && !BYTES_BIG_ENDIAN)
-#define HAVE_movmisalignv2di (TARGET_NEON && !BYTES_BIG_ENDIAN)
+#define HAVE_movmisalignv8qi (TARGET_NEON && !BYTES_BIG_ENDIAN && unaligned_access)
+#define HAVE_movmisalignv16qi (TARGET_NEON && !BYTES_BIG_ENDIAN && unaligned_access)
+#define HAVE_movmisalignv4hi (TARGET_NEON && !BYTES_BIG_ENDIAN && unaligned_access)
+#define HAVE_movmisalignv8hi (TARGET_NEON && !BYTES_BIG_ENDIAN && unaligned_access)
+#define HAVE_movmisalignv2si (TARGET_NEON && !BYTES_BIG_ENDIAN && unaligned_access)
+#define HAVE_movmisalignv4si (TARGET_NEON && !BYTES_BIG_ENDIAN && unaligned_access)
+#define HAVE_movmisalignv2sf (TARGET_NEON && !BYTES_BIG_ENDIAN && unaligned_access)
+#define HAVE_movmisalignv4sf (TARGET_NEON && !BYTES_BIG_ENDIAN && unaligned_access)
+#define HAVE_movmisaligndi (TARGET_NEON && !BYTES_BIG_ENDIAN && unaligned_access)
+#define HAVE_movmisalignv2di (TARGET_NEON && !BYTES_BIG_ENDIAN && unaligned_access)
 #define HAVE_vec_setv8qi (TARGET_NEON)
 #define HAVE_vec_setv16qi (TARGET_NEON)
 #define HAVE_vec_setv4hi (TARGET_NEON)
@@ -2195,6 +2194,7 @@
 #define HAVE_vec_load_lanesv4sfv4sf (TARGET_NEON)
 #define HAVE_vec_load_lanesdidi (TARGET_NEON)
 #define HAVE_vec_load_lanesv2div2di (TARGET_NEON)
+#define HAVE_neon_vld1_dupdi (TARGET_NEON)
 #define HAVE_vec_store_lanesv8qiv8qi (TARGET_NEON)
 #define HAVE_vec_store_lanesv16qiv16qi (TARGET_NEON)
 #define HAVE_vec_store_lanesv4hiv4hi (TARGET_NEON)
@@ -3453,7 +3453,6 @@ extern rtx        gen_neon_vld1_dupv8qi                 (rtx, rtx);
 extern rtx        gen_neon_vld1_dupv4hi                 (rtx, rtx);
 extern rtx        gen_neon_vld1_dupv2si                 (rtx, rtx);
 extern rtx        gen_neon_vld1_dupv2sf                 (rtx, rtx);
-extern rtx        gen_neon_vld1_dupdi                   (rtx, rtx);
 extern rtx        gen_neon_vld1_dupv16qi                (rtx, rtx);
 extern rtx        gen_neon_vld1_dupv8hi                 (rtx, rtx);
 extern rtx        gen_neon_vld1_dupv4si                 (rtx, rtx);
@@ -4460,6 +4459,7 @@ extern rtx        gen_vec_load_lanesv2sfv2sf            (rtx, rtx);
 extern rtx        gen_vec_load_lanesv4sfv4sf            (rtx, rtx);
 extern rtx        gen_vec_load_lanesdidi                (rtx, rtx);
 extern rtx        gen_vec_load_lanesv2div2di            (rtx, rtx);
+extern rtx        gen_neon_vld1_dupdi                   (rtx, rtx);
 extern rtx        gen_vec_store_lanesv8qiv8qi           (rtx, rtx);
 extern rtx        gen_vec_store_lanesv16qiv16qi         (rtx, rtx);
 extern rtx        gen_vec_store_lanesv4hiv4hi           (rtx, rtx);

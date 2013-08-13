@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-08-06" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-08-12" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -218,6 +218,8 @@ in the following sections.
 \&\fB\-ftemplate\-depth=\fR\fIn\fR 
 \&\fB\-fno\-threadsafe\-statics \-fuse\-cxa\-atexit  \-fno\-weak  \-nostdinc++ 
 \&\-fno\-default\-inline  \-fvisibility\-inlines\-hidden 
+\&\-fvtable\-verify=\fR\fIstd|preinit|none\fR 
+\&\fB\-fvtv\-counts \-fvtv\-debug 
 \&\-fvisibility\-ms\-compat 
 \&\-fext\-numeric\-literals 
 \&\-Wabi  \-Wconversion\-null  \-Wctor\-dtor\-privacy 
@@ -340,7 +342,8 @@ in the following sections.
 \&\-fdump\-tree\-sra\fR[\fB\-\fR\fIn\fR] 
 \&\fB\-fdump\-tree\-forwprop\fR[\fB\-\fR\fIn\fR] 
 \&\fB\-fdump\-tree\-fre\fR[\fB\-\fR\fIn\fR] 
-\&\fB\-fdump\-tree\-vrp\fR[\fB\-\fR\fIn\fR] 
+\&\fB\-fdump\-tree\-vtable\-verify 
+\&\-fdump\-tree\-vrp\fR[\fB\-\fR\fIn\fR] 
 \&\fB\-ftree\-vectorizer\-verbose=\fR\fIn\fR 
 \&\fB\-fdump\-tree\-storeccp\fR[\fB\-\fR\fIn\fR] 
 \&\fB\-fdump\-final\-insns=\fR\fIfile\fR 
@@ -661,6 +664,7 @@ in the following sections.
 \&\-mbmi2 \-mrtm \-mlwp \-mthreads 
 \&\-mno\-align\-stringops  \-minline\-all\-stringops 
 \&\-minline\-stringops\-dynamically \-mstringop\-strategy=\fR\fIalg\fR 
+\&\fB\-mmemcpy\-strategy=\fR\fIstrategy\fR \fB\-mmemset\-strategy=\fR\fIstrategy\fR 
 \&\fB\-mpush\-args  \-maccumulate\-outgoing\-args  \-m128bit\-long\-double 
 \&\-m96bit\-long\-double \-mlong\-double\-64 \-mlong\-double\-80 
 \&\-mregparm=\fR\fInum\fR  \fB\-msseregparm 
@@ -2248,6 +2252,53 @@ and that pointers to function members defined in different shared
 objects may not compare equal.  When this flag is given, it is a
 violation of the \s-1ODR\s0 to define types with the same name differently.
 .RE
+.IP "\fB\-fvtable\-verify=\fR\fIstd|preinit|none\fR" 4
+.IX Item "-fvtable-verify=std|preinit|none"
+Turn on (or off, if using \fB\-fvtable\-verify=none\fR) the security
+feature that verifies at runtime, for every virtual call that is made, that
+the vtable pointer through which the call is made is valid for the type of
+the object, and has not been corrupted or overwritten.  If an invalid vtable
+pointer is detected (at runtime), an error is reported and execution of the
+program is immediately halted.
+.Sp
+This option causes runtime data structures to be built, at program start up,
+for verifying the vtable pointers.  The options \f(CW\*(C`std\*(C'\fR and \f(CW\*(C`preinit\*(C'\fR
+control the timing of when these data structures are built.  In both cases the
+data structures are built before execution reaches 'main'.  The
+\&\fB\-fvtable\-verify=std\fR causes these data structure to be built after the
+shared libraries have been loaded and initialized.
+\&\fB\-fvtable\-verify=preinit\fR causes them to be built before the shared
+libraries have been loaded and initialized.
+.Sp
+If this option appears multiple times in the compiler line, with different
+values specified, 'none' will take highest priority over both 'std' and
+\&'preinit'; 'preinit' will take priority over 'std'.
+.IP "\fB\-fvtv\-debug\fR" 4
+.IX Item "-fvtv-debug"
+Causes debug versions of the runtime functions for the vtable verification 
+feature to be called.  This assumes the \fB\-fvtable\-verify=std\fR or
+\&\fB\-fvtable\-verify=preinit\fR has been used.  This flag will also cause the
+compiler to keep track of which vtable pointers it found for each class, and
+record that information in the file \*(L"vtv_set_ptr_data.log\*(R", in the dump
+file directory on the user's machine.
+.Sp
+Note:  This feature \s-1APPENDS\s0 data to the log file. If you want a fresh log
+file, be sure to delete any existing one.
+.IP "\fB\-fvtv\-counts\fR" 4
+.IX Item "-fvtv-counts"
+This is a debugging flag.  When used in conjunction with
+\&\fB\-fvtable\-verify=std\fR or \fB\-fvtable\-verify=preinit\fR, this
+causes the compiler to keep track of the total number of virtual calls
+it encountered and the number of verifications it inserted.  It also
+counts the number of calls to certain runtime library functions
+that it inserts.  This information, for each compilation unit, is written
+to a file named \*(L"vtv_count_data.log\*(R", in the dump_file directory on
+the user's machine.   It also counts the size of the vtable pointer sets
+for each class, and writes this information to \*(L"vtv_class_set_sizes.log\*(R"
+in the same directory.
+.Sp
+Note:  This feature \s-1APPENDS\s0 data to the log files.  To get a fresh log
+files, be sure to delete any existing ones.
 .IP "\fB\-fno\-weak\fR" 4
 .IX Item "-fno-weak"
 Do not use weak symbol support, even if it is provided by the linker.
@@ -13795,6 +13846,22 @@ Always use a library call.
 .RE
 .RS 4
 .RE
+.IP "\fB\-mmemcpy\-strategy=\fR\fIstrategy\fR" 4
+.IX Item "-mmemcpy-strategy=strategy"
+Override the internal decision heuristic to decide if \f(CW\*(C`_\|_builtin_memcpy\*(C'\fR
+should be inlined and what inline algorithm to use when the expected size
+of the copy operation is known. \fIstrategy\fR 
+is a comma-separated list of \fIalg\fR:\fImax_size\fR:\fIdest_align\fR triplets. 
+\&\fIalg\fR is specified in \fB\-mstringop\-strategy\fR, \fImax_size\fR specifies
+the max byte size with which inline algorithm \fIalg\fR is allowed.  For the last
+triplet, the \fImax_size\fR must be \f(CW\*(C`\-1\*(C'\fR. The \fImax_size\fR of the triplets
+in the list must be specified in increasing order.  The minimal byte size for 
+\&\fIalg\fR is \f(CW0\fR for the first triplet and \f(CW\*(C`\f(CImax_size\f(CW + 1\*(C'\fR of the 
+preceding range.
+.IP "\fB\-mmemset\-strategy=\fR\fIstrategy\fR" 4
+.IX Item "-mmemset-strategy=strategy"
+The option is similar to \fB\-mmemcpy\-strategy=\fR except that it is to control
+\&\f(CW\*(C`_\|_builtin_memset\*(C'\fR expansion.
 .IP "\fB\-momit\-leaf\-frame\-pointer\fR" 4
 .IX Item "-momit-leaf-frame-pointer"
 Don't keep the frame pointer in a register for leaf functions.  This
@@ -19765,6 +19832,9 @@ Not all targets provide complete support for this switch.
 Alter the thread-local storage model to be used.
 The \fImodel\fR argument should be one of \f(CW\*(C`global\-dynamic\*(C'\fR,
 \&\f(CW\*(C`local\-dynamic\*(C'\fR, \f(CW\*(C`initial\-exec\*(C'\fR or \f(CW\*(C`local\-exec\*(C'\fR.
+Note that the choice is subject to optimization: the compiler may use
+a more efficient model for symbols not visible outside of the translation
+unit, or if \fB\-fpic\fR is not given on the command line.
 .Sp
 The default without \fB\-fpic\fR is \f(CW\*(C`initial\-exec\*(C'\fR; with
 \&\fB\-fpic\fR the default is \f(CW\*(C`global\-dynamic\*(C'\fR.
