@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-08-14" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-08-15" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -649,7 +649,8 @@ in the following sections.
 .Sp
 \&\fIi386 and x86\-64 Options\fR
 \&\fB\-mtune=\fR\fIcpu-type\fR  \fB\-march=\fR\fIcpu-type\fR 
-\&\fB\-mfpmath=\fR\fIunit\fR 
+\&\fB\-mtune\-ctrl=\fR\fIfeature-list\fR \fB\-mdump\-tune\-features \-mno\-default 
+\&\-mfpmath=\fR\fIunit\fR 
 \&\fB\-masm=\fR\fIdialect\fR  \fB\-mno\-fancy\-math\-387 
 \&\-mno\-fp\-ret\-in\-387  \-msoft\-float 
 \&\-mno\-wide\-multiply  \-mrtd  \-malign\-double 
@@ -882,7 +883,8 @@ See \s-1RS/6000\s0 and PowerPC Options.
 \&\-msave\-toc\-indirect \-mno\-save\-toc\-indirect 
 \&\-mpower8\-fusion \-mno\-mpower8\-fusion \-mpower8\-vector \-mno\-power8\-vector 
 \&\-mcrypto \-mno\-crypto \-mdirect\-move \-mno\-direct\-move 
-\&\-mquad\-memory \-mno\-quad\-memory\fR
+\&\-mquad\-memory \-mno\-quad\-memory 
+\&\-mcompat\-align\-parm \-mno\-compat\-align\-parm\fR
 .Sp
 \&\fI\s-1RX\s0 Options\fR
 \&\fB\-m64bit\-doubles  \-m32bit\-doubles  \-fpu  \-nofpu
@@ -13632,6 +13634,24 @@ perform run-time \s-1CPU\s0 detection must compile separate files for each
 supported architecture, using the appropriate flags.  In particular,
 the file containing the \s-1CPU\s0 detection code should be compiled without
 these options.
+.IP "\fB\-mdump\-tune\-features\fR" 4
+.IX Item "-mdump-tune-features"
+This option instructs \s-1GCC\s0 to dump the names of the x86 performance 
+tuning features and default settings. The names can be used in 
+\&\fB\-mtune\-ctrl=\fR\fIfeature-list\fR.
+.IP "\fB\-mtune\-ctrl=\fR\fIfeature-list\fR" 4
+.IX Item "-mtune-ctrl=feature-list"
+This option is used to do fine grain control of x86 code generation features.
+\&\fIfeature-list\fR is a comma separated list of \fIfeature\fR names. See also
+\&\fB\-mdump\-tune\-features\fR. When specified, the \fIfeature\fR will be turned
+on if it is not preceded with \f(CW\*(C`^\*(C'\fR, otherwise, it will be turned off. 
+\&\fB\-mtune\-ctrl=\fR\fIfeature-list\fR is intended to be used by \s-1GCC\s0
+developers. Using it may lead to code paths not covered by testing and can
+potentially result in compiler ICEs or runtime errors.
+.IP "\fB\-mno\-default\fR" 4
+.IX Item "-mno-default"
+This option instructs \s-1GCC\s0 to turn off all tunable features. See also 
+\&\fB\-mtune\-ctrl=\fR\fIfeature-list\fR and \fB\-mdump\-tune\-features\fR.
 .IP "\fB\-mcld\fR" 4
 .IX Item "-mcld"
 This option instructs \s-1GCC\s0 to emit a \f(CW\*(C`cld\*(C'\fR instruction in the prologue
@@ -17465,6 +17485,24 @@ stack location in the function prologue if the function calls through
 a pointer on \s-1AIX\s0 and 64\-bit Linux systems.  If the \s-1TOC\s0 value is not
 saved in the prologue, it is saved just before the call through the
 pointer.  The \fB\-mno\-save\-toc\-indirect\fR option is the default.
+.IP "\fB\-mcompat\-align\-parm\fR" 4
+.IX Item "-mcompat-align-parm"
+.PD 0
+.IP "\fB\-mno\-compat\-align\-parm\fR" 4
+.IX Item "-mno-compat-align-parm"
+.PD
+Generate (do not generate) code to pass structure parameters with a
+maximum alignment of 64 bits, for compatibility with older versions
+of \s-1GCC\s0.
+.Sp
+Older versions of \s-1GCC\s0 (prior to 4.9.0) incorrectly did not align a
+structure parameter on a 128\-bit boundary when that structure contained
+a member requiring 128\-bit alignment.  This is corrected in more
+recent versions of \s-1GCC\s0.  This option may be used to generate code
+that is compatible with functions compiled with older versions of
+\&\s-1GCC\s0.
+.Sp
+The \fB\-mno\-compat\-align\-parm\fR option is the default.
 .PP
 \fI\s-1RX\s0 Options\fR
 .IX Subsection "RX Options"
