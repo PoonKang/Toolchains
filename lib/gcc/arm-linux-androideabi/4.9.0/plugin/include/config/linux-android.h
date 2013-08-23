@@ -49,8 +49,7 @@
   "%{!frtti:%{!fno-rtti: -fno-rtti}}"
 
 #define ANDROID_LIB_SPEC \
-  "%{!static: -ldl} \
-  %{pthread: -lc}"
+  "%{!static: -ldl}"
 
 #define ANDROID_STARTFILE_SPEC						\
   "%{shared: crtbegin_so%O%s;:"						\

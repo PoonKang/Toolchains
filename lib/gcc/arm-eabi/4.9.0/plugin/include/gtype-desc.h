@@ -581,6 +581,10 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_parm_attr_d() ((struct parm_attr_d *)(ggc_internal_cleared_alloc_stat (sizeof (struct parm_attr_d) MEM_STAT_INFO)))
 #define ggc_alloc_vec_parm_attr_d(n) ((struct parm_attr_d *)(ggc_internal_vec_alloc_stat (sizeof (struct parm_attr_d), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_parm_attr_d(n) ((struct parm_attr_d *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct parm_attr_d), n MEM_STAT_INFO)))
+#define ggc_alloc_vec_odr_type_va_gc_() ((vec<odr_type,va_gc> *)(ggc_internal_alloc_stat (sizeof (vec<odr_type,va_gc>) MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_odr_type_va_gc_() ((vec<odr_type,va_gc> *)(ggc_internal_cleared_alloc_stat (sizeof (vec<odr_type,va_gc>) MEM_STAT_INFO)))
+#define ggc_alloc_vec_vec_odr_type_va_gc_(n) ((vec<odr_type,va_gc> *)(ggc_internal_vec_alloc_stat (sizeof (vec<odr_type,va_gc>), n MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_vec_odr_type_va_gc_(n) ((vec<odr_type,va_gc> *)(ggc_internal_cleared_vec_alloc_stat (sizeof (vec<odr_type,va_gc>), n MEM_STAT_INFO)))
 #define ggc_alloc_vec_inline_summary_t_va_gc_() ((vec<inline_summary_t,va_gc> *)(ggc_internal_alloc_stat (sizeof (vec<inline_summary_t,va_gc>) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_inline_summary_t_va_gc_() ((vec<inline_summary_t,va_gc> *)(ggc_internal_cleared_alloc_stat (sizeof (vec<inline_summary_t,va_gc>) MEM_STAT_INFO)))
 #define ggc_alloc_vec_vec_inline_summary_t_va_gc_(n) ((vec<inline_summary_t,va_gc> *)(ggc_internal_vec_alloc_stat (sizeof (vec<inline_summary_t,va_gc>), n MEM_STAT_INFO)))
@@ -1021,6 +1025,10 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_typeinfo() ((struct typeinfo *)(ggc_internal_cleared_alloc_stat (sizeof (struct typeinfo) MEM_STAT_INFO)))
 #define ggc_alloc_vec_typeinfo(n) ((struct typeinfo *)(ggc_internal_vec_alloc_stat (sizeof (struct typeinfo), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_typeinfo(n) ((struct typeinfo *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct typeinfo), n MEM_STAT_INFO)))
+#define ggc_alloc_odr_type_d() ((struct odr_type_d *)(ggc_internal_alloc_stat (sizeof (struct odr_type_d) MEM_STAT_INFO)))
+#define ggc_alloc_cleared_odr_type_d() ((struct odr_type_d *)(ggc_internal_cleared_alloc_stat (sizeof (struct odr_type_d) MEM_STAT_INFO)))
+#define ggc_alloc_vec_odr_type_d(n) ((struct odr_type_d *)(ggc_internal_vec_alloc_stat (sizeof (struct odr_type_d), n MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_odr_type_d(n) ((struct odr_type_d *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct odr_type_d), n MEM_STAT_INFO)))
 #define ggc_alloc_inline_summary() ((struct inline_summary *)(ggc_internal_alloc_stat (sizeof (struct inline_summary) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_inline_summary() ((struct inline_summary *)(ggc_internal_cleared_alloc_stat (sizeof (struct inline_summary) MEM_STAT_INFO)))
 #define ggc_alloc_vec_inline_summary(n) ((struct inline_summary *)(ggc_internal_vec_alloc_stat (sizeof (struct inline_summary), n MEM_STAT_INFO)))
@@ -2209,10 +2217,10 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_basic_block_def() ((struct basic_block_def *)(ggc_internal_cleared_alloc_stat (sizeof (struct basic_block_def) MEM_STAT_INFO)))
 #define ggc_alloc_vec_basic_block_def(n) ((struct basic_block_def *)(ggc_internal_vec_alloc_stat (sizeof (struct basic_block_def), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_basic_block_def(n) ((struct basic_block_def *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct basic_block_def), n MEM_STAT_INFO)))
-#define ggc_alloc_edge_def() ((struct edge_def *)(ggc_internal_alloc_stat (sizeof (struct edge_def) MEM_STAT_INFO)))
-#define ggc_alloc_cleared_edge_def() ((struct edge_def *)(ggc_internal_cleared_alloc_stat (sizeof (struct edge_def) MEM_STAT_INFO)))
-#define ggc_alloc_vec_edge_def(n) ((struct edge_def *)(ggc_internal_vec_alloc_stat (sizeof (struct edge_def), n MEM_STAT_INFO)))
-#define ggc_alloc_cleared_vec_edge_def(n) ((struct edge_def *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct edge_def), n MEM_STAT_INFO)))
+#define ggc_alloc_edge_def() ((edge_def *)(ggc_internal_alloc_stat (sizeof (edge_def) MEM_STAT_INFO)))
+#define ggc_alloc_cleared_edge_def() ((edge_def *)(ggc_internal_cleared_alloc_stat (sizeof (edge_def) MEM_STAT_INFO)))
+#define ggc_alloc_vec_edge_def(n) ((edge_def *)(ggc_internal_vec_alloc_stat (sizeof (edge_def), n MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_edge_def(n) ((edge_def *)(ggc_internal_cleared_vec_alloc_stat (sizeof (edge_def), n MEM_STAT_INFO)))
 #define ggc_alloc_cl_optimization() ((struct cl_optimization *)(ggc_internal_alloc_stat (sizeof (struct cl_optimization) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_cl_optimization() ((struct cl_optimization *)(ggc_internal_cleared_alloc_stat (sizeof (struct cl_optimization) MEM_STAT_INFO)))
 #define ggc_alloc_vec_cl_optimization(n) ((struct cl_optimization *)(ggc_internal_vec_alloc_stat (sizeof (struct cl_optimization), n MEM_STAT_INFO)))
@@ -2667,6 +2675,10 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_dw_die_ref() ((dw_die_ref *)(ggc_internal_cleared_alloc_stat (sizeof (dw_die_ref) MEM_STAT_INFO)))
 #define ggc_alloc_vec_dw_die_ref(n) ((dw_die_ref *)(ggc_internal_vec_alloc_stat (sizeof (dw_die_ref), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_dw_die_ref(n) ((dw_die_ref *)(ggc_internal_cleared_vec_alloc_stat (sizeof (dw_die_ref), n MEM_STAT_INFO)))
+#define ggc_alloc_odr_type() ((odr_type *)(ggc_internal_alloc_stat (sizeof (odr_type) MEM_STAT_INFO)))
+#define ggc_alloc_cleared_odr_type() ((odr_type *)(ggc_internal_cleared_alloc_stat (sizeof (odr_type) MEM_STAT_INFO)))
+#define ggc_alloc_vec_odr_type(n) ((odr_type *)(ggc_internal_vec_alloc_stat (sizeof (odr_type), n MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_odr_type(n) ((odr_type *)(ggc_internal_cleared_vec_alloc_stat (sizeof (odr_type), n MEM_STAT_INFO)))
 #define ggc_alloc_alias_set_entry() ((alias_set_entry *)(ggc_internal_alloc_stat (sizeof (alias_set_entry) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_alias_set_entry() ((alias_set_entry *)(ggc_internal_cleared_alloc_stat (sizeof (alias_set_entry) MEM_STAT_INFO)))
 #define ggc_alloc_vec_alias_set_entry(n) ((alias_set_entry *)(ggc_internal_vec_alloc_stat (sizeof (alias_set_entry), n MEM_STAT_INFO)))
@@ -3114,6 +3126,10 @@ extern void gt_ggc_mx_vec_parm_attr_va_gc_ (void *);
   if (X != NULL) gt_ggc_mx_parm_attr_d (X);\
   } while (0)
 extern void gt_ggc_mx_parm_attr_d (void *);
+#define gt_ggc_m_19vec_odr_type_va_gc_(X) do { \
+  if (X != NULL) gt_ggc_mx_vec_odr_type_va_gc_ (X);\
+  } while (0)
+extern void gt_ggc_mx_vec_odr_type_va_gc_ (void *);
 #define gt_ggc_m_27vec_inline_summary_t_va_gc_(X) do { \
   if (X != NULL) gt_ggc_mx_vec_inline_summary_t_va_gc_ (X);\
   } while (0)
@@ -3310,6 +3326,10 @@ extern void gt_ggc_mx_dw_cfi_struct (void *);
   if (X != NULL) gt_ggc_mx_typeinfo (X);\
   } while (0)
 extern void gt_ggc_mx_typeinfo (void *);
+#define gt_ggc_m_10odr_type_d(X) do { \
+  if (X != NULL) gt_ggc_mx_odr_type_d (X);\
+  } while (0)
+extern void gt_ggc_mx_odr_type_d (void *);
 #define gt_ggc_m_25ipa_agg_replacement_value(X) do { \
   if (X != NULL) gt_ggc_mx_ipa_agg_replacement_value (X);\
   } while (0)
@@ -3966,6 +3986,10 @@ extern void gt_pch_nx_vec_parm_attr_va_gc_ (void *);
   if (X != NULL) gt_pch_nx_parm_attr_d (X);\
   } while (0)
 extern void gt_pch_nx_parm_attr_d (void *);
+#define gt_pch_n_19vec_odr_type_va_gc_(X) do { \
+  if (X != NULL) gt_pch_nx_vec_odr_type_va_gc_ (X);\
+  } while (0)
+extern void gt_pch_nx_vec_odr_type_va_gc_ (void *);
 #define gt_pch_n_27vec_inline_summary_t_va_gc_(X) do { \
   if (X != NULL) gt_pch_nx_vec_inline_summary_t_va_gc_ (X);\
   } while (0)
@@ -4162,6 +4186,10 @@ extern void gt_pch_nx_dw_cfi_struct (void *);
   if (X != NULL) gt_pch_nx_typeinfo (X);\
   } while (0)
 extern void gt_pch_nx_typeinfo (void *);
+#define gt_pch_n_10odr_type_d(X) do { \
+  if (X != NULL) gt_pch_nx_odr_type_d (X);\
+  } while (0)
+extern void gt_pch_nx_odr_type_d (void *);
 #define gt_pch_n_25ipa_agg_replacement_value(X) do { \
   if (X != NULL) gt_pch_nx_ipa_agg_replacement_value (X);\
   } while (0)
@@ -4671,6 +4699,8 @@ extern void gt_pch_p_20vec_parm_attr_va_gc_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_11parm_attr_d
     (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_19vec_odr_type_va_gc_
+    (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_27vec_inline_summary_t_va_gc_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_26vec_size_time_entry_va_gc_
@@ -4768,6 +4798,8 @@ extern void gt_pch_p_19dw_loc_descr_struct
 extern void gt_pch_p_13dw_cfi_struct
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_8typeinfo
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_10odr_type_d
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_25ipa_agg_replacement_value
     (void *, void *, gt_pointer_operator, void *);
