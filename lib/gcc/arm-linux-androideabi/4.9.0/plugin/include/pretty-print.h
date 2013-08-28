@@ -74,6 +74,7 @@ struct chunk_info
 struct output_buffer
 {
   output_buffer ();
+  ~output_buffer ();
 
   /* Obstack where the text is built up.  */
   struct obstack formatted_obstack;
@@ -165,6 +166,8 @@ struct pretty_printer
   // and a maximum line length cut off limit.
   explicit pretty_printer (const char* = NULL, int = 0);
 
+  virtual ~pretty_printer ();
+
   /* Where we print external representation of ENTITY.  */
   output_buffer *buffer;
 
@@ -246,26 +249,8 @@ pp_get_prefix (const pretty_printer *pp) { return pp->prefix; }
 #define pp_backquote(PP)        pp_character (PP, '`')
 #define pp_doublequote(PP)      pp_character (PP, '"')
 #define pp_underscore(PP)       pp_character (PP, '_')
-#define pp_newline_and_flush(PP)     \
-  do {                               \
-    pp_newline (PP);                 \
-    pp_flush (PP);                   \
-    pp_needs_newline (PP) = false;   \
-  } while (0)
-#define pp_newline_and_indent(PP, N) \
-  do {                               \
-    pp_indentation (PP) += N;        \
-    pp_newline (PP);                 \
-    pp_indent (PP);                  \
-    pp_needs_newline (PP) = false;   \
-  } while (0)
 #define pp_maybe_newline_and_indent(PP, N) \
   if (pp_needs_newline (PP)) pp_newline_and_indent (PP, N)
-#define pp_separate_with(PP, C)     \
-   do {                             \
-     pp_character (PP, C);          \
-     pp_space (PP);                 \
-   } while (0)
 #define pp_scalar(PP, FORMAT, SCALAR)	                      \
   do					        	      \
     {			         			      \
@@ -298,6 +283,9 @@ extern const char *pp_formatted_text (pretty_printer *);
 extern const char *pp_last_position_in_text (const pretty_printer *);
 extern void pp_emit_prefix (pretty_printer *);
 extern void pp_append_text (pretty_printer *, const char *, const char *);
+extern void pp_newline_and_flush (pretty_printer *);
+extern void pp_newline_and_indent (pretty_printer *, int);
+extern void pp_separate_with (pretty_printer *, char);
 
 /* If we haven't already defined a front-end-specific diagnostics
    style, use the generic one.  */
