@@ -30375,11 +30375,12 @@ and `isnan' built-in functions appear both with and without the
      double'.
 
  -- Built-in Function: int __builtin_isinf_sign (...)
-     Similar to `isinf', except the return value is negative for an
-     argument of `-Inf'.  Note while the parameter list is an ellipsis,
-     this function only accepts exactly one floating-point argument.
-     GCC treats this parameter as type-generic, which means it does not
-     do default promotion from float to double.
+     Similar to `isinf', except the return value is -1 for an argument
+     of `-Inf' and 1 for an argument of `+Inf'.  Note while the
+     parameter list is an ellipsis, this function only accepts exactly
+     one floating-point argument.  GCC treats this parameter as
+     type-generic, which means it does not do default promotion from
+     float to double.
 
  -- Built-in Function: double __builtin_nan (const char *str)
      This is an implementation of the ISO C99 function `nan'.
@@ -52078,16 +52079,16 @@ Keyword Index
                                                              (line    6)
 * __builtin_apply:                       Constructing Calls. (line   31)
 * __builtin_apply_args:                  Constructing Calls. (line   20)
-* __builtin_bswap16:                     Other Builtins.     (line  603)
-* __builtin_bswap32:                     Other Builtins.     (line  607)
-* __builtin_bswap64:                     Other Builtins.     (line  611)
+* __builtin_bswap16:                     Other Builtins.     (line  604)
+* __builtin_bswap32:                     Other Builtins.     (line  608)
+* __builtin_bswap64:                     Other Builtins.     (line  612)
 * __builtin_choose_expr:                 Other Builtins.     (line  157)
-* __builtin_clrsb:                       Other Builtins.     (line  532)
-* __builtin_clrsbl:                      Other Builtins.     (line  555)
-* __builtin_clrsbll:                     Other Builtins.     (line  578)
-* __builtin_clz:                         Other Builtins.     (line  524)
-* __builtin_clzl:                        Other Builtins.     (line  547)
-* __builtin_clzll:                       Other Builtins.     (line  570)
+* __builtin_clrsb:                       Other Builtins.     (line  533)
+* __builtin_clrsbl:                      Other Builtins.     (line  556)
+* __builtin_clrsbll:                     Other Builtins.     (line  579)
+* __builtin_clz:                         Other Builtins.     (line  525)
+* __builtin_clzl:                        Other Builtins.     (line  548)
+* __builtin_clzll:                       Other Builtins.     (line  571)
 * __builtin_complex:                     Other Builtins.     (line  197)
 * __builtin_constant_p:                  Other Builtins.     (line  207)
 * __builtin_cpu_init:                    X86 Built-in Functions.
@@ -52096,14 +52097,14 @@ Keyword Index
                                                              (line   92)
 * __builtin_cpu_supports:                X86 Built-in Functions.
                                                              (line  161)
-* __builtin_ctz:                         Other Builtins.     (line  528)
-* __builtin_ctzl:                        Other Builtins.     (line  551)
-* __builtin_ctzll:                       Other Builtins.     (line  574)
+* __builtin_ctz:                         Other Builtins.     (line  529)
+* __builtin_ctzl:                        Other Builtins.     (line  552)
+* __builtin_ctzll:                       Other Builtins.     (line  575)
 * __builtin_expect:                      Other Builtins.     (line  257)
 * __builtin_extract_return_addr:         Return Address.     (line   36)
-* __builtin_ffs:                         Other Builtins.     (line  520)
-* __builtin_ffsl:                        Other Builtins.     (line  543)
-* __builtin_ffsll:                       Other Builtins.     (line  566)
+* __builtin_ffs:                         Other Builtins.     (line  521)
+* __builtin_ffsl:                        Other Builtins.     (line  544)
+* __builtin_ffsll:                       Other Builtins.     (line  567)
 * __builtin_FILE:                        Other Builtins.     (line  366)
 * __builtin_fpclassify:                  Other Builtins.     (line    6)
 * __builtin_frame_address:               Return Address.     (line   49)
@@ -52132,26 +52133,26 @@ Keyword Index
 * __builtin_isnormal:                    Other Builtins.     (line    6)
 * __builtin_isunordered:                 Other Builtins.     (line    6)
 * __builtin_LINE:                        Other Builtins.     (line  356)
-* __builtin_nan:                         Other Builtins.     (line  476)
-* __builtin_nand128:                     Other Builtins.     (line  498)
-* __builtin_nand32:                      Other Builtins.     (line  492)
-* __builtin_nand64:                      Other Builtins.     (line  495)
-* __builtin_nanf:                        Other Builtins.     (line  502)
-* __builtin_nanl:                        Other Builtins.     (line  505)
-* __builtin_nans:                        Other Builtins.     (line  509)
-* __builtin_nansf:                       Other Builtins.     (line  513)
-* __builtin_nansl:                       Other Builtins.     (line  516)
+* __builtin_nan:                         Other Builtins.     (line  477)
+* __builtin_nand128:                     Other Builtins.     (line  499)
+* __builtin_nand32:                      Other Builtins.     (line  493)
+* __builtin_nand64:                      Other Builtins.     (line  496)
+* __builtin_nanf:                        Other Builtins.     (line  503)
+* __builtin_nanl:                        Other Builtins.     (line  506)
+* __builtin_nans:                        Other Builtins.     (line  510)
+* __builtin_nansf:                       Other Builtins.     (line  514)
+* __builtin_nansl:                       Other Builtins.     (line  517)
 * __builtin_non_tx_store:                S/390 System z Built-in Functions.
                                                              (line  104)
 * __builtin_object_size:                 Object Size Checking.
                                                              (line    6)
 * __builtin_offsetof:                    Offsetof.           (line    6)
-* __builtin_parity:                      Other Builtins.     (line  540)
-* __builtin_parityl:                     Other Builtins.     (line  562)
-* __builtin_parityll:                    Other Builtins.     (line  586)
-* __builtin_popcount:                    Other Builtins.     (line  537)
-* __builtin_popcountl:                   Other Builtins.     (line  558)
-* __builtin_popcountll:                  Other Builtins.     (line  582)
+* __builtin_parity:                      Other Builtins.     (line  541)
+* __builtin_parityl:                     Other Builtins.     (line  563)
+* __builtin_parityll:                    Other Builtins.     (line  587)
+* __builtin_popcount:                    Other Builtins.     (line  538)
+* __builtin_popcountl:                   Other Builtins.     (line  559)
+* __builtin_popcountll:                  Other Builtins.     (line  583)
 * __builtin_powi:                        Other Builtins.     (line    6)
 * __builtin_powif:                       Other Builtins.     (line    6)
 * __builtin_powil:                       Other Builtins.     (line    6)
@@ -53938,132 +53939,132 @@ Node: __atomic Builtins1207761
 Node: x86 specific memory model extensions for transactional memory1219400
 Node: Object Size Checking1220662
 Node: Other Builtins1226155
-Node: Cilk Plus Builtins1255297
-Node: Target Builtins1256177
-Node: Alpha Built-in Functions1257355
-Node: ARM iWMMXt Built-in Functions1260364
-Node: ARM NEON Intrinsics1267344
-Node: AVR Built-in Functions1475977
-Node: Blackfin Built-in Functions1479047
-Node: FR-V Built-in Functions1479664
-Node: Argument Types1480523
-Node: Directly-mapped Integer Functions1482275
-Node: Directly-mapped Media Functions1483357
-Node: Raw read/write Functions1490389
-Node: Other Built-in Functions1491301
-Node: X86 Built-in Functions1492485
-Node: X86 transactional memory intrinsics1550733
-Node: MIPS DSP Built-in Functions1553408
-Node: MIPS Paired-Single Support1565916
-Node: MIPS Loongson Built-in Functions1567415
-Node: Paired-Single Arithmetic1573935
-Node: Paired-Single Built-in Functions1574883
-Node: MIPS-3D Built-in Functions1577550
-Node: Other MIPS Built-in Functions1582927
-Node: picoChip Built-in Functions1583451
-Node: PowerPC Built-in Functions1584800
-Node: PowerPC AltiVec/VSX Built-in Functions1586214
-Node: RX Built-in Functions1714151
-Node: S/390 System z Built-in Functions1718166
-Node: SH Built-in Functions1723423
-Node: SPARC VIS Built-in Functions1724816
-Node: SPU Built-in Functions1730420
-Node: TI C6X Built-in Functions1732236
-Node: TILE-Gx Built-in Functions1733260
-Node: TILEPro Built-in Functions1734377
-Node: Target Format Checks1735444
-Node: Solaris Format Checks1735876
-Node: Darwin Format Checks1736302
-Node: Pragmas1737120
-Node: ARM Pragmas1737830
-Node: M32C Pragmas1738433
-Node: MeP Pragmas1739507
-Node: RS/6000 and PowerPC Pragmas1741576
-Node: Darwin Pragmas1742317
-Node: Solaris Pragmas1743384
-Node: Symbol-Renaming Pragmas1744545
-Node: Structure-Packing Pragmas1746099
-Node: Weak Pragmas1747749
-Node: Diagnostic Pragmas1748483
-Node: Visibility Pragmas1751590
-Node: Push/Pop Macro Pragmas1752342
-Node: Function Specific Option Pragmas1753314
-Node: Unnamed Fields1755571
-Node: Thread-Local1757799
-Node: C99 Thread-Local Edits1759904
-Node: C++98 Thread-Local Edits1761916
-Node: Binary constants1765360
-Node: C++ Extensions1766031
-Node: C++ Volatiles1767742
-Node: Restricted Pointers1770090
-Node: Vague Linkage1771681
-Node: C++ Interface1775305
-Ref: C++ Interface-Footnote-11779591
-Node: Template Instantiation1779727
-Node: Bound member functions1786314
-Node: C++ Attributes1787846
-Node: Function Multiversioning1791206
-Node: Namespace Association1793021
-Node: Type Traits1794401
-Node: Java Exceptions1800889
-Node: Deprecated Features1802279
-Node: Backwards Compatibility1805244
-Node: Objective-C1806596
-Node: GNU Objective-C runtime API1807205
-Node: Modern GNU Objective-C runtime API1808212
-Node: Traditional GNU Objective-C runtime API1810649
-Node: Executing code before main1811377
-Node: What you can and what you cannot do in +load1814115
-Node: Type encoding1816505
-Node: Legacy type encoding1821581
-Node: @encode1822672
-Node: Method signatures1823213
-Node: Garbage Collection1825208
-Node: Constant string objects1827897
-Node: compatibility_alias1830405
-Node: Exceptions1831127
-Node: Synchronization1833838
-Node: Fast enumeration1835022
-Node: Using fast enumeration1835334
-Node: c99-like fast enumeration syntax1836545
-Node: Fast enumeration details1837248
-Node: Fast enumeration protocol1839589
-Node: Messaging with the GNU Objective-C runtime1842741
-Node: Dynamically registering methods1844112
-Node: Forwarding hook1845803
-Node: Compatibility1848843
-Node: Gcov1855410
-Node: Gcov Intro1855943
-Node: Invoking Gcov1858661
-Node: Gcov and Optimization1872907
-Node: Gcov Data Files1875907
-Node: Cross-profiling1877302
-Node: Trouble1879153
-Node: Actual Bugs1880565
-Node: Interoperation1881012
-Node: Incompatibilities1887904
-Node: Fixed Headers1896055
-Node: Standard Libraries1897718
-Node: Disappointments1899090
-Node: C++ Misunderstandings1903448
-Node: Static Definitions1904259
-Node: Name lookup1905312
-Ref: Name lookup-Footnote-11910090
-Node: Temporaries1910277
-Node: Copy Assignment1912253
-Node: Non-bugs1914060
-Node: Warnings and Errors1924567
-Node: Bugs1926329
-Node: Bug Criteria1926893
-Node: Bug Reporting1929103
-Node: Service1929324
-Node: Contributing1930143
-Node: Funding1930883
-Node: GNU Project1933372
-Node: Copying1934018
-Node: GNU Free Documentation License1971546
-Node: Contributors1996683
-Node: Option Index2034085
-Node: Keyword Index2228424
+Node: Cilk Plus Builtins1255329
+Node: Target Builtins1256209
+Node: Alpha Built-in Functions1257387
+Node: ARM iWMMXt Built-in Functions1260396
+Node: ARM NEON Intrinsics1267376
+Node: AVR Built-in Functions1476009
+Node: Blackfin Built-in Functions1479079
+Node: FR-V Built-in Functions1479696
+Node: Argument Types1480555
+Node: Directly-mapped Integer Functions1482307
+Node: Directly-mapped Media Functions1483389
+Node: Raw read/write Functions1490421
+Node: Other Built-in Functions1491333
+Node: X86 Built-in Functions1492517
+Node: X86 transactional memory intrinsics1550765
+Node: MIPS DSP Built-in Functions1553440
+Node: MIPS Paired-Single Support1565948
+Node: MIPS Loongson Built-in Functions1567447
+Node: Paired-Single Arithmetic1573967
+Node: Paired-Single Built-in Functions1574915
+Node: MIPS-3D Built-in Functions1577582
+Node: Other MIPS Built-in Functions1582959
+Node: picoChip Built-in Functions1583483
+Node: PowerPC Built-in Functions1584832
+Node: PowerPC AltiVec/VSX Built-in Functions1586246
+Node: RX Built-in Functions1714183
+Node: S/390 System z Built-in Functions1718198
+Node: SH Built-in Functions1723455
+Node: SPARC VIS Built-in Functions1724848
+Node: SPU Built-in Functions1730452
+Node: TI C6X Built-in Functions1732268
+Node: TILE-Gx Built-in Functions1733292
+Node: TILEPro Built-in Functions1734409
+Node: Target Format Checks1735476
+Node: Solaris Format Checks1735908
+Node: Darwin Format Checks1736334
+Node: Pragmas1737152
+Node: ARM Pragmas1737862
+Node: M32C Pragmas1738465
+Node: MeP Pragmas1739539
+Node: RS/6000 and PowerPC Pragmas1741608
+Node: Darwin Pragmas1742349
+Node: Solaris Pragmas1743416
+Node: Symbol-Renaming Pragmas1744577
+Node: Structure-Packing Pragmas1746131
+Node: Weak Pragmas1747781
+Node: Diagnostic Pragmas1748515
+Node: Visibility Pragmas1751622
+Node: Push/Pop Macro Pragmas1752374
+Node: Function Specific Option Pragmas1753346
+Node: Unnamed Fields1755603
+Node: Thread-Local1757831
+Node: C99 Thread-Local Edits1759936
+Node: C++98 Thread-Local Edits1761948
+Node: Binary constants1765392
+Node: C++ Extensions1766063
+Node: C++ Volatiles1767774
+Node: Restricted Pointers1770122
+Node: Vague Linkage1771713
+Node: C++ Interface1775337
+Ref: C++ Interface-Footnote-11779623
+Node: Template Instantiation1779759
+Node: Bound member functions1786346
+Node: C++ Attributes1787878
+Node: Function Multiversioning1791238
+Node: Namespace Association1793053
+Node: Type Traits1794433
+Node: Java Exceptions1800921
+Node: Deprecated Features1802311
+Node: Backwards Compatibility1805276
+Node: Objective-C1806628
+Node: GNU Objective-C runtime API1807237
+Node: Modern GNU Objective-C runtime API1808244
+Node: Traditional GNU Objective-C runtime API1810681
+Node: Executing code before main1811409
+Node: What you can and what you cannot do in +load1814147
+Node: Type encoding1816537
+Node: Legacy type encoding1821613
+Node: @encode1822704
+Node: Method signatures1823245
+Node: Garbage Collection1825240
+Node: Constant string objects1827929
+Node: compatibility_alias1830437
+Node: Exceptions1831159
+Node: Synchronization1833870
+Node: Fast enumeration1835054
+Node: Using fast enumeration1835366
+Node: c99-like fast enumeration syntax1836577
+Node: Fast enumeration details1837280
+Node: Fast enumeration protocol1839621
+Node: Messaging with the GNU Objective-C runtime1842773
+Node: Dynamically registering methods1844144
+Node: Forwarding hook1845835
+Node: Compatibility1848875
+Node: Gcov1855442
+Node: Gcov Intro1855975
+Node: Invoking Gcov1858693
+Node: Gcov and Optimization1872939
+Node: Gcov Data Files1875939
+Node: Cross-profiling1877334
+Node: Trouble1879185
+Node: Actual Bugs1880597
+Node: Interoperation1881044
+Node: Incompatibilities1887936
+Node: Fixed Headers1896087
+Node: Standard Libraries1897750
+Node: Disappointments1899122
+Node: C++ Misunderstandings1903480
+Node: Static Definitions1904291
+Node: Name lookup1905344
+Ref: Name lookup-Footnote-11910122
+Node: Temporaries1910309
+Node: Copy Assignment1912285
+Node: Non-bugs1914092
+Node: Warnings and Errors1924599
+Node: Bugs1926361
+Node: Bug Criteria1926925
+Node: Bug Reporting1929135
+Node: Service1929356
+Node: Contributing1930175
+Node: Funding1930915
+Node: GNU Project1933404
+Node: Copying1934050
+Node: GNU Free Documentation License1971578
+Node: Contributors1996715
+Node: Option Index2034117
+Node: Keyword Index2228456
 
 End Tag Table
