@@ -585,6 +585,10 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_vec_odr_type_va_gc_() ((vec<odr_type,va_gc> *)(ggc_internal_cleared_alloc_stat (sizeof (vec<odr_type,va_gc>) MEM_STAT_INFO)))
 #define ggc_alloc_vec_vec_odr_type_va_gc_(n) ((vec<odr_type,va_gc> *)(ggc_internal_vec_alloc_stat (sizeof (vec<odr_type,va_gc>), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_vec_odr_type_va_gc_(n) ((vec<odr_type,va_gc> *)(ggc_internal_cleared_vec_alloc_stat (sizeof (vec<odr_type,va_gc>), n MEM_STAT_INFO)))
+#define ggc_alloc_tree_type_map() ((struct tree_type_map *)(ggc_internal_alloc_stat (sizeof (struct tree_type_map) MEM_STAT_INFO)))
+#define ggc_alloc_cleared_tree_type_map() ((struct tree_type_map *)(ggc_internal_cleared_alloc_stat (sizeof (struct tree_type_map) MEM_STAT_INFO)))
+#define ggc_alloc_vec_tree_type_map(n) ((struct tree_type_map *)(ggc_internal_vec_alloc_stat (sizeof (struct tree_type_map), n MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_tree_type_map(n) ((struct tree_type_map *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct tree_type_map), n MEM_STAT_INFO)))
 #define ggc_alloc_vec_inline_summary_t_va_gc_() ((vec<inline_summary_t,va_gc> *)(ggc_internal_alloc_stat (sizeof (vec<inline_summary_t,va_gc>) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_inline_summary_t_va_gc_() ((vec<inline_summary_t,va_gc> *)(ggc_internal_cleared_alloc_stat (sizeof (vec<inline_summary_t,va_gc>) MEM_STAT_INFO)))
 #define ggc_alloc_vec_vec_inline_summary_t_va_gc_(n) ((vec<inline_summary_t,va_gc> *)(ggc_internal_vec_alloc_stat (sizeof (vec<inline_summary_t,va_gc>), n MEM_STAT_INFO)))
@@ -3130,6 +3134,10 @@ extern void gt_ggc_mx_parm_attr_d (void *);
   if (X != NULL) gt_ggc_mx_vec_odr_type_va_gc_ (X);\
   } while (0)
 extern void gt_ggc_mx_vec_odr_type_va_gc_ (void *);
+#define gt_ggc_m_13tree_type_map(X) do { \
+  if (X != NULL) gt_ggc_mx_tree_type_map (X);\
+  } while (0)
+extern void gt_ggc_mx_tree_type_map (void *);
 #define gt_ggc_m_27vec_inline_summary_t_va_gc_(X) do { \
   if (X != NULL) gt_ggc_mx_vec_inline_summary_t_va_gc_ (X);\
   } while (0)
@@ -3656,6 +3664,7 @@ extern void gt_ggc_m_P10spec_entry4htab (void *);
 extern void gt_ggc_m_P16cxx_int_tree_map4htab (void *);
 extern void gt_ggc_m_P17named_label_entry4htab (void *);
 extern void gt_ggc_m_P13pad_type_hash4htab (void *);
+extern void gt_ggc_m_P13tree_type_map4htab (void *);
 extern void gt_ggc_m_P17lto_in_decl_state4htab (void *);
 extern void gt_ggc_m_P9tree_nodeP9tree_node12splay_tree_s (void *);
 extern void gt_ggc_m_P13scev_info_str4htab (void *);
@@ -3990,6 +3999,10 @@ extern void gt_pch_nx_parm_attr_d (void *);
   if (X != NULL) gt_pch_nx_vec_odr_type_va_gc_ (X);\
   } while (0)
 extern void gt_pch_nx_vec_odr_type_va_gc_ (void *);
+#define gt_pch_n_13tree_type_map(X) do { \
+  if (X != NULL) gt_pch_nx_tree_type_map (X);\
+  } while (0)
+extern void gt_pch_nx_tree_type_map (void *);
 #define gt_pch_n_27vec_inline_summary_t_va_gc_(X) do { \
   if (X != NULL) gt_pch_nx_vec_inline_summary_t_va_gc_ (X);\
   } while (0)
@@ -4516,6 +4529,7 @@ extern void gt_pch_n_P10spec_entry4htab (void *);
 extern void gt_pch_n_P16cxx_int_tree_map4htab (void *);
 extern void gt_pch_n_P17named_label_entry4htab (void *);
 extern void gt_pch_n_P13pad_type_hash4htab (void *);
+extern void gt_pch_n_P13tree_type_map4htab (void *);
 extern void gt_pch_n_P17lto_in_decl_state4htab (void *);
 extern void gt_pch_n_P9tree_nodeP9tree_node12splay_tree_s (void *);
 extern void gt_pch_n_P13scev_info_str4htab (void *);
@@ -4700,6 +4714,8 @@ extern void gt_pch_p_20vec_parm_attr_va_gc_
 extern void gt_pch_p_11parm_attr_d
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_19vec_odr_type_va_gc_
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_13tree_type_map
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_27vec_inline_summary_t_va_gc_
     (void *, void *, gt_pointer_operator, void *);
@@ -4984,6 +5000,8 @@ extern void gt_pch_p_P17named_label_entry4htab
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_P13pad_type_hash4htab
     (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_P13tree_type_map4htab
+    (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_P17lto_in_decl_state4htab
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_P9tree_nodeP9tree_node12splay_tree_s
@@ -5066,6 +5084,7 @@ extern void * ggc_alloc_splay_tree_spec_entry_htab (int, void *);
 extern void * ggc_alloc_splay_tree_cxx_int_tree_map_htab (int, void *);
 extern void * ggc_alloc_splay_tree_named_label_entry_htab (int, void *);
 extern void * ggc_alloc_splay_tree_pad_type_hash_htab (int, void *);
+extern void * ggc_alloc_splay_tree_tree_type_map_htab (int, void *);
 extern void * ggc_alloc_splay_tree_lto_in_decl_state_htab (int, void *);
 extern void * ggc_alloc_splay_tree_tree_node_tree_node_splay_tree_s (int, void *);
 extern void * ggc_alloc_splay_tree_scev_info_str_htab (int, void *);

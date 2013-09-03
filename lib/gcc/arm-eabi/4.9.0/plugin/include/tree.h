@@ -2880,8 +2880,7 @@ struct GTY(()) tree_decl_common {
   unsigned lang_flag_7 : 1;
   unsigned lang_flag_8 : 1;
 
-  /* In LABEL_DECL, this is DECL_ERROR_ISSUED.
-     In VAR_DECL and PARM_DECL, this is DECL_REGISTER.  */
+  /* In VAR_DECL and PARM_DECL, this is DECL_REGISTER.  */
   unsigned decl_flag_0 : 1;
   /* In FIELD_DECL, this is DECL_BIT_FIELD
      In VAR_DECL and FUNCTION_DECL, this is DECL_EXTERNAL.
@@ -3072,11 +3071,6 @@ struct GTY(()) tree_field_decl {
    post_landing_pad.  */
 #define EH_LANDING_PAD_NR(NODE) \
   (LABEL_DECL_CHECK (NODE)->label_decl.eh_landing_pad_nr)
-
-/* In LABEL_DECL nodes, nonzero means that an error message about
-   jumping into such a binding contour has been printed for this label.  */
-#define DECL_ERROR_ISSUED(NODE) \
-  (LABEL_DECL_CHECK (NODE)->decl_common.decl_flag_0)
 
 struct GTY(()) tree_label_decl {
   struct tree_decl_with_rtl common;
@@ -4294,6 +4288,7 @@ enum tree_index
   TI_VA_LIST_FPR_COUNTER_FIELD,
   TI_BOOLEAN_TYPE,
   TI_FILEPTR_TYPE,
+  TI_POINTER_SIZED_TYPE,
 
   TI_DFLOAT32_TYPE,
   TI_DFLOAT64_TYPE,
@@ -4450,6 +4445,7 @@ extern GTY(()) tree global_trees[TI_MAX];
 #define va_list_fpr_counter_field	global_trees[TI_VA_LIST_FPR_COUNTER_FIELD]
 /* The C type `FILE *'.  */
 #define fileptr_type_node		global_trees[TI_FILEPTR_TYPE]
+#define pointer_sized_int_node		global_trees[TI_POINTER_SIZED_TYPE]
 
 #define boolean_type_node		global_trees[TI_BOOLEAN_TYPE]
 #define boolean_false_node		global_trees[TI_BOOLEAN_FALSE]

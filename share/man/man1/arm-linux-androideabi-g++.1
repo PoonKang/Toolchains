@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-08-28" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-09-02" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -386,7 +386,7 @@ in the following sections.
 \&\-fcse\-follow\-jumps \-fcse\-skip\-blocks \-fcx\-fortran\-rules 
 \&\-fcx\-limited\-range 
 \&\-fdata\-sections \-fdce \-fdelayed\-branch 
-\&\-fdelete\-null\-pointer\-checks \-fdevirtualize \-fdse 
+\&\-fdelete\-null\-pointer\-checks \-fdevirtualize \-fdevirtualize\-speculatively \-fdse 
 \&\-fearly\-inlining \-fipa\-sra \-fexpensive\-optimizations \-ffat\-lto\-objects 
 \&\-ffast\-math \-ffinite\-math\-only \-ffloat\-store \-fexcess\-precision=\fR\fIstyle\fR 
 \&\fB\-fforward\-propagate \-ffp\-contract=\fR\fIstyle\fR \fB\-ffunction\-sections 
@@ -473,7 +473,7 @@ in the following sections.
 \&\fIobject-file-name\fR  \fB\-l\fR\fIlibrary\fR 
 \&\fB\-nostartfiles  \-nodefaultlibs  \-nostdlib \-pie \-rdynamic 
 \&\-s  \-static \-static\-libgcc \-static\-libstdc++ 
-\&\-static\-libasan \-static\-libtsan 
+\&\-static\-libasan \-static\-libtsan \-static\-libubsan 
 \&\-shared \-shared\-libgcc  \-symbolic 
 \&\-T\fR \fIscript\fR  \fB\-Wl,\fR\fIoption\fR  \fB\-Xlinker\fR \fIoption\fR 
 \&\fB\-u\fR \fIsymbol\fR
@@ -4696,6 +4696,14 @@ Enable ThreadSanitizer, a fast data race detector.
 Memory access instructions will be instrumented to detect
 data race bugs.
 See <\fBhttp://code.google.com/p/data\-race\-test/wiki/ThreadSanitizer\fR> for more details.
+.IP "\fB\-fsanitize=undefined\fR" 4
+.IX Item "-fsanitize=undefined"
+Enable UndefinedBehaviorSanitizer, a fast undefined behavior detector
+Various computations will be instrumented to detect undefined behavior
+at runtime, e.g. division by zero or various overflows.
+While \fB\-ftrapv\fR causes traps for signed overflows to be emitted,
+\&\fB\-fsanitize=undefined\fR gives a diagnostic message.
+This currently works only for the C family of languages.
 .IP "\fB\-fdump\-final\-insns\fR[\fB=\fR\fIfile\fR]" 4
 .IX Item "-fdump-final-insns[=file]"
 Dump the final internal representation (\s-1RTL\s0) to \fIfile\fR.  If the
@@ -5728,6 +5736,10 @@ Enable dumps from all inlining optimizations.
 .IP "\fBvec\fR" 4
 .IX Item "vec"
 Enable dumps from all vectorization optimizations.
+.IP "\fBoptall\fR" 4
+.IX Item "optall"
+Enable dumps from all optimizations. This is a superset of
+the optimization groups listed above.
 .RE
 .RS 4
 .Sp
@@ -6108,7 +6120,7 @@ also turns on the following optimization flags:
 \&\-fcrossjumping 
 \&\-fcse\-follow\-jumps  \-fcse\-skip\-blocks 
 \&\-fdelete\-null\-pointer\-checks 
-\&\-fdevirtualize 
+\&\-fdevirtualize \-fdevirtualize\-speculatively 
 \&\-fexpensive\-optimizations 
 \&\-fgcse  \-fgcse\-lm  
 \&\-fhoist\-adjacent\-loads 
@@ -6597,6 +6609,14 @@ is done both within a procedure and interprocedurally as part of
 indirect inlining (\f(CW\*(C`\-findirect\-inlining\*(C'\fR) and interprocedural constant
 propagation (\fB\-fipa\-cp\fR).
 Enabled at levels \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
+.IP "\fB\-fdevirtualize\-speculatively\fR" 4
+.IX Item "-fdevirtualize-speculatively"
+Attempt to convert calls to virtual functions to speculative direct calls.
+Based on the analysis of the type inheritance graph, determine for a given call
+the set of likely targets. If the set is small, preferably of size 1, change
+the call into an conditional deciding on direct and indirect call.  The
+speculative calls enable more optimizations, such as inlining.  When they seem
+useless after further optimization, they are converted back into original form.
 .IP "\fB\-fexpensive\-optimizations\fR" 4
 .IX Item "-fexpensive-optimizations"
 Perform a number of minor optimizations that are relatively expensive.
@@ -10132,6 +10152,15 @@ the \s-1GCC\s0 driver automatically links against \fBlibtsan\fR.  If
 option is not used, then this links against the shared version of
 \&\fIlibtsan\fR.  The \fB\-static\-libtsan\fR option directs the \s-1GCC\s0
 driver to link \fIlibtsan\fR statically, without necessarily linking
+other libraries statically.
+.IP "\fB\-static\-libubsan\fR" 4
+.IX Item "-static-libubsan"
+When the \fB\-fsanitize=undefined\fR option is used to link a program,
+the \s-1GCC\s0 driver automatically links against \fBlibubsan\fR.  If
+\&\fIlibubsan\fR is available as a shared library, and the \fB\-static\fR
+option is not used, then this links against the shared version of
+\&\fIlibubsan\fR.  The \fB\-static\-libubsan\fR option directs the \s-1GCC\s0
+driver to link \fIlibubsan\fR statically, without necessarily linking
 other libraries statically.
 .IP "\fB\-static\-libstdc++\fR" 4
 .IX Item "-static-libstdc++"
