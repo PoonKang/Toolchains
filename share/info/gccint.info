@@ -26937,6 +26937,16 @@ Here are run-time target specifications.
      Objective-C only, to obtain a common-format string object when the
      target provides one.
 
+ -- C Target Hook: void TARGET_OBJC_DECLARE_UNRESOLVED_CLASS_REFERENCE
+          (const char *CLASSNAME)
+     Declare that Objective C class CLASSNAME is referenced  by the
+     current TU.
+
+ -- C Target Hook: void TARGET_OBJC_DECLARE_CLASS_DEFINITION (const
+          char *CLASSNAME)
+     Declare that Objective C class CLASSNAME is defined  by the
+     current TU.
+
  -- C Target Hook: bool TARGET_STRING_OBJECT_REF_TYPE_P (const_tree
           STRINGREF)
      If a target implements string objects then this hook should return
@@ -34109,18 +34119,6 @@ This is about outputting labels.
 
      On systems where the assembler can handle quoted names, you can
      use this macro to provide more human-readable names.
-
- -- Macro: ASM_DECLARE_CLASS_REFERENCE (STREAM, NAME)
-     A C statement (sans semicolon) to output to the stdio stream
-     STREAM commands to declare that the label NAME is an Objective-C
-     class reference.  This is only needed for targets whose linkers
-     have special support for NeXT-style runtimes.
-
- -- Macro: ASM_DECLARE_UNRESOLVED_REFERENCE (STREAM, NAME)
-     A C statement (sans semicolon) to output to the stdio stream
-     STREAM commands to declare that the label NAME is an unresolved
-     Objective-C class reference.  This is only needed for targets
-     whose linkers have special support for NeXT-style runtimes.
 
 
 File: gccint.info,  Node: Initialization,  Next: Macros for Initialization,  Prev: Label Output,  Up: Assembler Format
@@ -44900,12 +44898,10 @@ Concept Index
 * ASM_APP_OFF:                           File Framework.     (line   78)
 * ASM_APP_ON:                            File Framework.     (line   71)
 * ASM_COMMENT_START:                     File Framework.     (line   66)
-* ASM_DECLARE_CLASS_REFERENCE:           Label Output.       (line  465)
 * ASM_DECLARE_FUNCTION_NAME:             Label Output.       (line   99)
 * ASM_DECLARE_FUNCTION_SIZE:             Label Output.       (line  114)
 * ASM_DECLARE_OBJECT_NAME:               Label Output.       (line  127)
 * ASM_DECLARE_REGISTER_GLOBAL:           Label Output.       (line  156)
-* ASM_DECLARE_UNRESOLVED_REFERENCE:      Label Output.       (line  471)
 * ASM_FINAL_SPEC:                        Driver.             (line   82)
 * ASM_FINISH_DECLARE_OBJECT:             Label Output.       (line  164)
 * ASM_FORMAT_PRIVATE_NAME:               Label Output.       (line  383)
@@ -45129,7 +45125,7 @@ Concept Index
 * BYTES_BIG_ENDIAN, effect on subreg:    Regs and Memory.    (line  221)
 * C statements for assembler output:     Output Statement.   (line    6)
 * C99 math functions, implicit usage:    Library Calls.      (line   70)
-* C_COMMON_OVERRIDE_OPTIONS:             Run-time Target.    (line  127)
+* C_COMMON_OVERRIDE_OPTIONS:             Run-time Target.    (line  137)
 * c_register_pragma:                     Misc.               (line  404)
 * c_register_pragma_with_expansion:      Misc.               (line  406)
 * call <1>:                              Side Effects.       (line   92)
@@ -47668,7 +47664,7 @@ Concept Index
 * SWITCH_BODY:                           Statements for C++. (line    6)
 * SWITCH_COND:                           Statements for C++. (line    6)
 * SWITCH_STMT:                           Statements for C++. (line    6)
-* SWITCHABLE_TARGET:                     Run-time Target.    (line  155)
+* SWITCHABLE_TARGET:                     Run-time Target.    (line  165)
 * SYMBOL_FLAG_ANCHOR:                    Special Accessors.  (line  120)
 * SYMBOL_FLAG_EXTERNAL:                  Special Accessors.  (line  102)
 * SYMBOL_FLAG_FUNCTION:                  Special Accessors.  (line   95)
@@ -47850,7 +47846,7 @@ Concept Index
 * TARGET_CC_MODES_COMPATIBLE:            MODE_CC Condition Codes.
                                                              (line  116)
 * TARGET_CHECK_PCH_TARGET_FLAGS:         PCH Target.         (line   28)
-* TARGET_CHECK_STRING_OBJECT_FORMAT_ARG: Run-time Target.    (line  111)
+* TARGET_CHECK_STRING_OBJECT_FORMAT_ARG: Run-time Target.    (line  121)
 * TARGET_CLASS_LIKELY_SPILLED_P:         Register Classes.   (line  494)
 * TARGET_CLASS_MAX_NREGS:                Register Classes.   (line  513)
 * TARGET_COMMUTATIVE_P:                  Misc.               (line  679)
@@ -48000,12 +47996,15 @@ Concept Index
 * TARGET_N_FORMAT_TYPES:                 Misc.               (line  855)
 * TARGET_NARROW_VOLATILE_BITFIELD:       Storage Layout.     (line  404)
 * TARGET_OBJC_CONSTRUCT_STRING_OBJECT:   Run-time Target.    (line   90)
+* TARGET_OBJC_DECLARE_CLASS_DEFINITION:  Run-time Target.    (line  111)
+* TARGET_OBJC_DECLARE_UNRESOLVED_CLASS_REFERENCE: Run-time Target.
+                                                             (line  106)
 * TARGET_OBJECT_SUFFIX:                  Misc.               (line  731)
 * TARGET_OBJFMT_CPP_BUILTINS:            Run-time Target.    (line   46)
 * TARGET_OPTF:                           Misc.               (line  837)
-* TARGET_OPTION_DEFAULT_PARAMS:          Run-time Target.    (line  151)
-* TARGET_OPTION_INIT_STRUCT:             Run-time Target.    (line  148)
-* TARGET_OPTION_OPTIMIZATION_TABLE:      Run-time Target.    (line  134)
+* TARGET_OPTION_DEFAULT_PARAMS:          Run-time Target.    (line  161)
+* TARGET_OPTION_INIT_STRUCT:             Run-time Target.    (line  158)
+* TARGET_OPTION_OPTIMIZATION_TABLE:      Run-time Target.    (line  144)
 * TARGET_OPTION_OVERRIDE:                Target Attributes.  (line  137)
 * TARGET_OPTION_PRAGMA_PARSE:            Target Attributes.  (line  131)
 * TARGET_OPTION_PRINT:                   Target Attributes.  (line  125)
@@ -48013,7 +48012,7 @@ Concept Index
 * TARGET_OPTION_SAVE:                    Target Attributes.  (line  113)
 * TARGET_OPTION_VALID_ATTRIBUTE_P:       Target Attributes.  (line  102)
 * TARGET_OS_CPP_BUILTINS:                Run-time Target.    (line   42)
-* TARGET_OVERRIDE_OPTIONS_AFTER_CHANGE:  Run-time Target.    (line  117)
+* TARGET_OVERRIDE_OPTIONS_AFTER_CHANGE:  Run-time Target.    (line  127)
 * TARGET_OVERRIDES_FORMAT_ATTRIBUTES:    Misc.               (line  859)
 * TARGET_OVERRIDES_FORMAT_ATTRIBUTES_COUNT: Misc.            (line  865)
 * TARGET_OVERRIDES_FORMAT_INIT:          Misc.               (line  869)
@@ -48101,7 +48100,7 @@ Concept Index
                                                              (line    7)
 * TARGET_STATIC_CHAIN:                   Frame Registers.    (line   92)
 * TARGET_STRICT_ARGUMENT_NAMING:         Varargs.            (line  112)
-* TARGET_STRING_OBJECT_REF_TYPE_P:       Run-time Target.    (line  106)
+* TARGET_STRING_OBJECT_REF_TYPE_P:       Run-time Target.    (line  116)
 * TARGET_STRIP_NAME_ENCODING:            Sections.           (line  290)
 * TARGET_STRUCT_VALUE_RTX:               Aggregate Return.   (line   45)
 * TARGET_SUPPORTS_SPLIT_STACK:           Stack Smashing Protection.
@@ -48841,97 +48840,97 @@ Node: Target Macros1102296
 Node: Target Structure1105384
 Node: Driver1107499
 Node: Run-time Target1126567
-Node: Per-Function Data1135351
-Node: Storage Layout1138116
-Node: Type Layout1164124
-Node: Registers1179006
-Node: Register Basics1179980
-Node: Allocation Order1185485
-Node: Values in Registers1187931
-Node: Leaf Functions1195420
-Node: Stack Registers1198278
-Node: Register Classes1199550
-Node: Old Constraints1228164
-Node: Stack and Calling1235316
-Node: Frame Layout1235850
-Node: Exception Handling1246730
-Node: Stack Checking1252936
-Node: Frame Registers1257749
-Node: Elimination1266008
-Node: Stack Arguments1270237
-Node: Register Arguments1277134
-Node: Scalar Return1297450
-Node: Aggregate Return1303536
-Node: Caller Saves1307746
-Node: Function Entry1308924
-Node: Profiling1321552
-Node: Tail Calls1323251
-Node: Stack Smashing Protection1324863
-Node: Varargs1326495
-Node: Trampolines1333191
-Node: Library Calls1339234
-Node: Addressing Modes1344173
-Node: Anchored Addresses1363982
-Node: Condition Code1366631
-Node: CC0 Condition Codes1368760
-Node: MODE_CC Condition Codes1372006
-Node: Cond Exec Macros1378233
-Node: Costs1379210
-Node: Scheduling1395628
-Node: Sections1415034
-Node: PIC1430732
-Node: Assembler Format1432792
-Node: File Framework1433930
-Ref: TARGET_HAVE_SWITCHABLE_BSS_SECTIONS1440826
-Node: Data Output1444091
-Node: Uninitialized Data1451867
-Node: Label Output1456878
-Node: Initialization1479950
-Node: Macros for Initialization1485912
-Node: Instruction Output1492635
-Node: Dispatch Tables1503137
-Node: Exception Region Output1507515
-Node: Alignment Output1513873
-Node: Debugging Info1518418
-Node: All Debuggers1519088
-Node: DBX Options1521943
-Node: DBX Hooks1527392
-Node: File Names and DBX1529318
-Node: SDB and DWARF1531430
-Node: VMS Debug1537502
-Node: Floating Point1538089
-Node: Mode Switching1542912
-Node: Target Attributes1546838
-Node: Emulated TLS1554750
-Node: MIPS Coprocessors1558140
-Node: PCH Target1559709
-Node: C++ ABI1561551
-Node: Named Address Spaces1566343
-Node: Misc1571282
-Ref: TARGET_SHIFT_TRUNCATION_MASK1578710
-Node: Host Config1621832
-Node: Host Common1622900
-Node: Filesystem1625279
-Node: Host Misc1629394
-Node: Fragments1631843
-Node: Target Fragment1633038
-Node: Host Fragment1642068
-Node: Collect21642308
-Node: Header Dirs1644944
-Node: Type Information1646367
-Node: GTY Options1648724
-Node: GGC Roots1662552
-Node: Files1663272
-Node: Invoking the garbage collector1666018
-Node: Troubleshooting1667521
-Node: Plugins1668597
-Node: LTO1685475
-Node: Funding1710521
-Node: GNU Project1713004
-Node: Copying1713653
-Node: GNU Free Documentation License1751184
-Node: Contributors1776324
-Node: Option Index1813729
-Node: Concept Index1814533
+Node: Per-Function Data1135720
+Node: Storage Layout1138485
+Node: Type Layout1164493
+Node: Registers1179375
+Node: Register Basics1180349
+Node: Allocation Order1185854
+Node: Values in Registers1188300
+Node: Leaf Functions1195789
+Node: Stack Registers1198647
+Node: Register Classes1199919
+Node: Old Constraints1228533
+Node: Stack and Calling1235685
+Node: Frame Layout1236219
+Node: Exception Handling1247099
+Node: Stack Checking1253305
+Node: Frame Registers1258118
+Node: Elimination1266377
+Node: Stack Arguments1270606
+Node: Register Arguments1277503
+Node: Scalar Return1297819
+Node: Aggregate Return1303905
+Node: Caller Saves1308115
+Node: Function Entry1309293
+Node: Profiling1321921
+Node: Tail Calls1323620
+Node: Stack Smashing Protection1325232
+Node: Varargs1326864
+Node: Trampolines1333560
+Node: Library Calls1339603
+Node: Addressing Modes1344542
+Node: Anchored Addresses1364351
+Node: Condition Code1367000
+Node: CC0 Condition Codes1369129
+Node: MODE_CC Condition Codes1372375
+Node: Cond Exec Macros1378602
+Node: Costs1379579
+Node: Scheduling1395997
+Node: Sections1415403
+Node: PIC1431101
+Node: Assembler Format1433161
+Node: File Framework1434299
+Ref: TARGET_HAVE_SWITCHABLE_BSS_SECTIONS1441195
+Node: Data Output1444460
+Node: Uninitialized Data1452236
+Node: Label Output1457247
+Node: Initialization1479681
+Node: Macros for Initialization1485643
+Node: Instruction Output1492366
+Node: Dispatch Tables1502868
+Node: Exception Region Output1507246
+Node: Alignment Output1513604
+Node: Debugging Info1518149
+Node: All Debuggers1518819
+Node: DBX Options1521674
+Node: DBX Hooks1527123
+Node: File Names and DBX1529049
+Node: SDB and DWARF1531161
+Node: VMS Debug1537233
+Node: Floating Point1537820
+Node: Mode Switching1542643
+Node: Target Attributes1546569
+Node: Emulated TLS1554481
+Node: MIPS Coprocessors1557871
+Node: PCH Target1559440
+Node: C++ ABI1561282
+Node: Named Address Spaces1566074
+Node: Misc1571013
+Ref: TARGET_SHIFT_TRUNCATION_MASK1578441
+Node: Host Config1621563
+Node: Host Common1622631
+Node: Filesystem1625010
+Node: Host Misc1629125
+Node: Fragments1631574
+Node: Target Fragment1632769
+Node: Host Fragment1641799
+Node: Collect21642039
+Node: Header Dirs1644675
+Node: Type Information1646098
+Node: GTY Options1648455
+Node: GGC Roots1662283
+Node: Files1663003
+Node: Invoking the garbage collector1665749
+Node: Troubleshooting1667252
+Node: Plugins1668328
+Node: LTO1685206
+Node: Funding1710252
+Node: GNU Project1712735
+Node: Copying1713384
+Node: GNU Free Documentation License1750915
+Node: Contributors1776055
+Node: Option Index1813460
+Node: Concept Index1814264
 
 End Tag Table
