@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-09-08" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-09-10" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -263,8 +263,8 @@ in the following sections.
 \&\-Wno\-attributes \-Wno\-builtin\-macro\-redefined 
 \&\-Wc++\-compat \-Wc++11\-compat \-Wcast\-align  \-Wcast\-qual  
 \&\-Wchar\-subscripts \-Wclobbered  \-Wcomment \-Wconditionally\-supported  
-\&\-Wconversion  \-Wcoverage\-mismatch  \-Wno\-cpp  \-Wno\-deprecated  
-\&\-Wno\-deprecated\-declarations \-Wdisabled\-optimization  
+\&\-Wconversion \-Wcoverage\-mismatch  \-Wdelete\-incomplete \-Wno\-cpp  
+\&\-Wno\-deprecated \-Wno\-deprecated\-declarations \-Wdisabled\-optimization  
 \&\-Wno\-div\-by\-zero \-Wdouble\-promotion \-Wempty\-body  \-Wenum\-compare 
 \&\-Wno\-endif\-labels \-Werror  \-Werror=* 
 \&\-Wfatal\-errors  \-Wfloat\-equal  \-Wformat  \-Wformat=2 
@@ -1849,6 +1849,9 @@ to previous types declarations.
 .Sp
 Some cases of unnamed fields in structures and unions are only
 accepted with this option.
+.Sp
+Note that this option is off for all targets but i?86 and x86_64
+targets using ms-abi.
 .IP "\fB\-fplan9\-extensions\fR" 4
 .IX Item "-fplan9-extensions"
 Accept some non-standard constructs used in Plan 9 code.
@@ -4111,6 +4114,10 @@ types. \fB\-Wconversion\-null\fR is enabled by default.
 .IX Item "-Wzero-as-null-pointer-constant ( and Objective- only)"
 Warn when a literal '0' is used as null pointer constant.  This can
 be useful to facilitate the conversion to \f(CW\*(C`nullptr\*(C'\fR in \*(C+11.
+.IP "\fB\-Wdelete\-incomplete\fR (\*(C+ and Objective\-\*(C+ only)" 4
+.IX Item "-Wdelete-incomplete ( and Objective- only)"
+Warn when deleting a pointer to incomplete type, which may cause
+undefined behavior at runtime.  This warning is enabled by default.
 .IP "\fB\-Wuseless\-cast\fR (\*(C+ and Objective\-\*(C+ only)" 4
 .IX Item "-Wuseless-cast ( and Objective- only)"
 Warn when an expression is casted to its own type.
