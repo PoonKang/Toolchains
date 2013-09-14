@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-09-10" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-09-12" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -663,10 +663,10 @@ in the following sections.
 \&\-mavx2 \-mavx512f \-mavx512pf \-mavx512er \-mavx512cd 
 \&\-maes \-mpclmul \-mfsgsbase \-mrdrnd \-mf16c \-mfma 
 \&\-msse4a \-m3dnow \-mpopcnt \-mabm \-mbmi \-mtbm \-mfma4 \-mxop \-mlzcnt 
-\&\-mbmi2 \-mrtm \-mlwp \-mthreads 
+\&\-mbmi2 \-mfxsr \-mxsave \-mxsaveopt \-mrtm \-mlwp \-mthreads 
 \&\-mno\-align\-stringops  \-minline\-all\-stringops 
 \&\-minline\-stringops\-dynamically \-mstringop\-strategy=\fR\fIalg\fR 
-\&\fB\-mmemcpy\-strategy=\fR\fIstrategy\fR \fB\-mmemset\-strategy=\fR\fIstrategy\fR 
+\&\fB\-mmemcpy\-strategy=\fR\fIstrategy\fR \fB\-mmemset\-strategy=\fR\fIstrategy\fR
 \&\fB\-mpush\-args  \-maccumulate\-outgoing\-args  \-m128bit\-long\-double 
 \&\-m96bit\-long\-double \-mlong\-double\-64 \-mlong\-double\-80 
 \&\-mregparm=\fR\fInum\fR  \fB\-msseregparm 
@@ -13664,6 +13664,12 @@ preferred alignment to \fB\-mpreferred\-stack\-boundary=2\fR.
 .IX Item "-mlzcnt"
 .IP "\fB\-mno\-lzcnt\fR" 4
 .IX Item "-mno-lzcnt"
+.IP "\fB\-mfxsr\fR" 4
+.IX Item "-mfxsr"
+.IP "\fB\-mxsave\fR" 4
+.IX Item "-mxsave"
+.IP "\fB\-mxsaveopt\fR" 4
+.IX Item "-mxsaveopt"
 .IP "\fB\-mrtm\fR" 4
 .IX Item "-mrtm"
 .IP "\fB\-mtbm\fR" 4
@@ -13674,7 +13680,7 @@ preferred alignment to \fB\-mpreferred\-stack\-boundary=2\fR.
 These switches enable or disable the use of instructions in the \s-1MMX\s0, \s-1SSE\s0,
 \&\s-1SSE2\s0, \s-1SSE3\s0, \s-1SSSE3\s0, \s-1SSE4\s0.1, \s-1AVX\s0, \s-1AVX2\s0, \s-1AVX512F\s0, \s-1AVX512PF\s0, \s-1AVX512ER\s0, \s-1AVX512CD\s0,
 \&\s-1AES\s0, \s-1PCLMUL\s0, \s-1FSGSBASE\s0, \s-1RDRND\s0, F16C, \s-1FMA\s0, \s-1SSE4A\s0, \s-1FMA4\s0, \s-1XOP\s0, \s-1LWP\s0, \s-1ABM\s0, \s-1BMI\s0, \s-1BMI2\s0,
-\&\s-1LZCNT\s0, \s-1RTM\s0 or 3DNow!
+\&\s-1FXSR\s0, \s-1XSAVE\s0, \s-1XSAVEOPT\s0, \s-1LZCNT\s0, \s-1RTM\s0 or 3DNow!
 extended instruction sets.
 These extensions are also available as built-in functions: see
 \&\fBX86 Built-in Functions\fR, for details of the functions enabled and

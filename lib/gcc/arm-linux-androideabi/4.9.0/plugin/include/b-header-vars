@@ -88,6 +88,7 @@ CPP_INTERNAL_H=cpp-id-data.h
 TREE_DUMP_H=tree-dump.h line-map.h dumpfile.h
 TREE_PASS_H=tree-pass.h timevar.h timevar.def line-map.h dumpfile.h
 TREE_FLOW_H=tree-flow.h tree-flow-inline.h tree-ssa-operands.h bitmap.h arm-cores.def real.h machmode.h mode-classes.def insn-modes.h fixed-value.h machmode.h mode-classes.def insn-modes.h double-int.h tree-check.h tree-ssa-alias.h
+TREE_SSA_H=tree-ssa.h tree-flow.h tree-flow-inline.h tree-ssa-operands.h bitmap.h arm-cores.def real.h machmode.h mode-classes.def insn-modes.h fixed-value.h machmode.h mode-classes.def insn-modes.h double-int.h tree-check.h tree-ssa-alias.h
 TREE_HASHER_H=tree-hasher.h arm-cores.def real.h machmode.h mode-classes.def insn-modes.h fixed-value.h machmode.h mode-classes.def insn-modes.h double-int.h tree-check.h tree-ssa-alias.h
 TREE_SSA_LIVE_H=tree-ssa-live.h partition.h
 SSAEXPAND_H=ssaexpand.h tree-ssa-live.h partition.h
