@@ -5455,10 +5455,12 @@ extern tree make_auto				(void);
 extern tree make_decltype_auto			(void);
 extern tree do_auto_deduction			(tree, tree, tree);
 extern tree type_uses_auto			(tree);
+extern tree type_uses_auto_or_concept		(tree);
 extern void append_type_to_template_for_access_check (tree, tree, tree,
 						      location_t);
 extern tree splice_late_return_type		(tree, tree);
 extern bool is_auto				(const_tree);
+extern bool is_auto_or_concept			(const_tree);
 extern tree process_template_parm		(tree, location_t, tree, 
 						 bool, bool);
 extern tree end_template_parm_list		(tree);
@@ -5734,7 +5736,7 @@ extern tree finish_call_expr			(tree, vec<tree, va_gc> **, bool,
 						 bool, tsubst_flags_t);
 extern tree finish_increment_expr		(tree, enum tree_code);
 extern tree finish_this_expr			(void);
-extern tree finish_pseudo_destructor_expr       (tree, tree, tree);
+extern tree finish_pseudo_destructor_expr       (tree, tree, tree, location_t);
 extern tree finish_unary_op_expr		(location_t, enum tree_code, tree,
 						 tsubst_flags_t);
 extern tree finish_compound_literal		(tree, tree, tsubst_flags_t);

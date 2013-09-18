@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-09-12" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-09-13" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -815,6 +815,9 @@ in the following sections.
 .Sp
 \&\fIMoxie Options\fR
 \&\fB\-meb \-mel \-mno\-crt0\fR
+.Sp
+\&\fI\s-1MSP430\s0 Options\fR
+\&\fB\-msim \-masm\-hex \-mmcu= \-mlarge \-msmall \-mrelax\fR
 .Sp
 \&\fI\s-1PDP\-11\s0 Options\fR
 \&\fB\-mfpu  \-msoft\-float  \-mac0  \-mno\-ac0  \-m40  \-m45  \-m10 
@@ -15136,7 +15139,7 @@ compatibility with other tools, like \f(CW\*(C`as\*(C'\fR.
 Link the SDRAM-based runtime instead of the default ROM-based runtime.
 .IP "\fB\-msim\fR" 4
 .IX Item "-msim"
-Link the simulator runtime libraries.
+Link the simulator run-time libraries.
 .IP "\fB\-msimnovec\fR" 4
 .IX Item "-msimnovec"
 Link the simulator runtime libraries, excluding built-in support
@@ -16385,6 +16388,35 @@ Generate little-endian code.
 .IP "\fB\-mno\-crt0\fR" 4
 .IX Item "-mno-crt0"
 Do not link in the C run-time initialization object file.
+.PP
+\fI\s-1MSP430\s0 Options\fR
+.IX Subsection "MSP430 Options"
+.PP
+These options are defined for the \s-1MSP430:\s0
+.IP "\fB\-msim\fR" 4
+.IX Item "-msim"
+Link the simulator runtime libraries.
+.IP "\fB\-masm\-hex\fR" 4
+.IX Item "-masm-hex"
+Force assembly output to always use hex constants.  Normally such
+constants are signed decimals, but this option is available for
+testsuite and/or aesthetic purposes.
+.IP "\fB\-mmcu=\fR" 4
+.IX Item "-mmcu="
+Select the \s-1MCU\s0 to target.  Note that there are two \*(L"generic\*(R" MCUs,
+\&\f(CW\*(C`msp430\*(C'\fR and \f(CW\*(C`msp430x\*(C'\fR, which should be used most of the
+time.  This option is also passed to the assembler.
+.IP "\fB\-mlarge\fR" 4
+.IX Item "-mlarge"
+Use large-model addressing (20\-bit pointers, 32\-bit \f(CW\*(C`size_t\*(C'\fR).
+.IP "\fB\-msmall\fR" 4
+.IX Item "-msmall"
+Use small-model addressing (16\-bit pointers, 16\-bit \f(CW\*(C`size_t\*(C'\fR).
+.IP "\fB\-mrelax\fR" 4
+.IX Item "-mrelax"
+This option is passed to the assembler and linker, and allows the
+linker to perform certain optimizations that cannot be done until
+the final link.
 .PP
 \fI\s-1PDP\-11\s0 Options\fR
 .IX Subsection "PDP-11 Options"

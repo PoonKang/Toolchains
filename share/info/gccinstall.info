@@ -3313,6 +3313,12 @@ moxie-*-elf
 
 The moxie processor.
 
+msp430-*-elf
+============
+
+TI MSP430 processor.  This configuration is intended for embedded
+systems.
+
 powerpc-*-*
 ===========
 
@@ -4567,45 +4573,46 @@ Ref: mips-x-x140167
 Ref: mips-sgi-irix5142563
 Ref: mips-sgi-irix6142643
 Ref: moxie-x-elf142830
-Ref: powerpc-x-x142877
-Ref: powerpc-x-darwin143082
-Ref: powerpc-x-elf143576
-Ref: powerpc-x-linux-gnu143661
-Ref: powerpc-x-netbsd143756
-Ref: powerpc-x-eabisim143844
-Ref: powerpc-x-eabi143970
-Ref: powerpcle-x-elf144046
-Ref: powerpcle-x-eabisim144138
-Ref: powerpcle-x-eabi144271
-Ref: rl78-x-elf144354
-Ref: rx-x-elf144460
-Ref: s390-x-linux144659
-Ref: s390x-x-linux144731
-Ref: s390x-ibm-tpf144818
-Ref: x-x-solaris2144949
-Ref: sparc-x-x149869
-Ref: sparc-sun-solaris2150371
-Ref: sparc-sun-solaris210153125
-Ref: sparc-x-linux153501
-Ref: sparc64-x-solaris2153726
-Ref: sparcv9-x-solaris2154379
-Ref: c6x-x-x154466
-Ref: tilegx-*-linux154557
-Ref: tilepro-*-linux154676
-Ref: x-x-vxworks154797
-Ref: x86-64-x-x156319
-Ref: x86-64-x-solaris210156647
-Ref: xtensa-x-elf157309
-Ref: xtensa-x-linux157980
-Ref: windows158321
-Ref: x-x-cygwin160258
-Ref: x-x-interix160811
-Ref: x-x-mingw32161120
-Ref: older161346
-Ref: elf163463
-Node: Old163721
-Node: Configurations166858
-Node: GNU Free Documentation License170399
-Node: Concept Index195546
+Ref: msp430-x-elf142877
+Ref: powerpc-x-x142980
+Ref: powerpc-x-darwin143185
+Ref: powerpc-x-elf143679
+Ref: powerpc-x-linux-gnu143764
+Ref: powerpc-x-netbsd143859
+Ref: powerpc-x-eabisim143947
+Ref: powerpc-x-eabi144073
+Ref: powerpcle-x-elf144149
+Ref: powerpcle-x-eabisim144241
+Ref: powerpcle-x-eabi144374
+Ref: rl78-x-elf144457
+Ref: rx-x-elf144563
+Ref: s390-x-linux144762
+Ref: s390x-x-linux144834
+Ref: s390x-ibm-tpf144921
+Ref: x-x-solaris2145052
+Ref: sparc-x-x149972
+Ref: sparc-sun-solaris2150474
+Ref: sparc-sun-solaris210153228
+Ref: sparc-x-linux153604
+Ref: sparc64-x-solaris2153829
+Ref: sparcv9-x-solaris2154482
+Ref: c6x-x-x154569
+Ref: tilegx-*-linux154660
+Ref: tilepro-*-linux154779
+Ref: x-x-vxworks154900
+Ref: x86-64-x-x156422
+Ref: x86-64-x-solaris210156750
+Ref: xtensa-x-elf157412
+Ref: xtensa-x-linux158083
+Ref: windows158424
+Ref: x-x-cygwin160361
+Ref: x-x-interix160914
+Ref: x-x-mingw32161223
+Ref: older161449
+Ref: elf163566
+Node: Old163824
+Node: Configurations166961
+Node: GNU Free Documentation License170502
+Node: Concept Index195649
 
 End Tag Table
