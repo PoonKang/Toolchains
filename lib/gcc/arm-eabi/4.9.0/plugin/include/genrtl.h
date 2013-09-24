@@ -57,6 +57,24 @@ gen_rtx_fmt_ue_stat (RTX_CODE code, enum machine_mode mode,
         gen_rtx_fmt_ue_stat (c, m, p0, p1 MEM_STAT_INFO)
 
 static inline rtx
+gen_rtx_fmt_ie_stat (RTX_CODE code, enum machine_mode mode,
+	int arg0,
+	rtx arg1 MEM_STAT_DECL)
+{
+  rtx rt;
+  rt = rtx_alloc_stat (code PASS_MEM_STAT);
+
+  PUT_MODE (rt, mode);
+  XINT (rt, 0) = arg0;
+  XEXP (rt, 1) = arg1;
+
+  return rt;
+}
+
+#define gen_rtx_fmt_ie(c, m, p0, p1)\
+        gen_rtx_fmt_ie_stat (c, m, p0, p1 MEM_STAT_INFO)
+
+static inline rtx
 gen_rtx_fmt_E_stat (RTX_CODE code, enum machine_mode mode,
 	rtvec arg0 MEM_STAT_DECL)
 {
@@ -875,6 +893,8 @@ gen_rtx_fmt_ssss_stat (RTX_CODE code, enum machine_mode mode,
   gen_rtx_fmt_ee (EXPR_LIST, (MODE), (ARG0), (ARG1))
 #define gen_rtx_INSN_LIST(MODE, ARG0, ARG1) \
   gen_rtx_fmt_ue (INSN_LIST, (MODE), (ARG0), (ARG1))
+#define gen_rtx_INT_LIST(MODE, ARG0, ARG1) \
+  gen_rtx_fmt_ie (INT_LIST, (MODE), (ARG0), (ARG1))
 #define gen_rtx_SEQUENCE(MODE, ARG0) \
   gen_rtx_fmt_E (SEQUENCE, (MODE), (ARG0))
 #define gen_rtx_ADDRESS(MODE, ARG0) \

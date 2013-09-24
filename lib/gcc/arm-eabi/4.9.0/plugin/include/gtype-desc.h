@@ -1465,6 +1465,10 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_tree_ssa_name() ((struct tree_ssa_name *)(ggc_internal_cleared_alloc_stat (sizeof (struct tree_ssa_name) MEM_STAT_INFO)))
 #define ggc_alloc_vec_tree_ssa_name(n) ((struct tree_ssa_name *)(ggc_internal_vec_alloc_stat (sizeof (struct tree_ssa_name), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_tree_ssa_name(n) ((struct tree_ssa_name *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct tree_ssa_name), n MEM_STAT_INFO)))
+#define ggc_alloc_ssa_name_info_type() ((union ssa_name_info_type *)(ggc_internal_alloc_stat (sizeof (union ssa_name_info_type) MEM_STAT_INFO)))
+#define ggc_alloc_cleared_ssa_name_info_type() ((union ssa_name_info_type *)(ggc_internal_cleared_alloc_stat (sizeof (union ssa_name_info_type) MEM_STAT_INFO)))
+#define ggc_alloc_vec_ssa_name_info_type(n) ((union ssa_name_info_type *)(ggc_internal_vec_alloc_stat (sizeof (union ssa_name_info_type), n MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_ssa_name_info_type(n) ((union ssa_name_info_type *)(ggc_internal_cleared_vec_alloc_stat (sizeof (union ssa_name_info_type), n MEM_STAT_INFO)))
 #define ggc_alloc_ssa_use_operand_d() ((struct ssa_use_operand_d *)(ggc_internal_alloc_stat (sizeof (struct ssa_use_operand_d) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_ssa_use_operand_d() ((struct ssa_use_operand_d *)(ggc_internal_cleared_alloc_stat (sizeof (struct ssa_use_operand_d) MEM_STAT_INFO)))
 #define ggc_alloc_vec_ssa_use_operand_d(n) ((struct ssa_use_operand_d *)(ggc_internal_vec_alloc_stat (sizeof (struct ssa_use_operand_d), n MEM_STAT_INFO)))
@@ -1545,6 +1549,10 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_die_struct() ((struct die_struct *)(ggc_internal_cleared_alloc_stat (sizeof (struct die_struct) MEM_STAT_INFO)))
 #define ggc_alloc_vec_die_struct(n) ((struct die_struct *)(ggc_internal_vec_alloc_stat (sizeof (struct die_struct), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_die_struct(n) ((struct die_struct *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct die_struct), n MEM_STAT_INFO)))
+#define ggc_alloc_range_info_def() ((struct range_info_def *)(ggc_internal_alloc_stat (sizeof (struct range_info_def) MEM_STAT_INFO)))
+#define ggc_alloc_cleared_range_info_def() ((struct range_info_def *)(ggc_internal_cleared_alloc_stat (sizeof (struct range_info_def) MEM_STAT_INFO)))
+#define ggc_alloc_vec_range_info_def(n) ((struct range_info_def *)(ggc_internal_vec_alloc_stat (sizeof (struct range_info_def), n MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_range_info_def(n) ((struct range_info_def *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct range_info_def), n MEM_STAT_INFO)))
 #define ggc_alloc_ptr_info_def() ((struct ptr_info_def *)(ggc_internal_alloc_stat (sizeof (struct ptr_info_def) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_ptr_info_def() ((struct ptr_info_def *)(ggc_internal_cleared_alloc_stat (sizeof (struct ptr_info_def) MEM_STAT_INFO)))
 #define ggc_alloc_vec_ptr_info_def(n) ((struct ptr_info_def *)(ggc_internal_vec_alloc_stat (sizeof (struct ptr_info_def), n MEM_STAT_INFO)))
@@ -2129,6 +2137,10 @@ along with GCC; see the file COPYING3.  If not see
 #define ggc_alloc_cleared_rtx_def_sequence() ((struct rtx_def_sequence *)(ggc_internal_cleared_alloc_stat (sizeof (struct rtx_def_sequence) MEM_STAT_INFO)))
 #define ggc_alloc_vec_rtx_def_sequence(n) ((struct rtx_def_sequence *)(ggc_internal_vec_alloc_stat (sizeof (struct rtx_def_sequence), n MEM_STAT_INFO)))
 #define ggc_alloc_cleared_vec_rtx_def_sequence(n) ((struct rtx_def_sequence *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct rtx_def_sequence), n MEM_STAT_INFO)))
+#define ggc_alloc_rtx_def_int_list() ((struct rtx_def_int_list *)(ggc_internal_alloc_stat (sizeof (struct rtx_def_int_list) MEM_STAT_INFO)))
+#define ggc_alloc_cleared_rtx_def_int_list() ((struct rtx_def_int_list *)(ggc_internal_cleared_alloc_stat (sizeof (struct rtx_def_int_list) MEM_STAT_INFO)))
+#define ggc_alloc_vec_rtx_def_int_list(n) ((struct rtx_def_int_list *)(ggc_internal_vec_alloc_stat (sizeof (struct rtx_def_int_list), n MEM_STAT_INFO)))
+#define ggc_alloc_cleared_vec_rtx_def_int_list(n) ((struct rtx_def_int_list *)(ggc_internal_cleared_vec_alloc_stat (sizeof (struct rtx_def_int_list), n MEM_STAT_INFO)))
 #define ggc_alloc_rtx_def_insn_list() ((struct rtx_def_insn_list *)(ggc_internal_alloc_stat (sizeof (struct rtx_def_insn_list) MEM_STAT_INFO)))
 #define ggc_alloc_cleared_rtx_def_insn_list() ((struct rtx_def_insn_list *)(ggc_internal_cleared_alloc_stat (sizeof (struct rtx_def_insn_list) MEM_STAT_INFO)))
 #define ggc_alloc_vec_rtx_def_insn_list(n) ((struct rtx_def_insn_list *)(ggc_internal_vec_alloc_stat (sizeof (struct rtx_def_insn_list), n MEM_STAT_INFO)))
@@ -3546,6 +3558,10 @@ extern void gt_ggc_mx_vec_constructor_elt_va_gc_ (void *);
   if (X != NULL) gt_ggc_mx_die_struct (X);\
   } while (0)
 extern void gt_ggc_mx_die_struct (void *);
+#define gt_ggc_m_14range_info_def(X) do { \
+  if (X != NULL) gt_ggc_mx_range_info_def (X);\
+  } while (0)
+extern void gt_ggc_mx_range_info_def (void *);
 #define gt_ggc_m_12ptr_info_def(X) do { \
   if (X != NULL) gt_ggc_mx_ptr_info_def (X);\
   } while (0)
@@ -4411,6 +4427,10 @@ extern void gt_pch_nx_vec_constructor_elt_va_gc_ (void *);
   if (X != NULL) gt_pch_nx_die_struct (X);\
   } while (0)
 extern void gt_pch_nx_die_struct (void *);
+#define gt_pch_n_14range_info_def(X) do { \
+  if (X != NULL) gt_pch_nx_range_info_def (X);\
+  } while (0)
+extern void gt_pch_nx_range_info_def (void *);
 #define gt_pch_n_12ptr_info_def(X) do { \
   if (X != NULL) gt_pch_nx_ptr_info_def (X);\
   } while (0)
@@ -4918,6 +4938,8 @@ extern void gt_pch_p_15vec_tree_va_gc_
 extern void gt_pch_p_26vec_constructor_elt_va_gc_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_10die_struct
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_14range_info_def
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_12ptr_info_def
     (void *, void *, gt_pointer_operator, void *);
