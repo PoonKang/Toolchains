@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-09-13" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-09-22" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -440,10 +440,11 @@ in the following sections.
 \&\-ftree\-loop\-if\-convert\-stores \-ftree\-loop\-im 
 \&\-ftree\-phiprop \-ftree\-loop\-distribution \-ftree\-loop\-distribute\-patterns 
 \&\-ftree\-loop\-ivcanon \-ftree\-loop\-linear \-ftree\-loop\-optimize 
+\&\-ftree\-loop\-vectorize 
 \&\-ftree\-parallelize\-loops=\fR\fIn\fR \fB\-ftree\-pre \-ftree\-partial\-pre \-ftree\-pta 
 \&\-ftree\-reassoc \-ftree\-sink \-ftree\-slsr \-ftree\-sra 
-\&\-ftree\-switch\-conversion \-ftree\-tail\-merge 
-\&\-ftree\-ter \-ftree\-vect\-loop\-version \-ftree\-vectorize \-ftree\-vrp 
+\&\-ftree\-switch\-conversion \-ftree\-tail\-merge \-ftree\-ter 
+\&\-ftree\-vect\-loop\-version \-ftree\-vectorize \-ftree\-vrp 
 \&\-funit\-at\-a\-time \-funroll\-all\-loops \-funroll\-loops 
 \&\-funsafe\-loop\-optimizations \-funsafe\-math\-optimizations \-funswitch\-loops 
 \&\-fvariable\-expansion\-in\-unroller \-fvect\-cost\-model \-fvpt \-fweb 
@@ -6157,8 +6158,8 @@ invoking \fB\-O2\fR on programs that use computed gotos.
 Optimize yet more.  \fB\-O3\fR turns on all optimizations specified
 by \fB\-O2\fR and also turns on the \fB\-finline\-functions\fR,
 \&\fB\-funswitch\-loops\fR, \fB\-fpredictive\-commoning\fR,
-\&\fB\-fgcse\-after\-reload\fR, \fB\-ftree\-vectorize\fR,
-\&\fB\-fvect\-cost\-model\fR,
+\&\fB\-fgcse\-after\-reload\fR, \fB\-ftree\-loop\-vectorize\fR,
+\&\fB\-ftree\-slp\-vectorize\fR, \fB\-fvect\-cost\-model\fR,
 \&\fB\-ftree\-partial\-pre\fR and \fB\-fipa\-cp\-clone\fR options.
 .IP "\fB\-O0\fR" 4
 .IX Item "-O0"
@@ -7318,8 +7319,12 @@ calculations when possible.  This is enabled by default at \fB\-O\fR and
 higher.
 .IP "\fB\-ftree\-vectorize\fR" 4
 .IX Item "-ftree-vectorize"
+Perform vectorization on trees. This flag enables \fB\-ftree\-loop\-vectorize\fR
+and \fB\-ftree\-slp\-vectorize\fR if not explicitly specified.
+.IP "\fB\-ftree\-loop\-vectorize\fR" 4
+.IX Item "-ftree-loop-vectorize"
 Perform loop vectorization on trees. This flag is enabled by default at
-\&\fB\-O3\fR.
+\&\fB\-O3\fR and when \fB\-ftree\-vectorize\fR is enabled.
 .IP "\fB\-ftree\-slp\-vectorize\fR" 4
 .IX Item "-ftree-slp-vectorize"
 Perform basic block vectorization on trees. This flag is enabled by default at
