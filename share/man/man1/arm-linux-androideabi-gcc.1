@@ -124,7 +124,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2013-09-24" "gcc-4.9.0" "GNU"
+.TH GCC 1 "2013-09-28" "gcc-4.9.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -444,7 +444,7 @@ in the following sections.
 \&\-ftree\-parallelize\-loops=\fR\fIn\fR \fB\-ftree\-pre \-ftree\-partial\-pre \-ftree\-pta 
 \&\-ftree\-reassoc \-ftree\-sink \-ftree\-slsr \-ftree\-sra 
 \&\-ftree\-switch\-conversion \-ftree\-tail\-merge \-ftree\-ter 
-\&\-ftree\-vect\-loop\-version \-ftree\-vectorize \-ftree\-vrp 
+\&\-ftree\-vectorize \-ftree\-vrp 
 \&\-funit\-at\-a\-time \-funroll\-all\-loops \-funroll\-loops 
 \&\-funsafe\-loop\-optimizations \-funsafe\-math\-optimizations \-funswitch\-loops 
 \&\-fvariable\-expansion\-in\-unroller \-fvect\-cost\-model \-fvpt \-fweb 
@@ -6174,7 +6174,7 @@ optimizations designed to reduce code size.
 \&\fB\-Os\fR disables the following optimization flags:
 \&\fB\-falign\-functions  \-falign\-jumps  \-falign\-loops 
 \&\-falign\-labels  \-freorder\-blocks  \-freorder\-blocks\-and\-partition 
-\&\-fprefetch\-loop\-arrays  \-ftree\-vect\-loop\-version\fR
+\&\-fprefetch\-loop\-arrays\fR
 .IP "\fB\-Ofast\fR" 4
 .IX Item "-Ofast"
 Disregard strict standards compliance.  \fB\-Ofast\fR enables all
@@ -7329,18 +7329,20 @@ Perform loop vectorization on trees. This flag is enabled by default at
 .IX Item "-ftree-slp-vectorize"
 Perform basic block vectorization on trees. This flag is enabled by default at
 \&\fB\-O3\fR and when \fB\-ftree\-vectorize\fR is enabled.
-.IP "\fB\-ftree\-vect\-loop\-version\fR" 4
-.IX Item "-ftree-vect-loop-version"
-Perform loop versioning when doing loop vectorization on trees.  When a loop
-appears to be vectorizable except that data alignment or data dependence cannot
-be determined at compile time, then vectorized and non-vectorized versions of
-the loop are generated along with run-time checks for alignment or dependence
-to control which version is executed.  This option is enabled by default
-except at level \fB\-Os\fR where it is disabled.
-.IP "\fB\-fvect\-cost\-model\fR" 4
-.IX Item "-fvect-cost-model"
-Enable cost model for vectorization.  This option is enabled by default at
-\&\fB\-O3\fR.
+.IP "\fB\-fvect\-cost\-model=\fR\fImodel\fR" 4
+.IX Item "-fvect-cost-model=model"
+Alter the cost model used for vectorization.  The \fImodel\fR argument
+should be one of \f(CW\*(C`unlimited\*(C'\fR, \f(CW\*(C`dynamic\*(C'\fR or \f(CW\*(C`cheap\*(C'\fR.
+With the \f(CW\*(C`unlimited\*(C'\fR model the vectorized code-path is assumed
+to be profitable while with the \f(CW\*(C`dynamic\*(C'\fR model a runtime check
+will guard the vectorized code-path to enable it only for iteration
+counts that will likely execute faster than when executing the original
+scalar loop.  The \f(CW\*(C`cheap\*(C'\fR model will disable vectorization of
+loops where doing so would be cost prohibitive for example due to
+required runtime checks for data dependence or alignment but otherwise
+is equal to the \f(CW\*(C`dynamic\*(C'\fR model.
+The default cost model depends on other optimization flags and is
+either \f(CW\*(C`dynamic\*(C'\fR or \f(CW\*(C`cheap\*(C'\fR.
 .IP "\fB\-ftree\-vrp\fR" 4
 .IX Item "-ftree-vrp"
 Perform Value Range Propagation on trees.  This is similar to the
@@ -8704,13 +8706,15 @@ constraints.  The default value is 0.
 .IP "\fBvect-max-version-for-alignment-checks\fR" 4
 .IX Item "vect-max-version-for-alignment-checks"
 The maximum number of run-time checks that can be performed when
-doing loop versioning for alignment in the vectorizer.  See option
-\&\fB\-ftree\-vect\-loop\-version\fR for more information.
+doing loop versioning for alignment in the vectorizer.
 .IP "\fBvect-max-version-for-alias-checks\fR" 4
 .IX Item "vect-max-version-for-alias-checks"
 The maximum number of run-time checks that can be performed when
-doing loop versioning for alias in the vectorizer.  See option
-\&\fB\-ftree\-vect\-loop\-version\fR for more information.
+doing loop versioning for alias in the vectorizer.
+.IP "\fBvect-max-peeling-for-alignment\fR" 4
+.IX Item "vect-max-peeling-for-alignment"
+The maximum number of loop peels to enhance access alignment
+for vectorizer. Value \-1 means 'no limit'.
 .IP "\fBmax-iterations-to-track\fR" 4
 .IX Item "max-iterations-to-track"
 The maximum number of iterations of a loop the brute-force algorithm
@@ -20065,14 +20069,6 @@ instruction.  In the previous example, that might be a 32\-bit load
 instruction, even though that accesses bytes that do not contain
 any portion of the bit-field, or memory-mapped registers unrelated to
 the one being updated.
-.Sp
-If the target requires strict alignment, and honoring the field
-type would require violating this alignment, a warning is issued.
-If the field has \f(CW\*(C`packed\*(C'\fR attribute, the access is done without
-honoring the field type.  If the field doesn't have \f(CW\*(C`packed\*(C'\fR
-attribute, the access is done honoring the field type.  In both cases,
-\&\s-1GCC\s0 assumes that the user knows something about the target hardware
-that it is unaware of.
 .Sp
 The default value of this option is determined by the application binary
 interface for the target processor.
